@@ -1,0 +1,27 @@
+---
+permalink: windows/task_freeing_or_deleting_retention_policy_exempt_backups.html 
+sidebar: sidebar 
+keywords: backup, retention, class, unlimited, delete, freed, directly, assign, eligible, deletion, free, deleting, exempy 
+summary: Backups mit einer „unbegrenzten“ Aufbewahrungsklasse können nicht direkt gelöscht oder freigegeben werden. Um diese Backups zu löschen oder zu löschen, müssen Sie zunächst eine andere Aufbewahrungsklasse wie stündlich, täglich, wöchentlich oder monatlich zuweisen. Um ein Backup zu löschen oder zu befreien, das von der Aufbewahrungsrichtlinie ausgenommen ist, müssen Sie zuerst das Backup aktualisieren, um es für die Löschung berechtigt zu machen oder es freizumachen. 
+---
+= Freistellen oder Löschen von Backups ohne Rücknahmerichtlinien
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Backups mit einer „unbegrenzten“ Aufbewahrungsklasse können nicht direkt gelöscht oder freigegeben werden. Um diese Backups zu löschen oder zu löschen, müssen Sie zunächst eine andere Aufbewahrungsklasse wie stündlich, täglich, wöchentlich oder monatlich zuweisen. Um ein Backup zu löschen oder zu befreien, das von der Aufbewahrungsrichtlinie ausgenommen ist, müssen Sie zuerst das Backup aktualisieren, um es für die Löschung berechtigt zu machen oder es freizumachen.
+
+. Um das Backup zu aktualisieren, damit es durch die Aufbewahrungsrichtlinie zum Löschen berechtigt ist, geben Sie folgenden Befehl ein: smo Backup Update -profilprofile_Name {-labellabel [Data - archivelogs] - idid} -cond [-hourly - -Weekly]
+. Nachdem Sie die Sicherung aktualisiert haben, damit sie gelöscht werden kann, können Sie entweder das Backup löschen oder kostenlose Backup-Ressourcen.
++
+** Um das Backup zu löschen, geben Sie folgenden Befehl ein: smo Backup delete -profilprofile_Name {-labellabel [Data} -archivelogs] - idid - all
+** Um die Backup-Ressourcen freizumachen, anstatt das Backup zu löschen, geben Sie diesen Befehl ein:smo Backup free -profileprofile_Name {-labellabel [Data} -archivelogs] [-did [-all [-Force] [ -dump] [-quiet
+
+
+
+
+*Verwandte Informationen*
+
+xref:reference_the_smosmsapbackup_update_command.adoc[Der SMO-Befehl zum Aktualisieren der Datensicherung]

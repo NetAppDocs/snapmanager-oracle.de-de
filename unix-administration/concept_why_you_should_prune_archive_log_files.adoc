@@ -1,0 +1,19 @@
+---
+permalink: unix-administration/concept_why_you_should_prune_archive_log_files.html 
+sidebar: sidebar 
+keywords: snapmanager, oracle, delete, archive, log, file, active, system, back, up, pruning 
+summary: Mit SnapManager für Oracle können Sie Archivprotokolldateien aus dem aktiven, bereits gesicherten Dateisystem löschen. 
+---
+= Warum sollten Sie Archiv Log-Dateien beschneiden
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit SnapManager für Oracle können Sie Archivprotokolldateien aus dem aktiven, bereits gesicherten Dateisystem löschen.
+
+Durch Beschneidung kann SnapManager Backups einzelner Archiv-Log-Dateien erstellen. Durch Beschneidung und die Richtlinie zur Aufbewahrung von Backups wird beim Säuberen von Backups der Speicherplatz für das Archiv-Protokoll freigegeben.
+
+
+NOTE: Sie können die Archivprotokolldateien nicht beschneiden, wenn der Flash Recovery Area (FRA) für Archivprotokolldateien aktiviert ist. Wenn Sie im Bereich Flash Recovery den Speicherort für das Archivprotokoll angeben, müssen Sie im Parameter Archive_log_dest auch den Speicherort für das Archivprotokoll angeben.

@@ -1,0 +1,31 @@
+---
+permalink: unix-administration/concept_details_of_the_target_database.html 
+sidebar: sidebar 
+keywords: integrated, database, protection, payroll, techco, dba, 3000-person, atlanta 
+summary: Dieses Beispiel eines integrierten Datenbankschutzes beschreibt den Schutz einer Gehaltsabrechnungsdatenbank. Im Beispiel werden die folgenden Daten verwendet. 
+---
+= Details der Zieldatenbank
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dieses Beispiel eines integrierten Datenbankschutzes beschreibt den Schutz einer Gehaltsabrechnungsdatenbank. Im Beispiel werden die folgenden Daten verwendet.
+
+Der Datenbankadministrator (DBA) von TechCo, einem Unternehmen mit 3000 Personen mit Hauptsitz in Atlanta, muss ein konsistentes Backup der Gehaltsabrechnungsdatenbank für die Produktion, PAYDB, erstellen. Zur Sicherungsstrategie für das Backup im primären und sekundären Storage müssen DBA und der Storage-Administrator gemeinsam die Oracle Datenbank sowohl lokal auf dem Primärspeicher als auch Remote auf dem Sekundärspeicher an einem Remote-Standort sichern.
+
+* *Profilinformationen*
++
+Wenn Sie ein Profil in SnapManager erstellen, benötigen Sie die folgenden Daten:
+
++
+** Datenbankname: PAYDB
+** Host-Name: payroll.techco.com
+** Datenbank-ID: Payrolldb
+** Profilname: Gehaltsabrechnung_Prod
+** Verbindungsmodus: Datenbankauthentifizierung
+** Snapshot Benennungsschema: smo_Hostname_dbsid_smoprofile_scope_Mode_smid (übersetzt in „smo_payroll.xyz.com_payrolldb_payroll_prod_f_h_x")
+
+
+

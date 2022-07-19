@@ -1,0 +1,17 @@
+---
+permalink: windows/task_updating_a_backup_schedule.html 
+sidebar: sidebar 
+keywords: view, list, schedule, operation, update, scheduling, backup, updating 
+summary: Sie können eine Liste geplanter Vorgänge anzeigen und gegebenenfalls aktualisieren. Sie können die Planungsfrequenz, die Startzeit des Zeitplans, den cronstring-Ausdruck und den Benutzer, der das Backup geplant hat, aktualisieren. 
+---
+= Aktualisieren eines Backup-Zeitplans
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können eine Liste geplanter Vorgänge anzeigen und gegebenenfalls aktualisieren. Sie können die Planungsfrequenz, die Startzeit des Zeitplans, den cronstring-Ausdruck und den Benutzer, der das Backup geplant hat, aktualisieren.
+
+. Um den Zeitplan für ein Backup zu aktualisieren, geben Sie diesen Befehl ein: smo Schedule Update -profile profile profile_Name-Schedule-nameschedulename [-Schedule-commentplan comment] -interval {-hourly} -Weekly / -monthly / -ontimeonly -Start-timarttime-cronstringcronstring-runasuserrunasuser [-quiet [-verbose]
+

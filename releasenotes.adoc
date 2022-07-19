@@ -1,0 +1,13 @@
+---
+permalink: releasenotes.html 
+sidebar: sidebar 
+keywords: release, notes, new, features, fixed, issues, known, limitations, snapmanager, oracle 
+summary: Beschreibt neue Funktionen, Upgrade-Hinweise, feste Probleme, bekannte Einschränkungen und bekannte Probleme. 
+---
+= Versionshinweise zu SnapManager 3.4.2 für Oracle
+:allow-uri-read: 
+
+
+Der link:https://library.netapp.com/ecm/ecm_get_file/ECMLP2849192["Versionshinweise zu SnapManager 3.4.2 für Oracle"] Beschreiben Sie neue Funktionen, Upgrade-Hinweise, feste Probleme, bekannte Einschränkungen und bekannte Probleme.
+
+Sie müssen sich auf der NetApp Support-Website anmelden, um auf die Versionshinweise zuzugreifen.

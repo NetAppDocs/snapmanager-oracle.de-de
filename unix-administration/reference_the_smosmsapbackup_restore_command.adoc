@@ -1,0 +1,207 @@
+---
+permalink: unix-administration/reference_the_smosmsapbackup_restore_command.html 
+sidebar: sidebar 
+keywords: run, backup, restore, command, database, portion, optional, smo, information 
+summary: Sie können den Befehl Backup Restore ausführen, um Backups einer Datenbank oder eines Teils einer Datenbank wiederherzustellen, und optional die Datenbankinformationen wiederherstellen. 
+---
+= Der Smo Backup Restore Befehl
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Befehl Backup Restore ausführen, um Backups einer Datenbank oder eines Teils einer Datenbank wiederherzustellen, und optional die Datenbankinformationen wiederherstellen.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo backup restore
+-profile profile_name
+\[-label label \| -id id\]
+\[-files files \[files...\] \|
+-tablespaces tablespaces \[tablespaces...\]\] \|
+-complete \| -controlfiles\]
+\[-recover \{-alllogs \| -nologs \| -until until\} \[-using-backup-controlfile\] \]
+\[-restorespec restorespec \| -from-secondary \[-temp-volume temp_volume\] \[-copy-id id\]\]
+\[-preview\]
+\[-fast \{-require \| -override \| -fallback \| -off\}\]
+\[-recover-from-location path1 \[, path2\]\]
+\[-taskspec taskspec\]
+\[-dump\]
+\[-force\]
+\[-quiet \| -verbose\]
+----
+
+
+== Parameter
+
+* *-profile Profile_Name*
++
+Gibt die Datenbank an, die wiederhergestellt werden soll. Das Profil enthält die Kennung der Datenbank und andere Datenbankinformationen.
+
+* * Name des Etiketts*
++
+Stellt das Backup mit dem angegebenen Etikett wieder her.
+
+* *-id-Guid*
++
+Stellt die Sicherung mit der angegebenen GUID wieder her. Die GUID wird von SnapManager beim Erstellen eines Backups generiert. Sie können den Befehl smo Backup list verwenden, um die GUID für jedes Backup anzuzeigen.
+
+* *Wählen Sie alle oder bestimmte Dateien*
++
+Optional können Sie eine der folgenden Optionen verwenden:
+
++
+** -Complete: Stellt alle Dateien in der Sicherung wieder her.
+** -Tablespaceslist: Stellt nur die angegebenen Tablespaces aus dem Backup wieder her.
++
+Sie müssen Leerzeichen verwenden, um die Namen in der Liste zu trennen.
+
+** -Fileslist: Stellt nur die angegebenen Datendateien aus dem Backup wieder her.
++
+Sie müssen Leerzeichen verwenden, um die Namen in der Liste zu trennen. Wenn die Datenbank ausgeführt wird, stellt SnapManager sicher, dass der Tablespace, der die Dateien enthält, offline ist.
+
+
+
+* *-controlfiles*
++
+Stellt die Kontrolldateien wieder her. SnapManager ermöglicht Ihnen, in einem einzigen Vorgang Kontrolldateien zusammen mit den Datendateien aus den Backups wiederherzustellen. Die Option -controlfiles ist unabhängig von anderen Parametern für den Wiederherstellungsumfang, wie z. B. -Complete, -Tablespaces und -Files.
+
+* *-Erholung*
++
+Stellt die Datenbank nach der Wiederherstellung wieder her. Sie müssen auch den Punkt angeben, an dem SnapManager die Datenbank wiederherstellen soll, indem Sie eine der folgenden Optionen verwenden:
+
++
+** -Nologs: Stellt die Datenbank zum Zeitpunkt der Sicherung wieder her und wendet keine Logs an.
++
+Sie können diesen Parameter für Online- oder Offline-Backups verwenden.
+
+** -Alllogs: Stellt die Datenbank auf die letzte Transaktion oder Commit wieder her und wendet alle erforderlichen Protokolle an.
+** -Bis Datum: Stellt die Datenbank bis zum angegebenen Datum und der angegebenen Zeit wieder her.
++
+Sie müssen das Jahr-Monat-Datum verwenden: Stunde: Minute: Sekunde (yyyy-mm-dd:hh:mm:ss) Format. Verwenden Sie für Stunden je nach Datenbankeinstellung entweder das 12-Stunden- oder das 24-Stunden-Format.
+
+** -Bis scn: Rollt die Datendateien weiter, bis sie die angegebene Systemändernummer (SCN) erreicht.
+** -Using-Backup-controlfile: Stellt die Datenbank mit der Backup-Kontrolldatei wieder her.
+
+
+* *-restaurespec*
++
+Ermöglicht Ihnen, die Daten in einem aktiven File-System wiederherzustellen und aus den angegebenen Daten wiederherzustellen, indem Sie jede Original-Snapshot-Kopie einem aktiven File-System zuweisen. Falls Sie keine Option angeben, werden die Daten aus den Snapshot Kopien im primären Storage von SnapManager wiederhergestellt. Sie können eine der folgenden Optionen angeben:
+
++
+** -Restorespec: Gibt die wiederherzustellenden Daten und das Wiederherstellungsformat an.
+** -Aus dem sekundären: Stellt die Daten aus dem sekundären Speicher wieder her.
++
+Diese Option kann nicht verwendet werden, wenn das Backup im Primär-Storage vorhanden ist. Das primäre Backup muss freigegeben werden, bevor ein Backup aus dem sekundären Storage wiederhergestellt werden kann. Wenn Sie ein temporäres Volumen verwenden, müssen Sie das Volumen mithilfe der Option -temp-Volume angeben.
+
++
+Sie müssen die Option -copy-id angeben, wenn Sie die Option -from-secondary angeben. Wenn auf dem sekundären Speichersystem mehrere Backups vorhanden sind, wird mit der Option -copy-id angegeben, welche Backup-Kopie auf dem sekundären Speicher für den Wiederherstellungsvorgang verwendet werden soll.
+
++
+
+NOTE: Wenn Sie Data ONTAP in 7-Mode verwenden, müssen Sie einen gültigen Wert für die Option -copy-id angeben. Wenn Sie jedoch Clustered Data ONTAP verwenden, ist die Option -copy-id nicht erforderlich
+
++
+Bei der Wiederherstellung aus dem Sekundärspeicher versucht SnapManager zunächst, Daten direkt aus dem sekundären Speichersystem auf das primäre Speichersystem (ohne Beteiligung des Hosts) wiederherzustellen. Wenn SnapManager diese Art der Wiederherstellung nicht durchführen kann (z. B. wenn die Dateien nicht Teil des Dateisystems sind), dann wird SnapManager zurück zu einer Host-seitigen Dateikopie zurückkehren. SnapManager verfügt über zwei Methoden zur Wiederherstellung einer Host-seitigen Dateikopie aus dem sekundären Server. Die von SnapManager gewählte Methode wird in der smo.config-Datei konfiguriert.
+
+** Direkt: SnapManager klont die Daten auf sekundärem Storage, mountet die geklonten Daten vom sekundären Storage-System auf den Host und kopiert sie dann Daten aus dem Klon in die aktive Umgebung.
++
+Dies ist die standardmäßige sekundäre Zugriffsrichtlinie.
+
+** Indirekt: SnapManager kopiert die Daten zunächst auf ein temporäres Volume im Primärspeicher, bindet die Daten vom temporären Volume an den Host und kopiert dann Daten aus dem temporären Volume in die aktive Umgebung.
++
+Diese Richtlinie sollte nur verwendet werden, wenn der Host keinen direkten Zugriff auf das sekundäre Speichersystem hat. Wiederherstellungen mit der indirekten Methode dauern doppelt so lange wie die Richtlinien für direkte sekundäre Zugriffe, da zwei Kopien der Daten erstellt werden.
+
+
+
++
+Die Entscheidung, ob die direkte oder indirekte Methode verwendet werden soll, wird durch den Wert des Parameters restore.secondaryAccessPolicy in der Konfigurationsdatei smo.config gesteuert.
+
+* * Vorschau*
++
+Zeigt die folgenden Informationen an:
+
++
+** Welcher Wiederherstellungsmechanismus (schnelle Wiederherstellung, Filesystem-Wiederherstellung auf Storage-Seite, Dateiwiederherstellung auf Storage-Seite oder Wiederherstellung von Host-seitigen Dateikopien) wird zum Wiederherstellen jeder Datei verwendet
+** Warum effizientere Mechanismen nicht zur Wiederherstellung jeder Datei verwendet wurden, wenn Sie die Option -verbose angeben Wenn Sie die Option -Preview verwenden, müssen Sie Folgendes wissen:
+** Die Option -Force hat keine Auswirkung auf den Befehl.
+** Die Option -wiederherstellen hat keine Auswirkung auf den Befehl.
+** Die Option -fast (-enterride, -override, -Fallback oder -off) hat erhebliche Auswirkungen auf die Ausgabe. Um eine Vorschau des Wiederherstellungsvorgangs anzuzeigen, muss die Datenbank gemountet werden. Wenn Sie eine Vorschau eines Wiederherstellungsplans anzeigen möchten und die Datenbank derzeit nicht angehängt ist, mountet SnapManager die Datenbank. Wenn die Datenbank nicht angehängt werden kann, schlägt der Befehl fehl, und SnapManager gibt die Datenbank in ihren ursprünglichen Status zurück.
+
+
++
+Die Option -Preview zeigt bis zu 20 Dateien an. Sie können die maximale Anzahl von Dateien konfigurieren, die in der Datei smo.config angezeigt werden sollen.
+
+* *-schnell*
++
+Ermöglicht Ihnen die Auswahl des Prozesses, den Sie für den Wiederherstellungsvorgang verwenden möchten. Zudem kann SnapManager die Verwendung des Volume-basierten schnellen Wiederherstellungsprozesses anstelle anderer Wiederherstellungsverfahren erzwingen, wenn alle obligatorischen Bedingungen für die Wiederherstellung erfüllt sind. Falls bekannt ist, dass eine Wiederherstellung eines Volumes nicht möglich ist, kann dieser Vorgang ebenfalls durchgeführt werden, um SnapManager die Überprüfung der Berechtigung und die Wiederherstellung mithilfe des schnellen Restore-Vorgangs zu verhindern.
+
++
+Die Option -fast umfasst die folgenden Parameter:
+
++
+** -Erforderlich: Ermöglicht es Ihnen, SnapManager zu zwingen, eine Volume-Wiederherstellung durchzuführen, wenn alle Bedingungen für die Wiederherstellung erfüllt sind.
++
+Wenn Sie die Option -fast angeben, jedoch keinen Parameter für -fast angeben, verwendet SnapManager als Standard den Parameter -erfordern.
+
+** -Override: Ermöglicht es Ihnen, die nicht obligatorischen Eignungsprüfungen zu überschreiben und den volumenbasierten schnellen Wiederherstellungsprozess durchzuführen.
+** -Fallback: Ermöglicht es Ihnen, die Datenbank mit jeder Methode wiederherzustellen, die SnapManager bestimmt.
++
+Wenn Sie die Option -fast nicht angeben, verwendet SnapManager die standardmäßige Option Backup restore -fast Fallback.
+
+** -Off: Ermöglicht Ihnen, die Zeit zu vermeiden, die für die Durchführung von Eignungsprüfungen erforderlich ist.
+
+
+* *-Recovery-from-location*
++
+Gibt den externen Speicherort der Archivprotokolldateien an. SnapManager nimmt die Archivprotokolldateien vom externen Standort auf und verwendet diese für den Recovery-Prozess.
+
+* *-taskSpec*
++
+Gibt die XML-Datei für die Aufgabenspezifikation für die Vorverarbeitung oder Nachbearbeitung des Wiederherstellungsvorgangs an. Sie müssen den vollständigen Pfad der XML-Datei für die Aufgabenspezifikation angeben.
+
+* *-dump*
++
+Gibt an, die Speicherauszugsdateien nach dem Wiederherstellungsvorgang zu sammeln.
+
+* *-Force*
++
+Ändert ggf. den Datenbankstatus in einen niedrigeren Status als der aktuelle Status. Für Real Application Clusters (RAC) müssen Sie die Option -Force angeben, wenn SnapManager den Status einer beliebigen RAC-Instanz in einen niedrigeren Status ändern muss.
+
++
+Standardmäßig kann SnapManager den Datenbankstatus während eines Vorgangs in einen höheren Status ändern. Diese Option ist nicht erforderlich, damit SnapManager die Datenbank in einen höheren Status ändert.
+
+* *-ruhig*
++
+Zeigt nur Fehlermeldungen in der Konsole an. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Zeigt Fehler-, Warn- und Informationsmeldungen in der Konsole an. Sie können diese Option verwenden, um zu sehen, warum effizientere Wiederherstellungsprozesse nicht verwendet werden konnten, um die Datei wiederherzustellen.
+
+
+
+
+
+== Beispiel
+
+Im folgenden Beispiel wird eine Datenbank zusammen mit den Kontrolldateien wiederhergestellt:
+
+[listing]
+----
+smo backup restore -profile SALES1 -label full_backup_sales_May
+-complete -controlfiles -force
+----
+*Verwandte Informationen*
+
+xref:concept_restoring_database_backup.adoc[Datenbank-Backups werden wiederhergestellt]
+
+xref:task_restoring_backups_from_an_alternate_location.adoc[Wiederherstellen von Backups von einem alternativen Speicherort]
+
+xref:task_creating_restore_specifications.adoc[Erstellen von Wiederherstellungsspezifikationen]

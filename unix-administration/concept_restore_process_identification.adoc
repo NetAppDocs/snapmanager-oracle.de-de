@@ -1,0 +1,22 @@
+---
+permalink: unix-administration/concept_restore_process_identification.html 
+sidebar: sidebar 
+keywords: restore, process, support, snapmanager, oracle, file-based, backup 
+summary: Alle Restore-Prozesse werden nicht in allen SnapManager für Oracle Versionen unterstützt. Nach dem Upgrade von SnapManager müssen Sie auf den Wiederherstellungsprozess achten, den Sie zum Wiederherstellen eines Backups verwenden können. 
+---
+= Prozessarten wiederherstellen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Alle Restore-Prozesse werden nicht in allen SnapManager für Oracle Versionen unterstützt. Nach dem Upgrade von SnapManager müssen Sie auf den Wiederherstellungsprozess achten, den Sie zum Wiederherstellen eines Backups verwenden können.
+
+Die mit SnapManager 3.0 oder höher erstellten Backups können sowohl mit schnellen Restore- als auch mit dateibasierten Restore-Prozessen wiederhergestellt werden. Die Backups, die mit einer älteren Version als SnapManager 3.0 erstellt wurden, können jedoch nur mit dem dateibasierten Wiederherstellungsprozess wiederhergestellt werden.
+
+Sie können die zum Erstellen des Backups verwendete SnapManager-Version bestimmen, indem Sie den Befehl -Backup show ausführen.
+
+*Verwandte Informationen*
+
+xref:concept_what_database_restore_is.adoc[Was ist Datenbank-Restore]

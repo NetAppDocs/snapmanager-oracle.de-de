@@ -1,0 +1,32 @@
+---
+permalink: unix-administration/task_unmounting_backups.html 
+sidebar: sidebar 
+keywords: snapmanager, automatic, unmount, backup, unavailable, host, server, asm, smo 
+summary: 'SnapManager hängt automatisch das Backup ab, damit es nicht auf dem Host-Server verfügbar ist. Mit SnapManager können Sie auch die Bereitstellung aufheben, wenn Sie ein externes Tool wie beispielsweise Oracle Recovery Manager \(RMAN\) verwenden, um auf die Dateien im Backup zuzugreifen und den Status des Backups zum Entfernen des Zugriffs zu ändern.' 
+---
+= UnMounten von Backups
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager hängt automatisch das Backup ab, damit es nicht auf dem Host-Server verfügbar ist. Mit SnapManager können Sie auch die Einbindung aufheben, wenn Sie ein externes Tool wie beispielsweise den Oracle Recovery Manager (RMAN) verwenden, um auf die Dateien im Backup zuzugreifen und den Zustand des Backups zu ändern, um den Zugriff zu entfernen.
+
+Wenn Sie die Installation eines Datenbank-Backups von einem Remote-Host aufheben, müssen Sie sicherstellen, dass die ASM-Anmeldedaten auf beiden Hosts identisch sind.
+
+Optional können Sie die Dump-Dateien nach einem erfolgreichen oder fehlgeschlagenen Unmount-Backup sammeln.
+
+Der Unmount Vorgang kann irgendwann mit einer Fehlermeldung fehlschlagen, wenn der Mount-Punkt beschäftigt ist, z. B. --[ERROR] FLOW-11019: Fehler in Disconnect: SD-10046: Sie können das Backup nicht unmounten, da der Mount-Punkt mit den folgenden Mount-Pfaden und PIDs belegt ist: /Opt/NetApp/smo/mnt/-mnt-nebuse_nfsvrdb_ARCH-20120427052319903_0 mit PID 6598.
+
+Sie müssen die PID der Sitzung identifizieren, die zum Ausfall des unmounten-Vorgangs führt. Beenden Sie die Sitzung, indem Sie den folgenden Befehl ausführen: `kill pid`
+
+Anschließend können Sie die Unmount-Operation erfolgreich ausführen.
+
+. Geben Sie den folgenden Befehl ein:
+`smo backup unmount -profile profile_name {labellabel [data | -archivelogs] | -idid} [-quiet | -verbose] -dump-force-verbose`
+
+
+*Verwandte Informationen*
+
+xref:reference_the_smosmsapbackup_unmount_command.adoc[Der Befehl smo Backup unmount]

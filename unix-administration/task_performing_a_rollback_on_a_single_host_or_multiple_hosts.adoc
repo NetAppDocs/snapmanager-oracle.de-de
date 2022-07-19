@@ -1,0 +1,67 @@
+---
+permalink: unix-administration/task_performing_a_rollback_on_a_single_host_or_multiple_hosts.html 
+sidebar: sidebar 
+keywords: perform, rollback, single, multiple, snapmanager, server, host, command-line, interface, cli 
+summary: 'Sie können auf einem oder mehreren SnapManager-Server-Hosts ein Rollback durchführen, indem Sie die Befehlszeilenschnittstelle \(CLI\) verwenden.' 
+---
+= Durchführen eines Rollbacks auf einem oder mehreren Hosts
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können auf einem oder mehreren SnapManager Server Hosts ein Rollback durchführen, indem Sie die Befehlszeilenschnittstelle (CLI) verwenden.
+
+Sie müssen sicherstellen, dass alle Voraussetzungen für die Durchführung eines Rollbacks abgeschlossen sind.
+
+. Geben Sie den folgenden Befehl ein, um ein Rollback auf einem einzelnen Host durchzuführen:
+`smorepository rollback-repository-dbnamerepo_service_name-hostrepo_host-login-usernamerepo_username-portrepo_port-rollbackhosthost_with_target_database`
++
+Das folgende Beispiel zeigt den Befehl zum Rollback aller Zieldatenbanken, die auf hostA gemountet sind, und eine Repository-Datenbank namens repoA, die sich auf dem Repository-Host, repo_Host, befindet:
+
++
+[listing]
+----
+
+smo repository rollback
+    -repository
+      -dbname repoA
+      -host repo_host
+      -login
+       -username repouser
+       -port 1521
+     -rollbackhost hostA
+----
+. Um ein Rollback auf mehreren Hosts durchzuführen, geben Sie den folgenden Befehl ein: Smarorpository Rollback-Repository-dbnamerepo_Service_Name-hostrepo_Host-Login-usernamerepo_username-portrepo_Port-rollbackhostost_with_Target_database1,Host_with_Target_database2
++
+
+NOTE: Geben Sie bei mehreren Hosts die durch Komma getrennten Hostnamen ein, und stellen Sie sicher, dass zwischen dem Komma und dem nächsten Hostnamen kein Platz vorhanden ist.
+
++
+Wenn Sie die Real Application Clusters (RAC)-Konfiguration verwenden, müssen Sie alle RAC-verbundenen Hosts manuell wiederherstellen. Sie können -allhosts verwenden, um ein Rollback aller Hosts durchzuführen.
+
++
+Das folgende Beispiel zeigt den Befehl zum Rollback aller Zieldatenbanken, die auf den Hosts gemountet sind, hostA, hostB und eine Repository-Datenbank namens repoA auf dem Repository-Host, repo_Host:
+
++
+[listing]
+----
+
+smo repository rollback
+    -repository
+      -dbname repoA
+      -host repo_host
+      -login
+       -username repouser
+       -port 1521
+     -rollbackhost hostA,hostB
+----
++
+Die Hosts, Profile, Zeitpläne, Backups und Klone, die mit den Profilen der Zieldatenbanken für den Host verbunden sind, werden in das frühere Repository zurückgesetzt.
+
+
+
+*Verwandte Informationen*
+
+xref:concept_prerequisites_for_performing_a_rollback.adoc[Voraussetzungen für die Durchführung eines Rollbacks]

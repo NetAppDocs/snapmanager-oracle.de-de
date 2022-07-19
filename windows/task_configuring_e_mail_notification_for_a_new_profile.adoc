@@ -1,0 +1,55 @@
+---
+permalink: windows/task_configuring_e_mail_notification_for_a_new_profile.html 
+sidebar: sidebar 
+keywords: creating, new, profile, configure, email, notification, completion, database, operation, configuring 
+summary: Wenn Sie ein neues Profil erstellen, können Sie so konfigurieren, dass Sie eine E-Mail-Benachrichtigung nach Abschluss des Datenbankvorgangs erhalten. 
+---
+= Konfigurieren der E-Mail-Benachrichtigung für ein neues Profil
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn Sie ein neues Profil erstellen, können Sie so konfigurieren, dass Sie eine E-Mail-Benachrichtigung nach Abschluss des Datenbankvorgangs erhalten.
+
+* Sie müssen die E-Mail-Adresse konfigurieren, von der die Meldungen gesendet werden.
+* Sie müssen eine kommagetrennte Liste für mehrere E-Mail-Adressen verwenden.
++
+Sie müssen sicherstellen, dass zwischen Komma und der nächsten E-Mail-Adresse kein Leerzeichen vorhanden ist.
+
++
+
+NOTE: Sie müssen sicherstellen, dass Sie den Satz von E-Mail-Adressen in doppelte Anführungszeichen eingeben.
+
++
+.. Geben Sie den folgenden Befehl ein: smo-Profil create -profileprofil [-profile-passwordprofile_password] -Repository-dbnamerepo_Service_Name-hostrepo_Host-portrepo_Port-Login-usernamerepo_username_addbnams2 {] [-protourly {-contail} }] [-admgmninto [-associence] [-ademnmninto] [-adressem] [-adressem] [-adressum] [-addnmninto] [-adressum] [-adressum] [-addnmninto] [-adressum] [-commpromnmninct] [-contail] [-commnmnmnmnmgmnmgmnmn.bb] [-adym] [-adymnmnmnmnmnmgmgmn.2] [-contail] [-adym] [-adym
++
+Weitere Optionen für diesen Befehl:
+
++
+[-Force]
+
++
+
+NOTE: SnapManager unterstützt bis zu 1000 Zeichen für E-Mail-Adressen.
+
++
+Wenn Sie mithilfe des Profils (zur Erstellung separater Archiv-Log-Backups) eine Sicherung von Datendateien und Archivprotokolldateien erstellen und die Erstellung der Datendatei-Sicherung fehlschlägt, wird die E-Mail-Benachrichtigung mit der Datensicherung als Operationname anstatt Datensicherung und Archivprotokolle als Backup gesendet. Wenn die Datensicherung der Datendatei und der Archivprotokolldatei erfolgreich ist, wird die Ausgabe wie folgt angezeigt:
+
++
+[listing]
+----
+
+Profile Name    : PROF_31
+Operation Name 	: Data Backup and Archive Logs Backup
+Database SID   	: TENDB1
+Database Host 	 : repo1.rtp.org.com
+Start Date 	    : Fri Sep 23 13:37:21 EDT 2011
+End Date 	      : Fri Sep 23 13:45:24 EDT 2011
+Status 	        : SUCCESS
+Error messages 	:
+----
+
+
+

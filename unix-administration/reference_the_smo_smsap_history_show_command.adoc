@@ -1,0 +1,53 @@
+---
+permalink: unix-administration/reference_the_smo_smsap_history_show_command.html 
+sidebar: sidebar 
+keywords: command, enable, view, detail, history, information, specific, profile, smo, show, profile, character 
+summary: Mit diesem Befehl können Sie detaillierte Verlaufsinformationen für ein bestimmtes Profil anzeigen. 
+---
+= Der Befehl smo history show
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit diesem Befehl können Sie detaillierte Verlaufsinformationen für ein bestimmtes Profil anzeigen.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo history show
+-profile profile
+----
+
+
+== Parameter
+
+* *-Profil*
++
+Gibt den Namen des Profils an. Dieser Name kann bis zu 30 Zeichen lang sein und muss innerhalb des Hosts eindeutig sein.
+
+* *-ruhig*
++
+Zeigt nur Fehlermeldungen auf der Konsole an. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Zeigt Fehler-, Warn- und Informationsmeldungen an der Konsole an.
+
+
+
+
+
+== Beispielbefehl
+
+[listing]
+----
+
+          smo  history show -profile -name PROFILE1
+ -verbose
+----

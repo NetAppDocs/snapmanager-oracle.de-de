@@ -1,0 +1,34 @@
+---
+permalink: unix-administration/task_protecting_archive_log_backups.html 
+sidebar: sidebar 
+keywords: creating, profile, enable, protection, archive, log, backup, base, policy 
+summary: Während der Erstellung von Profilen können Sie den Schutz für die Backups des Archivprotokolls basierend auf der Schutzrichtlinie für Archivprotokolle aktivieren. 
+---
+= Sicherung von Backups für Archivprotokolle
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Während der Erstellung von Profilen können Sie den Schutz für die Backups des Archivprotokolls basierend auf der Schutzrichtlinie für Archivprotokolle aktivieren.
+
+. Geben Sie den folgenden Befehl ein:
+`smo profile create -profileprofile [-profile-passwordprofile_password] -repository-dbnamerepo_dbname-hostrepo_host-portrepo_port-login-usernamerepo_username-database-dbnamedb_dbname-hostdb_host [-siddb_sid] [-login-usernamedb_username-passworddb_password-portdb_port] [-rman {-controlfile | {-login-usernamerman_username-passwordrman_password-tnsnamerman_tnsname} } ] -osaccountosaccount-osgrouposgroup [-retain [-hourly [-countn] [-durationm]] [-daily [-countn] [-durationm]] [-weekly [-countn] [-durationm]] [-monthly [-countn] [-durationm]]] [-commentcomment][-snapname-patternpattern][-protect [-protection-policypolicy_name]] [-summary-notification] [-notification [-success-emailemail_address1, email_address2-subjectsubject_pattern] [-failure-emailemail_address1, email_address2-subjectsubject_pattern]][-separate-archivelog-backups-retain-archivelog-backups-hourshours | -daysdays | -weeksweeks| -monthsmonths [-protect [-protection-policypolicy_name] | -noprotect] [-include-with-online-backups | -no-include-with-online-backups]] [-dump]`
++
+|===
+| Wenn... | Dann... 
+
+
+ a| 
+*Sie wollen Archiv-Log-Backups separat sichern und die Archiv-Log-Dateien schützen*
+ a| 
+Legen Sie die folgenden Optionen fest:
+
+** -Separatem-archivlog-Backups ermöglicht es Ihnen, die Archiv-Log-Dateien von den Datendateien zu trennen.
+** -Protect weist eine separate Schutzrichtlinie für die Archiv-Log-Backups des Archivprotokolls zu.
+** -Protection-Policy weist die Schutzrichtlinie für die Archiv-Log-Backups zu.
+
+
+|===
+

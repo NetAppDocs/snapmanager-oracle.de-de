@@ -1,0 +1,89 @@
+---
+permalink: unix-administration/reference_the_smosmsapbackup_update_command.html 
+sidebar: sidebar 
+keywords: run, backup, update, command, retention, policy, smo 
+summary: Sie können den Befehl Backup Update ausführen, um die Backup-Aufbewahrungsrichtlinie zu aktualisieren. 
+---
+= Der SMO-Befehl zum Aktualisieren der Datensicherung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Befehl Backup Update ausführen, um die Backup-Aufbewahrungsrichtlinie zu aktualisieren.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo backup update
+-profile profile_name
+[-label label \[-data \| -archivelogs\] \| \[-id guid\]
+\[-retain \{-hourly \| -daily \| -weekly \| -monthly \| -unlimited\}\]
+\[-comment comment_text\]
+[-quiet | -verbose]
+----
+
+
+== Parameter
+
+* *-profile Profile_Name*
++
+Gibt das Profil an, für das Backups aktualisiert werden sollen. Das Profil enthält die Kennung der Datenbank und andere Datenbankinformationen.
+
+* *-id-Guid*
++
+Überprüft die Sicherung mit der angegebenen GUID. Die GUID wird von SnapManager beim Erstellen eines Backups generiert. Sie können den Befehl smo Backup list verwenden, um die GUID für jedes Backup anzuzeigen.
+
+* * Label*
++
+Gibt das Backup-Label und den Umfang des Backups als Datendatei oder Archivprotokoll an.
+
+* *-Daten*
++
+Gibt die Datendateien an.
+
+* *-Archivprotokolle*
++
+Gibt die Archivprotokolldateien an.
+
+* *-comment comment comment_Text*
++
+Geben Sie Text (bis zu 200 Zeichen) zum Backup-Update ein. Sie können Leerzeichen einschließen.
+
+* *-ruhig*
++
+Zeigt nur Fehlermeldungen in der Konsole an. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Zeigt Fehler-, Warn- und Informationsmeldungen in der Konsole an.
+
+* *-halten Sie {-stündlich / -täglich / -monatlich / -unbegrenzt}*
++
+Gibt an, ob das Backup stündlich, täglich, wöchentlich, monatlich oder unbegrenzt aufbewahrt werden soll. Wenn -Retention nicht angegeben ist, wird die Aufbewahrungsklasse standardmäßig auf -hourly gesetzt. Mit der Option -unlimited können Sie Backups für immer aufbewahren. Die Option -unlimited macht das Backup nicht zum Löschen.
+
+
+
+
+
+== Beispiel
+
+Im folgenden Beispiel wird das Backup aktualisiert, damit die Aufbewahrungsrichtlinie auf unbegrenzt gesetzt wird:
+
+[listing]
+----
+smo backup update -profile SALES1 -label full_backup_sales_May
+-retain -unlimited -comment save_forever_monthly_backup
+----
+*Verwandte Informationen*
+
+xref:task_changing_the_backup_retention_policy.adoc[Ändern der Richtlinie zur Aufbewahrung von Backups]
+
+xref:task_retaining_backups_forever.adoc[Dauerhaft Aufbewahrung von Backups]
+
+xref:task_freeing_or_deleting_retention_policy_exempt_backups.adoc[Freistellen oder Löschen von Backups ohne Rücknahmerichtlinien]

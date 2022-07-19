@@ -1,0 +1,22 @@
+---
+permalink: unix-administration/task_retaining_backups_forever.html 
+sidebar: sidebar 
+keywords: specify, backup, ineligible, deletion, retention, policy, indefinite, unlimited, basis, smo 
+summary: Sie können angeben, dass ein Backup durch die Aufbewahrungsrichtlinie nicht zur Löschung berechtigt sein sollte, um das Backup auf unbestimmte Zeit zu halten. 
+---
+= Dauerhaft Aufbewahrung von Backups
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können angeben, dass ein Backup durch die Aufbewahrungsrichtlinie nicht zur Löschung berechtigt sein sollte, um das Backup auf unbestimmte Zeit zu halten.
+
+. Geben Sie den folgenden Befehl ein, um anzugeben, dass ein Backup unbegrenzt aufbewahrt werden soll:
+`smo backup update -profileprofile_name {-labellabel [data | -archivelogs] | -idid} -retain -unlimited`
+
+
+*Verwandte Informationen*
+
+xref:reference_the_smosmsapbackup_update_command.adoc[Der SMO-Befehl zum Aktualisieren der Datensicherung]

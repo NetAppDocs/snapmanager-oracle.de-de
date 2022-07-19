@@ -1,0 +1,17 @@
+---
+permalink: unix-administration/task_deleting_backup_schedules.html 
+sidebar: sidebar 
+keywords: delete, backup, schedule, necessary, deleting, smo 
+summary: Sie können Backup-Pläne löschen, wenn diese nicht mehr benötigt werden. 
+---
+= Löschen von Backup-Zeitplänen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können Backup-Pläne löschen, wenn diese nicht mehr benötigt werden.
+
+. Um den Backup-Zeitplan zu löschen, geben Sie folgenden Befehl ein: smo Schedule delete -profile profile_Name-Schedule-nameschedulename [-quiet - verbose]
+

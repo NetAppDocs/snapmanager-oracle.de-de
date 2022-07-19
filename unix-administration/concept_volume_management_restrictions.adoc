@@ -1,0 +1,24 @@
+---
+permalink: unix-administration/concept_volume_management_restrictions.html 
+sidebar: sidebar 
+keywords: snapmanager, volume, management, restriction, environment, asm, disk, group, linux 
+summary: Bei SnapManager gibt es bestimmte Volume-Management-Einschränkungen, die sich auf Ihre Umgebung auswirken können. 
+---
+= Einschränkungen beim Volume-Management
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bei SnapManager gibt es bestimmte Volume-Management-Einschränkungen, die sich auf Ihre Umgebung auswirken können.
+
+Sie können mehrere Laufwerksgruppen für eine Datenbank haben. Die folgenden Einschränkungen gelten jedoch für alle Festplattengruppen für eine bestimmte Datenbank:
+
+* Plattengruppen für die Datenbank können nur von einem Volume-Manager verwaltet werden.
+* Von einem logischen Volume-Manager gesicherte RAW-Geräte werden für den Schutz von Oracle Daten nicht unterstützt.
++
+RAW Device Storage und Automatic Storage Management (ASM)-Festplattengruppen müssen direkt auf physischen Geräten bereitgestellt werden. In einigen Fällen ist eine Partitionierung erforderlich.
+
+* Eine Linux-Umgebung ohne logisches Volume-Management erfordert eine Partition.
+

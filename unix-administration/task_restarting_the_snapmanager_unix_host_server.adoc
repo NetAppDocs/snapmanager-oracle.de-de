@@ -1,0 +1,18 @@
+---
+permalink: unix-administration/task_restarting_the_snapmanager_unix_host_server.html 
+sidebar: sidebar 
+keywords: restart, server, unix, host, cli, smo 
+summary: Sie können den Server auf einem UNIX-Host mithilfe der CLI neu starten. 
+---
+= Starten Sie den SnapManager UNIX-Hostserver neu
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Server auf einem UNIX-Host mithilfe der CLI neu starten.
+
+. Geben Sie zum Neustart des Servers den folgenden Befehl ein:
+`smo_server restart`
+

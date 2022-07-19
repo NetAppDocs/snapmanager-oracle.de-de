@@ -1,0 +1,24 @@
+---
+permalink: unix-administration/concept_preparing_to_upgrade_snapmanager_for_oracle.html 
+sidebar: sidebar 
+keywords: environment, upgrade, snapmanager, specific, software, hardware, browser, database, operating, system, prepare, unix 
+summary: Die Umgebung, in der Sie ein SnapManager-Upgrade durchführen möchten, muss die spezifischen Software-, Hardware-, Browser-, Datenbank- und Betriebssystemanforderungen erfüllen. Aktuelle Informationen zu den Anforderungen finden Sie in der Interoperabilitäts-Matrix. 
+---
+= SnapManager wird vorbereitet
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Umgebung, in der Sie ein SnapManager-Upgrade durchführen möchten, muss die spezifischen Software-, Hardware-, Browser-, Datenbank- und Betriebssystemanforderungen erfüllen. Aktuelle Informationen zu den Anforderungen finden Sie in der Interoperabilitäts-Matrix.
+
+Sie müssen vor dem Upgrade sicherstellen, dass Sie die folgenden Aufgaben ausführen:
+
+* Führen Sie die erforderlichen Vorinstallationsaufgaben aus.
+* Laden Sie das neueste Installationspaket von SnapManager für Oracle herunter.
+* Installieren und konfigurieren Sie die entsprechende Version von SnapDrive für UNIX auf allen Ziel-Hosts.
+* Erstellen eines Backups der vorhandenen Repository-Datenbank SnapManager für Oracle
+
+
+http://support.netapp.com/NOW/products/interoperability/["Interoperabilitäts-Matrix: support.netapp.com/NOW/products/interoperability"]

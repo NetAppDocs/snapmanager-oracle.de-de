@@ -1,0 +1,31 @@
+---
+permalink: windows/task_changing_the_retention_policy_default_behavior.html 
+sidebar: sidebar 
+keywords: backup, expire, retention, policy, snapmanager, delete, settings, default, behavior, protect, unprotected 
+summary: Wenn ein Backup basierend auf der Aufbewahrungsrichtlinie abläuft, bestimmt SnapManager basierend auf den Aufbewahrungseinstellungen, ob das Backup gelöscht werden soll. Das Löschen von Backups ist das Standardverhalten. Sie können dieses Standardverhalten ändern und stattdessen die ungeschützten Backups freigeben. 
+---
+= Ändern des Standardverhaltens der Aufbewahrungsrichtlinie
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn ein Backup basierend auf der Aufbewahrungsrichtlinie abläuft, bestimmt SnapManager basierend auf den Aufbewahrungseinstellungen, ob das Backup gelöscht werden soll. Das Löschen von Backups ist das Standardverhalten. Sie können dieses Standardverhalten ändern und stattdessen die ungeschützten Backups freigeben.
+
+Standardmäßig löscht Snap Manager das Backup nach Ablauf des Backup.
+
+. Zugriff auf den folgenden Standardspeicherort:
++
+Standard smo Installation location\Properties\smo.config
+
+. Bearbeiten Sie die Datei smo.config.
+. Legen Sie in der Datei smo.config die Eigenschaft contee.alwayFreeExpiredBackups auf true fest.
++
+Beispiel: „Exkepe.alwayFreeExpiredBackups“ = „true“
+
+
+
+*Verwandte Informationen*
+
+xref:reference_the_smosmsapbackup_update_command.adoc[Der SMO-Befehl zum Aktualisieren der Datensicherung]

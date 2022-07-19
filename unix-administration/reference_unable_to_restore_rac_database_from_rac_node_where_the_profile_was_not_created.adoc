@@ -1,0 +1,26 @@
+---
+permalink: unix-administration/reference_unable_to_restore_rac_database_from_rac_node_where_the_profile_was_not_created.html 
+sidebar: sidebar 
+keywords: oracle, rac, environment, node, cluster, restore, operation, database, profile 
+summary: In einer Oracle RAC Umgebung, in der beide Nodes zum selben Cluster gehören, wenn Sie einen Wiederherstellungsvorgang von einem Node starten, der sich von dem Node, an dem das Backup erstellt wurde, unterscheidet, schlägt der Wiederherstellungsvorgang fehl. 
+---
+= RAC-Datenbank kann von einem der RAC-Knoten, in dem das Profil nicht erstellt wurde, nicht wiederhergestellt werden
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+In einer Oracle RAC Umgebung, in der beide Nodes zum selben Cluster gehören, wenn Sie einen Wiederherstellungsvorgang von einem Node starten, der sich von dem Node, an dem das Backup erstellt wurde, unterscheidet, schlägt der Wiederherstellungsvorgang fehl.
+
+Wenn Sie beispielsweise in Knoten A ein Backup erstellen und versuchen, von Knoten B wiederherzustellen, schlägt der Wiederherstellungsvorgang fehl.
+
+*Was zu tun*
+
+Führen Sie vor dem Durchführen des Wiederherstellungsvorgangs von Node B folgende Schritte in Node B durch:
+
+. Fügen Sie das Repository hinzu.
+. Synchronisieren Sie das Profil, indem Sie das Kommando smo profile Sync ausführen.
+. Legen Sie die Anmeldeinformationen für das Profil fest, das für den Wiederherstellungsvorgang verwendet werden soll, indem Sie den Befehlssatz für Smo-Anmeldeinformationen ausführen.
+. Aktualisieren Sie das Profil, um den neuen Hostnamen und den entsprechenden SID hinzuzufügen, indem Sie den Befehl smo Profil aktualisieren.
+

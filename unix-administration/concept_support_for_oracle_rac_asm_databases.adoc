@@ -1,0 +1,18 @@
+---
+permalink: unix-administration/concept_support_for_oracle_rac_asm_databases.html 
+sidebar: sidebar 
+keywords: oracle, rac, database, node, initasmdisk, file 
+summary: Wenn Sie Oracle RAC-Datenbanken verwenden, müssen die RAC-Knoten mit der Initasmdics-Datei aktualisiert werden, sobald ein Vorgang im Master RAC-Knoten ausgeführt wird. 
+---
+= Unterstützung für Oracle RAC ASM-Datenbanken ohne ASMLib
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn Sie Oracle RAC-Datenbanken verwenden, müssen die RAC-Knoten mit der Initasmdics-Datei aktualisiert werden, sobald ein Vorgang im Master RAC-Knoten ausgeführt wird.
+
+Wenn sich vom Master-Knoten aus keine Authentifizierung bei den RAC-Knoten anmelden muss, führt der asmmain.sh eine sichere Kopie (SCP) von InitasmDisks an alle RAC-Knoten aus. Die InitasmDisks-Datei des Master-Knotens wird jedes Mal aufgerufen, wenn eine Wiederherstellung stattfindet. Das Skript asmmain.sh kann aktualisiert werden, um auf alle RAC-Knoten dasselbe Skript aufzurufen.
+
+Die erstellte /etc/initasmdics-Datei, die entweder aus einem der Startskripte oder aus einem neu definierten Skript in rc3.d. ausgeführt werden muss Die Datei /etc/initasmdisks sollte immer ausgeführt werden, bevor der oracleha-Dienst gestartet wird.

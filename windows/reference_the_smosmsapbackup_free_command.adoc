@@ -1,0 +1,85 @@
+---
+permalink: windows/reference_the_smosmsapbackup_free_command.html 
+sidebar: sidebar 
+keywords: run, backup, free, command, snapshot, copies, copy, removing, remove, smo 
+summary: Sie können den kostenlosen Befehl für die Sicherung ausführen, um die Snapshot-Kopien der Backups freizumachen, ohne die Backup-Metadaten aus dem Repository zu entfernen. 
+---
+= Der smo Backup kostenlose Befehl
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den kostenlosen Befehl für die Sicherung ausführen, um die Snapshot-Kopien der Backups freizumachen, ohne die Backup-Metadaten aus dem Repository zu entfernen.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo backup free
+-profile profile_name
+[-label label \[-data \| -archivelogs\] \| \[-id guid \| -all\]
+-force
+\[-dump\]
+\[-quiet \| -verbose\]
+----
+
+
+== Parameter
+
+* *-profile Profile_Name*
++
+Gibt das Profil an, das mit dem Backup verknüpft ist, das Sie freigeben möchten. Das Profil enthält die Kennung der Datenbank und andere Datenbankinformationen.
+
+* *-id-Guid*
++
+Gibt die Ressourcen des Backups mit der angegebenen GUID an. Die GUID wird von SnapManager beim Erstellen eines Backups generiert. Sie können den Befehl smo Backup list verwenden, um die GUID für jedes Backup anzuzeigen. Schließen Sie die -verbose Option zum Anzeigen der Backup-IDs an.
+
+* * Label*
++
+Gibt das Backup mit der angegebenen Bezeichnung an.
+
+* *-Daten*
++
+Gibt die Datendateien an.
+
+* *-Archivprotokolle*
++
+Gibt die Archivprotokolldateien an.
+
+* *-alle*
++
+Gibt alle Backups an. Verwenden Sie zum Löschen der angegebenen Backups die Option -id oder -Label.
+
+* *-Force*
++
+Erzwingt das Entfernen der Snapshot Kopien.
+
+* *-ruhig*
++
+Zeigt nur Fehlermeldungen in der Konsole an. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Zeigt Fehler-, Warn- und Informationsmeldungen in der Konsole an.
+
+
+
+
+
+== Beispiel
+
+Das folgende Beispiel entlastet das Backup:
+
+[listing]
+----
+smo backup free -profile SALES1 -label full_backup_sales_May
+Operation Id [8abc01ec0e79004b010e79006da60001] succeeded.
+----
+*Verwandte Informationen*
+
+xref:task_freeing_backups.adoc[So werden Backups entlastet]

@@ -1,0 +1,37 @@
+---
+permalink: windows/concept_preinstallation_tasks.html 
+sidebar: sidebar 
+keywords: install, snapmanager, oracle, environment, preinstallation, task 
+summary: Vor der Installation von SnapManager für Oracle müssen Sie einige zusätzliche Aufgaben durchführen, um Ihre Umgebung einzurichten. Die Aufgaben, die Sie durchführen müssen, hängen vom Betriebssystem, den Oracle-Komponenten und der gewünschten Datenbankversion ab. 
+---
+= Aufgaben vor der Installation
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vor der Installation von SnapManager für Oracle müssen Sie einige zusätzliche Aufgaben durchführen, um Ihre Umgebung einzurichten. Die Aufgaben, die Sie durchführen müssen, hängen vom Betriebssystem, den Oracle-Komponenten und der gewünschten Datenbankversion ab.
+
+* Installieren Sie das lizenzierte Betriebssystem mit den entsprechenden Patches.
+* Legen Sie die Sprachen des Betriebssystems und der Oracle-Datenbank auf Englisch fest.
++
+Um beispielsweise die Sprache der Oracle-Datenbank auf Englisch einzustellen, weisen Sie NLS_LANG = AMERICAN_AMERICA.WE8MSWIN1252 zu. Weitere Informationen zum Festlegen der Sprache finden Sie im Abschnitt „ _Troubleshooting SnapManager for Oracle_“.
+
+* Installieren Sie den Oracle Recovery Manager (RMAN), wenn Sie RMAN mit SnapManager für Oracle verwenden möchten.
+* Installieren Sie Data ONTAP mit aktivierten Lizenzen für SnapRestore und den unterstützten Protokollen wie Fibre Channel (FC) und Internet Small Computer System Interface (iSCSI) auf allen Storage-Systemen.
+* Installieren Sie die folgenden Oracle Patches, wenn Sie Oracle Databases 11.2.0.2 und 11.2.0.3 verwenden:
++
+** 13413167 für Windows 32-Bit
+** 13555974 für Windows 64-Bit
+
+
+
+
+*Verwandte Informationen*
+
+xref:reference_troubleshooting_snapmanager.adoc[SnapManager zur Fehlerbehebung]
+
+http://support.netapp.com/NOW/products/interoperability/["NetApp Interoperabilitäts-Matrix: support.netapp.com/NOW/products/interoperability"]
+
+http://media.netapp.com/documents/tr-3761.pdf["SnapManager for Oracle Best Practices: media.netapp.com/documents/tr-3761.pdf"]

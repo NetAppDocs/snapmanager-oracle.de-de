@@ -1,0 +1,22 @@
+---
+permalink: unix-installation-cmode/concept_understanding_the_differences_between_snapmirror_and_snapvault.html 
+sidebar: sidebar 
+keywords: snapmirror, disaster, recovery, technology, design, failover, primary, storage, secondary, geographically, disk-to-disk, snapshot, copy, replication, governance-related, purpose, compliance, standard 
+summary: SnapMirror ist eine Disaster-Recovery-Technologie für den Failover von primärem Storage zu sekundärem Storage an einem geografisch verteilten Standort. SnapVault ist eine Archivierungstechnologie für die Disk-to-Disk Snapshot Kopie-Replizierung, die für Compliance-Standards und andere Governance-Zwecke entwickelt wurde. 
+---
+= Verständnis der Unterschiede zwischen SnapMirror und SnapVault
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapMirror ist eine Disaster-Recovery-Technologie für den Failover von primärem Storage zu sekundärem Storage an einem geografisch verteilten Standort. SnapVault ist eine Archivierungstechnologie für die Disk-to-Disk Snapshot Kopie-Replizierung, die für Compliance-Standards und andere Governance-Zwecke entwickelt wurde.
+
+Diese Ziele berücksichtigen das unterschiedliche Gleichgewicht, das jede Technologie zwischen den Zielen der Backup-Währung und der Backup-Aufbewahrung findet:
+
+* SnapMirror speichert _nur die Snapshot Kopien, die sich im Primär-Storage befinden, da bei einem Ausfall ein Failover zur neuesten Version der Primärdaten erforderlich sein muss, von der Sie wissen, dass sie gut sind. Beispielsweise könnte Ihr Unternehmen stündliche Kopien von Produktionsdaten über einen Zeitraum von zehn Tagen spiegeln. Wie der Anwendungsfall des Failovers schon andeutet, muss die Ausrüstung auf dem Sekundärsystem äquivalent oder nahezu identisch mit der Ausrüstung auf dem Primärsystem sein, um Daten effizient aus dem gespiegelten Storage bereitzustellen.
+* Im Gegensatz dazu speichert SnapVault Snapshot Kopien _unabhängig davon, ob sie sich derzeit im Primärspeicher befinden oder nicht_, weil im Rahmen eines Audits wahrscheinlich der Zugriff auf historische Daten so wichtig ist wie der Zugriff auf aktuelle Daten. Vielleicht möchten Sie monatlich Snapshot Kopien Ihrer Daten über einen Zeitraum von 20 Jahren aufbewahren (z. B. um gesetzliche Buchhaltungsvorschriften für Ihr Unternehmen einzuhalten). Da keine Daten aus dem sekundären Speicher bereitgestellt werden müssen, können Sie langsamere, kostengünstigere Festplatten auf dem Vault-System verwenden.
+
+
+Natürlich geben die verschiedenen Gewichte, die SnapMirror und SnapVault der Backup-Währung und der Backup-Aufbewahrung geben, letztlich vom Limit der 255-Snapshot-Kopien für jedes Volume ab. Bei Beibehaltung der neuesten Kopien bei SnapMirror werden die Kopien, die im Laufe der längsten Zeit erstellt wurden, von SnapVault aufbewahrt.

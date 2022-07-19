@@ -1,0 +1,30 @@
+---
+permalink: unix-administration/task_configuring_history_for_backup_operation.html 
+sidebar: sidebar 
+keywords: snapmanager, oracle, enable, maintain, history, snapmanager, operation, cli, gui, view, history, smo, set 
+summary: Mit SnapManager für Oracle können Sie den Verlauf des SnapManager-Betriebs über die Befehlszeilenschnittstelle oder Benutzeroberfläche von SnapManager aufrechterhalten. Sie können den Verlauf der SnapManager-Operation als Bericht anzeigen. 
+---
+= Konfigurieren des Verlaufs für den SnapManager-Vorgang
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit SnapManager für Oracle können Sie den Verlauf des SnapManager-Betriebs über die Befehlszeilenschnittstelle oder Benutzeroberfläche von SnapManager aufrechterhalten. Sie können den Verlauf der SnapManager-Operation als Bericht anzeigen.
+
+. Um den Verlauf der SnapManager-Operation zu konfigurieren, geben Sie folgenden Befehl ein: smo history set -profile {-Name, profile_Name [profile_name1, profile_name2] -all-Repository-Login [-passwordrepo_password] -usernamerepo_username-dbnamerepo_dbname_portrepo_Port} -Operation {} {}-operationOperation_Name [unbose_restay_all_restay_restay_rejour]
+
+
+[listing]
+----
+
+        smo
+history set -profile -name PROFILE1 -operation -operations backup -retain -daily 6 -verbose
+----
+[listing]
+----
+
+        smo
+history set -profile -name PROFILE1 -operation -all -retain -weekly 3 -verbose
+----

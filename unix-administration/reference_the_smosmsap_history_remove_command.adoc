@@ -1,0 +1,89 @@
+---
+permalink: unix-administration/reference_the_smosmsap_history_remove_command.html 
+sidebar: sidebar 
+keywords: command, enable, remove, history, snapmanager, associate, single, multiple, profile, smo 
+summary: Mit diesem Befehl können Sie den Verlauf der SnapManager-Vorgänge entfernen, die mit einem einzelnen Profil, mehreren Profilen oder allen Profilen in einem Repository verknüpft sind. 
+---
+= Der Befehl smo history remove
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit diesem Befehl können Sie den Verlauf der SnapManager-Vorgänge entfernen, die mit einem einzelnen Profil, mehreren Profilen oder allen Profilen in einem Repository verknüpft sind.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo history remove
+-profile \{-name profile_name \[profile_name1, profile_name2\] \| -all
+-repository
+-login \[-password repo_password\]
+-username repo_username
+-host repo_host
+-dbname repo_dbname
+-port repo_port}
+-operation \{-operations operation_name \[operation_name, operation_name2\] \| -all\}
+\[-quiet \| -verbose\]
+----
+
+
+== Parameter
+
+* *-Profil*
++
+Gibt den Namen des Profils an. Dieser Name kann bis zu 30 Zeichen lang sein und muss innerhalb des Hosts eindeutig sein.
+
+* *-Repository*
++
+Die Optionen, die dem -Repository folgen, geben die Details der Datenbank an, in der das Profil gespeichert wird.
+
+* *-dbname repo_dbname*
++
+Gibt den Namen der Datenbank an, in der das Profil gespeichert wird. Verwenden Sie entweder den globalen Namen oder den SID.
+
+* *-Host repo_Host*
++
+Gibt den Namen oder die IP-Adresse des Hostcomputers an, auf dem die Repository-Datenbank ausgeführt wird.
+
+* *-Login*
++
+Startet die Repository-Anmeldedaten.
+
+* *-username repo_username*
++
+Gibt den Benutzernamen an, der für den Zugriff auf die Datenbank erforderlich ist, in der das Repository gespeichert ist.
+
+* *-Port repo_Port*
++
+Gibt die TCP-Portnummer an, die für den Zugriff auf die Datenbank verwendet wird, in der das Repository gespeichert ist.
+
+* *-Operation {-operationsOperation_Name [Operation_name1, Operation_name2]
++
+Gibt den SnapManager-Vorgang an, für den Sie den Verlauf konfigurieren.
+
+* *-ruhig*
++
+Zeigt nur Fehlermeldungen auf der Konsole an. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Zeigt Fehler-, Warn- und Informationsmeldungen an der Konsole an.
+
+
+
+
+
+== Beispielbefehl
+
+[listing]
+----
+
+          smo  history purge -profile -name PROFILE1 -operation -operations backup
+ -verbose
+----

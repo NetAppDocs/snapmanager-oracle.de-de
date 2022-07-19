@@ -1,0 +1,100 @@
+---
+permalink: windows/task_updating_profiles.html 
+sidebar: sidebar 
+keywords: update, profile, modify, password, backup, retain, access, database, operating, system, os, updating, information 
+summary: 'Sie können die Profile aktualisieren, um das Profilkennwort, die Anzahl der zu behaltenden Backups, den Zugriff auf die Datenbank, die Betriebssystemauthentifizierung (OS) auf die Datenbankauthentifizierung und umgekehrt sowie Informationen zum Host zu ändern. Wenn sich die Kennwortinformationen der Oracle-Datenbank ändern, müssen Sie diese Informationen auch im Profil ändern.' 
+---
+= Profile werden aktualisiert
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die Profile aktualisieren, um das Profilkennwort, die Anzahl der zu behaltenden Backups, den Zugriff auf die Datenbank, die Betriebssystemauthentifizierung (OS) auf die Datenbankauthentifizierung und umgekehrt sowie Informationen zum Host zu ändern. Wenn sich die Kennwortinformationen der Oracle-Datenbank ändern, müssen Sie diese Informationen auch im Profil ändern.
+
+Mit SnapManager (3.2 oder höher) können Sie das Profil aktualisieren und die Archiv-Log-Backups von den Datensicherungen der Datendatei trennen, indem Sie die Option -separatem-archivlog-Backups verwenden. Sie können eine separate Aufbewahrungsdauer für das Backup des Archivprotokolls festlegen. Mit SnapManager können Sie das Archivprotokoll-Backup zusammen mit dem Online-Datenbank-Backup einbeziehen. Außerdem können Sie zum Klonen eine Online-Datendatei-Backup- und ein Archivprotokoll-Backup erstellen. Wenn Sie eine Sicherung von Online-Datendateien erstellen, werden die Archivprotokolle sofort zusammen mit den Datendateien erstellt.
+
+. Geben Sie den folgenden Befehl ein: bbs-Profil-Update -profilprofil [-New-profilenew_profile_Name] [-profile-passwordprofile_password][-Database-dbnaedb_dbname-Host db_Host [-siddb_sid] [-Login-usernamedb_username-address2] [-rman{{ {}}}-controduct_adressem [-] [-] [-commentailtmnem_commend] [-[-] [-] [-] [-]]] [-]] [-]]] [-commodmprotodmnesson-[-] [-commend_commendnesson-[-[-] [-] [-] [-] [-] [-]] [-]] [-]] [-]]]] [-commendmnesson-] [-commendmpromprompromnesson-commendness2] [-[-] [-] [-] [-] [-] [
++
+Weitere Optionen für diesen Befehl:
+
++
+[-Force] [-noprompt]
+
++
+|===
+
+
+| Ihr Ziel ist | Dann... 
+
+
+ a| 
+*Ändern Sie die Backup Retention Policy für Backups der Datenbank im Profil*
+ a| 
+Geben Sie entweder den Aufbewahrungszeitraum oder die Aufbewahrungsdauer für eine Aufbewahrungsklasse oder beides an, um die Aufbewahrungsrichtlinie zu ändern. Die Dauer ist in Einheiten der Klasse (z. B. Stunden für Stunde, Tage für Tag).
+
+** -Hourly ist die stündliche Aufbewahrungsklasse, für die [-countn] [-durationm]]] die Aufbewahrungszahl und die Aufbewahrungsdauer sind, bzw..
+** -Daily ist die tägliche Aufbewahrungsklasse, für die [-countn] [-durationm]] die Aufbewahrungszahl und die Aufbewahrungsdauer sind, bzw..
+** -Weekly ist die wöchentliche Aufbewahrungsklasse, für die [-countn] [-durationm]] die Aufbewahrungszahl und die Aufbewahrungsdauer sind, bzw..
+** -Monthly ist die monatliche Aufbewahrungsklasse, für die [-countn] [-durationm]]] die Aufbewahrungszahl und die Aufbewahrungsdauer sind, bzw..
+
+
+
+
+ a| 
+*E-Mail-Benachrichtigungen für den Abschlussstatus der Datenbankvorgänge* aktivieren
+ a| 
+Geben Sie die folgenden Optionen und Variablen an:
+
+** -Summary-notification ermöglicht Ihnen die Konfiguration einer E-Mail-Benachrichtigung für mehrere Profile unter einer Repository-Datenbank.
+** -Notification ermöglicht Ihnen, eine E-Mail-Benachrichtigung über den Status des Datenbankvorgangs für ein Profil zu erhalten.
+** -Success-emailemail_address2 ermöglicht es Ihnen, eine E-Mail-Benachrichtigung nach Abschluss eines erfolgreichen Datenbankvorgangs zu erhalten, der mit einem neuen oder einem vorhandenen Profil durchgeführt wird.
+** -Failure-emailemail_address2 ermöglicht es Ihnen, eine E-Mail-Benachrichtigung über einen fehlgeschlagenen Datenbankvorgang zu erhalten, der mit einem neuen oder einem vorhandenen Profil durchgeführt wird.
+** -Subjectsubject_Text gibt den Subjekttext für die E-Mail-Benachrichtigung an, während ein neues Profil oder ein vorhandenes Profil erstellt wird. Wenn die Benachrichtigungseinstellungen nicht für das Repository konfiguriert sind und Sie versuchen, Profile- oder Übersichtsbenachrichtigungen mithilfe der Befehlszeilenschnittstelle (CLI) zu konfigurieren, wird die folgende Meldung im Konsolenprotokoll protokolliert: SMO-14577: Benachrichtigungseinstellungen nicht konfiguriert.
++
+Wenn Sie die Benachrichtigungseinstellungen konfiguriert haben und versuchen, eine zusammenfassende Benachrichtigung mithilfe der CLI zu konfigurieren, ohne dass eine zusammenfassende Benachrichtigung für das Repository aktiviert wird, wird die folgende Meldung im Konsole-Protokoll protokolliert: SMO-14575: Konfiguration der zusammenfassenden Benachrichtigung für dieses Repository nicht verfügbar__________
+
+
+
+
+
+ a| 
+*Aktualisieren Sie das Profil, um eine Sicherung der Archiv-Log-Dateien separat zu erstellen*
+ a| 
+Geben Sie die folgenden Optionen und Variablen an:
+
+** -Separate-archivlog-Backups ermöglicht es Ihnen, eine Sicherung der Archivprotokolldateien getrennt von den Datenbankdateien zu erstellen.
++
+Nachdem Sie diese Option angegeben haben, können Sie entweder ein Datendatei-only Backup oder ein Backup nur mit Archivdateien erstellen. Sie können keine vollständige Sicherung erstellen. Außerdem können Sie die Profileinstellungen nicht durch Trennen der Sicherung zurücksetzen. SnapManager behält die Backups auf Basis der Aufbewahrungsrichtlinie für die Backups bei, die vor der Erstellung eines rein archivorientierten Backups erstellt wurden.
+
+** -Retention-archivlog-Backups legt die Aufbewahrungsdauer für Archiv-Log-Backups fest.
++
+
+NOTE: Wenn Sie das Profil zum ersten Mal aktualisieren, können Sie die Archiv-Log-Backups vom Datendatei-Backup mit der Option -separatem-archivlog-Backups trennen; Sie müssen die Aufbewahrungsdauer für die Archiv-Log-Backups mit der Option -restyle-archivelog-Backups angeben. Die Einstellung der Aufbewahrungsdauer ist optional, wenn Sie das Profil später aktualisieren.
+
+** -Include-with-Online-Backups geben an, dass das Archiv-Log-Backup zusammen mit dem Datenbank-Backup enthalten ist.
+** -No-include-with-Online-Backups gibt an, dass die Sicherung der Archivprotokolldatei nicht zusammen mit der Datenbank-Sicherung enthalten ist.
+
+
+
+
+ a| 
+*Ändern Sie den Hostnamen der Zieldatenbank*
+ a| 
+Geben Sie -hostNew_db_Host an, um den Hostnamen des Profils zu ändern.
+
+
+
+ a| 
+*Sammeln Sie die Dump-Dateien nach dem Profil-Update-Vorgang*
+ a| 
+Geben Sie die Option -dump an.
+
+|===
+. Geben Sie zum Anzeigen des aktualisierten Profils den folgenden Befehl ein: smo Profile show
+
+
+*Verwandte Informationen*
+
+xref:concept_how_to_collect_dump_files.adoc[So sammeln Sie Speicherauszugsdateien]

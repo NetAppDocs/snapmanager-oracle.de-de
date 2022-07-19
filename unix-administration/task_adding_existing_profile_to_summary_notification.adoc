@@ -1,0 +1,17 @@
+---
+permalink: unix-administration/task_adding_existing_profile_to_summary_notification.html 
+sidebar: sidebar 
+keywords: snapmanager, enable, exist, profile, summary, email, notification, updating, profile 
+summary: Mit SnapManager können Sie ein vorhandenes Profil zu einer zusammengefassten E-Mail-Benachrichtigung hinzufügen und das Profil aktualisieren. 
+---
+= Hinzufügen eines vorhandenen Profils zu E-Mail-Benachrichtigungen mit Zusammenfassung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit SnapManager können Sie ein vorhandenes Profil zu einer zusammengefassten E-Mail-Benachrichtigung hinzufügen und das Profil aktualisieren.
+
+. Geben Sie den folgenden Befehl ein: bbs-Profil-Update -profilprofile_Name [-profile-passwordprofile_password] -Repository-dbnamerepo_Service_Name-hostrepo_Host-portrepo_Port-Login-usernamerepo_username [-countmgardy] [-buttngmpromgstn.jmgmgmgm-lewym] [-assogm-lef_jm-datamn.jp.jm-datm-buttn.jmgmgm.jm-in.jpgmgm-in.j_jm-buttn.jm-butt.jmgmgm[-{ [-{] [-} }-buttnmgmgmgmgmgmgmgmgmgmgmgmgmgmgmgm-datamn.jm] [-Name [--buttn.jmgmgmgmgmgmgmgm-
+

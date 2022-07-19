@@ -1,0 +1,95 @@
+---
+permalink: windows/reference_the_smosmsaprepository_create_command.html 
+sidebar: sidebar 
+keywords: smo, repository, data, profile, block, size, smo 
+summary: Mit diesem Befehl wird ein Repository erstellt, in dem Datenbankprofile und zugehörige Anmeldedaten gespeichert werden. Dieser Befehl überprüft außerdem, ob die Blockgröße geeignet ist. 
+---
+= Der Befehl smo Repository create
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+
+
+== Syntax
+
+Mit diesem Befehl wird ein Repository erstellt, in dem Datenbankprofile und zugehörige Anmeldedaten gespeichert werden. Dieser Befehl überprüft außerdem, ob die Blockgröße geeignet ist.
+
+[listing]
+----
+
+        smo repository create
+-repository
+-port repo_port
+-dbname repo_service_name
+-host repo_host
+-login -username repo_username
+[-force] [-noprompt]
+\[-quiet \| -verbose\]
+----
+
+
+== Parameter
+
+* *-Repository*
++
+Die Optionen, die dem -Repository folgen, geben die Details der Datenbank für das Repository an
+
+* *-Port repo_Port*
++
+Gibt die TCP-Portnummer an, die für den Zugriff auf die Datenbank verwendet wird, in der das Repository gespeichert ist.
+
+* *-dbname repo_Service_Name*
++
+Gibt den Namen der Datenbank an, in der das Repository gespeichert wird. Verwenden Sie entweder den globalen Namen oder den SID.
+
+* *-Host repo_Host*
++
+Gibt den Namen oder die IP-Adresse des Hostcomputers an, auf dem die Repository-Datenbank ausgeführt wird.
+
+* *-Login*
++
+Startet die Repository-Anmeldedaten.
+
+* *-username repo_username*
++
+Gibt den Benutzernamen an, der für den Zugriff auf die Datenbank erforderlich ist, in der das Repository gespeichert ist.
+
+* *-Force*
++
+Versucht, die Erstellung des Repositorys zu erzwingen. Wenn Sie diese Option verwenden, werden Sie von SnapManager aufgefordert, das Repository zu sichern, bevor Sie das Repository erstellen.
+
+* *-noprompt*
++
+Zeigt nicht die Aufforderung zum Sichern des Repository vor der Erstellung an, wenn Sie die Option -Force verwenden. Mit der Option -noprompt wird sichergestellt, dass die Eingabeaufforderung nicht angezeigt wird. Dies erleichtert das Erstellen von Repositories mithilfe eines Skripts.
+
+* *-ruhig*
++
+Zeigt nur Fehlermeldungen auf der Konsole an. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Zeigt Fehler-, Warn- und Informationsmeldungen an der Konsole an.
+
+
+
+
+
+== Befehlsbeispiel
+
+Im folgenden Beispiel wird ein Repository in der Datenbank SMOREPO auf dem Host hotspur erstellt.
+
+[listing]
+----
+smo repository create -repository -port 1521 -dbname SMOREPO -host hotspur -login -username grabal21 -verbose
+SMO-09202 [INFO ]: Creating new schema as grabal21 on jdbc:oracle:thin:@//hotspur:1521/SMOREPO.
+SMO-09205 [INFO ]: Schema generation complete.
+SMO-09209 [INFO ]: Performing repository version INSERT.
+SMO-09210 [INFO ]: Repository created with version: 30
+SMO-13037 [INFO ]: Successfully completed operation: Repository Create
+SMO-13049 [INFO ]: Elapsed Time: 0:00:08.844
+----
+*Verwandte Informationen*
+
+xref:task_creating_repositories.adoc[Repositories werden erstellt]

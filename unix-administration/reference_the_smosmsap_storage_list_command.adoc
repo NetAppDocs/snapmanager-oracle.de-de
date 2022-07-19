@@ -1,0 +1,53 @@
+---
+permalink: unix-administration/reference_the_smosmsap_storage_list_command.html 
+sidebar: sidebar 
+keywords: run, storage, list, command, display, storage, system, associate, particular, profile 
+summary: Sie können den Befehl Storage list ausführen, um die Liste der Speichersysteme anzuzeigen, die einem bestimmten Profil zugeordnet sind. 
+---
+= Der Befehl smo Storage list
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Befehl Storage list ausführen, um die Liste der Speichersysteme anzuzeigen, die einem bestimmten Profil zugeordnet sind.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo storage list
+-profile profile
+----
+
+
+== Parameter
+
+* *-Profil*
++
+Gibt den Namen des Profils an. Der Name kann bis zu 30 Zeichen lang sein und muss innerhalb des Hosts eindeutig sein.
+
+
+
+
+
+== Beispiel
+
+Im folgenden Beispiel werden die Speichersysteme angezeigt, die dem Profil mjullian zugeordnet sind:
+
+[listing]
+----
+smo storage list -profile mjullian
+----
+[listing]
+----
+
+Sample Output:
+Storage Controllers
+--------------------
+FAS3020-RTP07OLD
+----

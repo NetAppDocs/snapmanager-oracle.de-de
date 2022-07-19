@@ -1,0 +1,51 @@
+---
+permalink: unix-administration/concept_requirements_for_using_asm_databases_with_snapmanager.html 
+sidebar: sidebar 
+keywords: automatic, storage, management, asm, snapmanager, database, snapmanager, 
+summary: 'Sie müssen die Anforderungen für die Verwendung von ASM-Datenbanken (Automatic Storage Management) mit SnapManager kennen. Wenn Sie diese Anforderungen kennen, können Sie unter anderem Probleme mit den Spezifikationen ASMLib, Partitionen und Klonen vermeiden.' 
+---
+= Anforderungen für die Verwendung von ASM-Datenbanken mit SnapManager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie müssen die Anforderungen für die Verwendung von ASM-Datenbanken (Automatic Storage Management) mit SnapManager kennen. Wenn Sie diese Anforderungen kennen, können Sie unter anderem Probleme mit den Spezifikationen ASMLib, Partitionen und Klonen vermeiden.
+
+* SnapManager (3.0.3 oder höher) verwendet die neue sysasm-Berechtigung, die mit Oracle 11gR2 verfügbar ist, anstatt die sysdba-Berechtigung zur Verwaltung einer Oracle ASM-Instanz.
++
+Wenn Sie die sysdba-Berechtigung zum Ausführen von Administratorbefehlen auf der ASM-Instanz verwenden, wird eine Fehlermeldung angezeigt. Die Datenbank verwendet die sysdba-Berechtigung für den Zugriff auf Laufwerksgruppen. Wenn Sie eine Verbindung mit der ASM-Instanz über die sysasm-Berechtigung herstellen, haben Sie vollständigen Zugriff auf alle verfügbaren Oracle ASM-Festplattengruppen und Verwaltungsfunktionen.
+
++
+
+NOTE: Wenn Sie Oracle 10gR2 und 11gR1 verwenden, müssen sie weiterhin die sysdba-Berechtigung verwenden.
+
+* SnapManager (3.0.3 oder höher) unterstützt die Sicherung von Datenbanken, die direkt auf ASM-Festplattengruppen gespeichert sind, wenn die Laufwerksgruppe auch ein ACFS-Volume (Automatic Cluster File System) enthält.
++
+Diese Dateien sind indirekt durch SnapManager geschützt und werden möglicherweise mit dem restlichen Inhalt einer ASM-Festplattengruppe wiederhergestellt, aber SnapManager (3.0.3 oder höher) unterstützt kein ACFS.
+
++
+
+NOTE: ACFS ist eine plattformübergreifende, skalierbare File-System-Storage-Management-Technologie, die mit Oracle 11gR2 verfügbar ist. ACFS erweitert die ASM-Funktionalität, um Kundendateien zu unterstützen, die außerhalb der Oracle-Datenbank gepflegt werden.
+
+* SnapManager (3.0.3 oder höher) unterstützt die Sicherung von Dateien, die auf ASM-Festplattengruppen gespeichert sind, wenn die Laufwerksgruppe auch OCR-Dateien (Oracle Cluster Registry) oder Abstimmdiskdateien enthält. Wiederherstellungsvorgänge erfordern jedoch eine langsamere, hostbasierte oder PFSR-Methode (Partial File Snap Restore).
++
+Am besten sollten OCR- und Abstimmfestplatten auf Laufwerksgruppen vorhanden sein, die keine Datenbankdateien enthalten.
+
+* Jedes für ASM verwendete Laufwerk darf nur eine Partition enthalten.
+* Die Partition, die die ASM-Daten hostet, muss richtig ausgerichtet sein, um schwere Performanceprobleme zu vermeiden.
++
+Dies bedeutet, dass die LUN den korrekten Typ haben muss, und die Partition einen Offset mit einem mehrere 4K Byte haben muss.
+
++
+
+NOTE: Weitere Informationen zum Erstellen von Partitionen, die auf 4K ausgerichtet sind, finden Sie im Knowledge Base-Artikel 1010717.
+
+* ASM-Konfiguration ist nicht als Teil der Klonspezifikation angegeben.
++
+Sie müssen die ASM-Konfigurationsinformationen in den Klonspezifikationen, die mit SnapManager 2.1 erstellt wurden, manuell entfernen, bevor Sie den Host auf SnapManager (2.2 oder höher) aktualisieren.
+
+* SnapManager 3.1, 3.1p1 und 3.2 oder höher unterstützen ASMLib 2.1.4.
+* SnapManager 3.1p4 oder höher unterstützt ASMLib 2.1.4, 2.1.7 und 2.1.8.
+

@@ -1,0 +1,23 @@
+---
+permalink: unix-administration/task_destroying_split_clone_and_associated_profile.html 
+sidebar: sidebar 
+keywords: snapmanager, enable, destroy, profile, associate, split, clone, database, underlying, storage, 
+summary: 'Mit SnapManager können Sie das Profil zerstören, das mit dem Split-Klon \(Database\) verknüpft ist, sowie den zugrunde liegenden Speicher. Vergewissern Sie sich vor der Zerstörung des Profils, dass Sie die zugehörigen Backups und Klone entfernen.' 
+---
+= Zerstören eines Profils
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager ermöglicht Ihnen die Zerstörung des Profils, das mit dem Split-Klon (Datenbank) verbunden ist, sowie des zugrunde liegenden Storage. Vergewissern Sie sich vor der Zerstörung des Profils, dass Sie die zugehörigen Backups und Klone entfernen.
+
+. Um ein Profil zu zerstören, das mit dem Split Clone erstellt wurde, sowie die Split Clone Datenbank, geben Sie den folgenden Befehl ein:
+`smo profile destroy -profileprofile [-hosthostname] [-quiet | -verbose]`
+
+
+[listing]
+----
+smo profile destroy -profile AUTO-REVEN
+----

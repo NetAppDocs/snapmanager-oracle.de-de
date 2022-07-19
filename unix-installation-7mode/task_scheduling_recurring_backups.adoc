@@ -1,0 +1,79 @@
+---
+permalink: unix-installation-7mode/task_scheduling_recurring_backups.html 
+sidebar: sidebar 
+keywords: schedule, backup, operation, initiate, automatic, regular, interval, snapamanger, user, interface, ui, hourly, daily, weekly, monthly, one-time, basis 
+summary: Sie können Backup-Vorgänge so planen, dass die Backups automatisch in regelmäßigen Abständen initiiert werden. SnapManager ermöglicht die Planung von Backups auf Stundenbasis, täglich, wöchentlich, monatlich oder einmalig. 
+---
+= Planung wiederkehrender Backups
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können Backup-Vorgänge so planen, dass die Backups automatisch in regelmäßigen Abständen initiiert werden. SnapManager ermöglicht die Planung von Backups auf Stundenbasis, täglich, wöchentlich, monatlich oder einmalig.
+
+Sie können mehrere Backup-Zeitpläne für eine einzige Datenbank zuweisen. Wenn Sie jedoch mehrere Backups für dieselbe Datenbank planen, müssen Sie sicherstellen, dass die Backups nicht gleichzeitig geplant sind.
+
+Mit diesen Schritten wird das Erstellen eines Backup-Zeitplans für Ihre Datenbank mithilfe der SnapManager-Benutzeroberfläche (UI) erläutert. Falls Sie möchten, können Sie auch die Befehlszeilenschnittstelle (CLI) verwenden. Informationen zum Planen von Backups mithilfe der CLI finden Sie im Administratorhandbuch „_SnapManager für Oracle Administration Guide for UNIX_“.
+
+. Klicken Sie in der Verzeichnisstruktur Repositories mit der rechten Maustaste auf das Profil, das die Datenbank enthält, für die Sie einen Backup-Zeitplan erstellen möchten, und wählen Sie *Backup planen* aus.
+. Geben Sie unter *Label* einen benutzerdefinierten Namen für das Backup ein.
++
+Sie dürfen keine Leerzeichen oder Sonderzeichen in den Namen einfügen. Wenn Sie keinen Namen angeben, erstellt SnapManager automatisch eine Sicherungsbezeichnung.
+
++
+Ab SnapManager 3.4 können Sie das von SnapManager erstellte Backup-Label ändern. Sie können die Variablen override.default.backup.pattern und new.default.backup.patternconfiguration bearbeiten, um Ihr eigenes Standard-Backup-Label-Muster zu erstellen.
+
+. Wählen Sie *Starten oder Herunterfahren der Datenbank zulassen, falls erforderlich*, um den Status der Datenbank zu ändern, falls erforderlich.
++
+Diese Option stellt sicher, dass, wenn sich die Datenbank nicht im erforderlichen Zustand befindet, um ein Backup zu erstellen, SnapManager die Datenbank automatisch in den gewünschten Zustand bringt, um den Vorgang abzuschließen.
+
+. Führen Sie auf der Seite Datenbank, Tablespaces oder Datendateien zur Datensicherung die folgenden Schritte aus:
++
+.. Wählen Sie *Datendateien sichern* aus, um entweder die komplette Datenbank, ausgewählte Datendateien oder ausgewählte Tabellen zu sichern.
+.. Wählen Sie *Backup Archivelogs* aus, um die Archiv-Log-Dateien separat zu sichern.
+.. Wählen Sie *Prune Archivelogs* aus, wenn Sie die Archiv-Log-Dateien aus dem aktiven Dateisystem löschen möchten, das bereits gesichert ist.
++
+
+NOTE: Wenn Flash Recovery Area (FRA) für Archiv-Log-Dateien aktiviert ist, dann kann SnapManager die Archiv-Log-Dateien nicht beschneiden.
+
+.. Wählen Sie *Sichern Sie das Backup*, wenn Sie den Backup-Schutz aktivieren möchten.
++
+Diese Option ist nur aktiviert, wenn die Schutzrichtlinie beim Erstellen des Profils ausgewählt wurde.
+
+.. Wählen Sie *Jetzt schützen* aus, wenn Sie die Sicherung sofort auf dem sekundären Speicher schützen möchten, der den Schutzzeitplan des Protection Manager überschreibt.
+.. Wählen Sie aus der Dropdown-Liste *Typ* den Backup-Typ (offline oder online) aus, den Sie erstellen möchten.
++
+Wenn Sie Auto auswählen, erstellt SnapManager basierend auf dem aktuellen Status der Datenbank ein Backup.
+
+.. Wählen Sie aus der Dropdown-Liste *Retention Class* die Aufbewahrungsklasse aus.
+.. Aktivieren Sie das Kontrollkästchen *Backup überprüfen mit dem Oracle DBVERIFY Utility*, wenn Sie sicherstellen möchten, dass die gesicherten Dateien nicht beschädigt sind.
+
+
+. Geben Sie im Feld *Terminplanname* einen benutzerdefinierten Namen des Zeitplans ein.
++
+Sie dürfen keine Leerzeichen in den Namen einfügen.
+
+. Führen Sie auf der Seite Backup Schedule konfigurieren die folgenden Schritte aus:
++
+.. Wählen Sie aus der Dropdown-Liste *Durchführung dieser Operation* die Häufigkeit des Backup-Zeitplans aus.
+.. Geben Sie im Feld *Startdatum* das Datum an, an dem Sie den Backup-Zeitplan starten möchten.
+.. Geben Sie im Feld *Startzeit* den Zeitpunkt an, zu dem der Backup-Zeitplan gestartet werden soll.
+.. Geben Sie das Intervall an, in dem Backups erstellt werden sollen.
++
+Wenn Sie beispielsweise die Frequenz als stündlich ausgewählt haben und das Intervall als 2 angeben, werden die Backups alle 2 Stunden geplant.
+
+
+
+. Geben Sie auf der Seite Task Enabling an, ob Sie Aufgaben vor und nach Abschluss der Backup-Vorgänge ausführen möchten.
+. Überprüfen Sie auf der Seite Backup Schedule Operation durchführen die Informationen und klicken Sie auf *Zeitplan*.
+. Klicken Sie auf *Fertig stellen*, um den Assistenten zu schließen.
++
+Wenn der Vorgang fehlschlägt, klicken Sie auf *Betriebsdetails*, um anzuzeigen, was den Vorgang zum Scheitern verurteilt hat.
+
+
+
+*Verwandte Informationen*
+
+https://library.netapp.com/ecm/ecm_download_file/ECMP12471546["SnapManager 3.4 für Oracle – Administratorhandbuch für UNIX"]

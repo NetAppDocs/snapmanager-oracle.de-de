@@ -1,0 +1,191 @@
+---
+permalink: windows/concept_variables_available_in_custom_script_for_restore_operation.html 
+sidebar: sidebar 
+keywords: provide, context, information, form, environment, variable, restore, operation, perform, backup 
+summary: SnapManager stellt Kontextinformationen in Form von Umgebungsvariablen für den durchgefürhten Wiederherstellungsvorgang bereit. Ihr Skript kann beispielsweise den Namen des ursprünglichen Hosts und die Bezeichnung des wiederhergestellten Backups abrufen. 
+---
+= Variablen, die in den Taskskripten für den Wiederherstellungsvorgang verfügbar sind
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager stellt Kontextinformationen in Form von Umgebungsvariablen für den durchgefürhten Wiederherstellungsvorgang bereit. Ihr Skript kann beispielsweise den Namen des ursprünglichen Hosts und die Bezeichnung des wiederhergestellten Backups abrufen.
+
+In der folgenden Tabelle sind die Umgebungsvariablen aufgeführt, die Sie in Ihren Skripten verwenden können:
+
+|===
+| Variablen | Beschreibung | Formatieren 
+
+
+ a| 
+SM_OPERATION_ID
+ a| 
+Gibt die ID des aktuellen Vorgangs an
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_PROFILE_NAME
+ a| 
+Gibt den Namen des verwendeten Profils an
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_HOST
+ a| 
+Gibt den Hostnamen der Datenbank an
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_OS_USER
+ a| 
+Gibt den Betriebssystemeigentümer der Datenbank an
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_OS_GROUP
+ a| 
+Gibt die Betriebssystemgruppe der Datenbank an
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_BACKUP_TYP
+ a| 
+Gibt den Typ des Backups an (online, offline oder Auto)
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_BACKUP_LABEL
+ a| 
+Gibt die Sicherungsbezeichnung an
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_BACKUP_ID
+ a| 
+Gibt die Backup-ID an
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_BACKUP_PROFIL
+ a| 
+Gibt das Profil an, das für die Sicherung verwendet wird
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_RECOVERY_TYPE
+ a| 
+Gibt die Informationen zur Wiederherstellungskonfiguration an
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_VOLUME_RESTORE_MODE
+ a| 
+Gibt die Wiederherstellungskonfiguration des Volumes an
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_TARGET_FILER_NAME
+ a| 
+Gibt den Namen des Zielspeichersystems an *Hinweis:* Wenn mehr als ein Speichersystem verwendet wird, müssen die Namen des Speichersystems durch Kommas getrennt werden.
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_TARGET_VOLUME_NAME
+ a| 
+Gibt den Namen des Zielvolume an *Hinweis:* der Name des Zielvolumes muss mit dem Namen des Speichergeräts vorbestimmt sein, zum Beispiel SM_TARGET_FILER_NAME/SM_TARGET_VOLUME_NAME.
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_HOST_FILE_SYSTEM
+ a| 
+Gibt das Host-Dateisystem an
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_SNAPSHOT_NAMEN
+ a| 
+Gibt die Snapshot-Liste an *Hinweis:* der Name der Snapshot-Kopien muss mit dem Namen des Storage-Systems und dem Volume-Namen vorangestellt sein. Die Namen der Snapshot Kopien werden durch Kommata getrennt.
+ a| 
+String-Array
+
+
+
+ a| 
+SM_ARCHIVE_LOGS_DIRECTORY
+ a| 
+Gibt das Verzeichnis der Archivprotokolle an *Hinweis:* Wenn sich die Archivprotokolle in mehr als einem Verzeichnis befinden, werden die Namen dieser Verzeichnisse durch Kommas getrennt.
+ a| 
+String-Array
+
+
+
+ a| 
+SM_REDO_LOGS_DIRECTORY
+ a| 
+Gibt das Verzeichnis der Redo-Logs an *Hinweis:* Wenn sich die Redo-Logs in mehr als einem Verzeichnis befinden, werden die Namen dieser Verzeichnisse durch Kommas getrennt.
+ a| 
+String-Array
+
+
+
+ a| 
+SM_CONTROL_FILES_DIRECTORY
+ a| 
+Gibt das Verzeichnis der Steuerdateien an *Hinweis:* Wenn sich die Steuerdateien in mehr als einem Verzeichnis befinden, werden die Namen dieser Verzeichnisse durch Kommas getrennt.
+ a| 
+String-Array
+
+
+
+ a| 
+SM_DATA_FILES_DIRECTORY
+ a| 
+Gibt das Verzeichnis der Datendateien an *Hinweis:* Wenn sich die Datendateien in mehr als einem Verzeichnis befinden, werden die Namen dieser Verzeichnisse durch Kommas getrennt.
+ a| 
+String-Array
+
+|===

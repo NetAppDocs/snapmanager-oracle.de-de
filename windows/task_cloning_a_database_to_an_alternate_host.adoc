@@ -1,0 +1,36 @@
+---
+permalink: windows/task_cloning_a_database_to_an_alternate_host.html 
+sidebar: sidebar 
+keywords: clone, create, command, database, alternate, host, cloning 
+summary: Sie können mit dem Befehl Clone create ein Datenbank-Backup auf einem alternativen Host klonen. 
+---
+= Klonen einer Datenbank auf einem alternativen Host
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können mit dem Befehl Clone create ein Datenbank-Backup auf einem alternativen Host klonen.
+
+* Erstellen Sie ein Profil oder haben Sie ein vorhandenes Profil.
+* Erstellen Sie ein vollständiges Backup oder ein bereits vorhandenes Datenbank-Backup.
+* Erstellen Sie eine Klonspezifikation oder weisen Sie eine vorhandene Klonspezifikation auf.
++
+.. Geben Sie zum Klonen einer Datenbank auf einem anderen Host den folgenden Befehl ein: smo Clone create -Backup-Label Backup_Label_Name-newsid New_sid-Host Target_Host-Label Clone_Label-commentcomment_Text-profileprofile_Name-clonepec full_path_to_clonespefile
++
+Oracle lässt Sie nicht zwei Datenbanken mit derselben SID gleichzeitig auf dem gleichen Host laufen. Aus diesem Grund müssen Sie für jeden Klon eine neue SID angeben. Sie können jedoch eine Datenbank auf einem anderen Host mit derselben SID haben.
+
+
+
+
+
+*Verwandte Informationen*
+
+xref:task_creating_profiles.adoc[Profile werden erstellt]
+
+xref:task_cloning_databases_from_backups.adoc[Klonen von Datenbanken aus Backups]
+
+xref:task_creating_clone_specifications.adoc[Erstellen von Klonspezifikationen]
+
+xref:reference_the_smosmsapclone_create_command.adoc[Der Befehl Smo Clone create]

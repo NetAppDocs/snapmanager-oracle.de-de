@@ -1,0 +1,56 @@
+---
+permalink: unix-administration/reference_the_smosmsapprofile_dump_command.html 
+sidebar: sidebar 
+keywords: run, profile, dump, command, create, jar, file, contain, diagnostic, information, smo 
+summary: Sie können den Profildump-Befehl ausführen, um die .jar-Datei zu erstellen, die Diagnoseinformationen zu einem Profil enthält. 
+---
+= Der Befehl smoprofile dump
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Profildump-Befehl ausführen, um die .jar-Datei zu erstellen, die Diagnoseinformationen zu einem Profil enthält.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo profile dump
+-profile profile_name
+\[-quiet \| -verbose\]
+----
+
+
+== Parameter
+
+* *-profile Profile_Name*
++
+Gibt das Profil an, für das Sie die Speicherauszugsdateien erstellen möchten. Das Profil enthält die Kennung der Datenbank und andere Datenbankinformationen.
+
+* *-ruhig*
++
+Zeigt nur Fehlermeldungen in der Konsole an. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Zeigt Fehler-, Warn- und Informationsmeldungen in der Konsole an.
+
+
+
+
+
+== Beispiel
+
+Im folgenden Beispiel wird ein Dump für das Profil SALES1 erstellt:
+
+[listing]
+----
+smo profile dump -profile SALES1
+Dump file created
+Path:/userhomedirectory/.netapp/smo/3.3.0/smo_dump_SALES1_hostname.jar
+----

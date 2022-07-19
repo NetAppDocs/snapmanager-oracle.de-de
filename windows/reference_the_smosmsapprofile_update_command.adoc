@@ -1,0 +1,247 @@
+---
+permalink: windows/reference_the_smosmsapprofile_update_command.html 
+sidebar: sidebar 
+keywords: run, profile, update, command, information, existing, smo 
+summary: Sie können den Befehl „Profilaktualisierung“ ausführen, um die Informationen für ein vorhandenes Profil zu aktualisieren. 
+---
+= Der Befehl smoprofile Update
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Befehl „Profilaktualisierung“ ausführen, um die Informationen für ein vorhandenes Profil zu aktualisieren.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo profile update
+-profile profile
+\[-new-profile new_profile_name\]
+\[-profile-password profile_password\]
+[-database
+-dbname db_dbname
+-host db_host
+\[-sid db_sid\]
+[-login
+\[-username db_username -password db_password -port db_port\]
+ ]
+[\{-rman  \{-controlfile \| \{\{-login
+-username  rman_username
+-password  rman_password \}
+\[-tnsname  tnsname\]\}\}\} \|
+-remove-rman\]
+
+
+[-retain
+\[-hourly \[-count n\] \[-duration m\]\]
+\[-daily \[-count n\] \[-duration m\]]
+\[-weekly \[-count n\] \[-duration m\]]
+\[-monthly \[-count n\] \[-duration m\]]]]
+-comment comment
+-snapname-patternpattern
+[]
+[-summary-notification]
+[-notification
+\[-success
+-email email_address1,email_address2
+-subject subject_pattern\]
+\[-failure
+-email email_address1,email_address2
+-subject subject_pattern]
+[-separate-archivelog-backups
+-retain-archivelog-backups
+-hours  hours |
+-days days |
+-weeks weeks |
+-months months
+[]
+[-include-with-online-backups \| -no-include-with-online-backups]]
+[-dump]
+\[-quiet \| -verbose\]
+----
+
+
+== Parameter
+
+* *-Profil*
++
+Gibt den Namen des Profils an. Dieser Name kann bis zu 30 Zeichen lang sein und muss innerhalb des Hosts eindeutig sein.
+
+* *-profile-password Profil_password*
++
+Gibt das Kennwort für das Profil an.
+
+* *-New-profile New_profile_Name*
++
+Gibt den neuen Namen an, den Sie für ein Profil angeben können.
+
+* *-Datenbank*
++
+Gibt die Details der Datenbank an, die das Profil beschreibt. Diese Datenbank wird gesichert, wiederhergestellt usw.
+
+* *-dbname db_dbname*
++
+Gibt den Namen der Datenbank an, die das Profil beschreibt. Sie können entweder den globalen Namen oder die Systemkennung verwenden.
+
+* *-Host db_Host*
++
+Gibt den Namen oder die IP-Adresse des Hostcomputers an, auf dem die Datenbank ausgeführt wird.
+
+* *-sid db_sid*
++
+Gibt die Systemkennung der Datenbank an, die das Profil beschreibt. Standardmäßig verwendet SnapManager den Datenbanknamen als Systemkennung. Falls sich die Systemkennung vom Datenbanknamen unterscheidet, müssen Sie sie mit der Option -sid angeben.
+
+* *-Login*
++
+Gibt die Anmeldedaten für das Repository an.
+
+* *-username repo_username*
++
+Gibt den Benutzernamen an, der für den Zugriff auf die Repository-Datenbank erforderlich ist.
+
+* *-Port repo_Port*
++
+Gibt die TCP-Portnummer an, die für den Zugriff auf die Repository-Datenbank erforderlich ist.
+
+* *-Datenbank*
++
+Gibt die Details der Datenbank an, die das Profil beschreibt. Diese Datenbank wird gesichert, wiederhergestellt und geklont.
+
+* *-dbname db_dbname*
++
+Gibt den Namen der Datenbank an, die das Profil beschreibt. Sie können entweder den globalen Namen oder die Systemkennung verwenden.
+
+* *-Host db_Host*
++
+Gibt den Namen oder die IP-Adresse des Hostcomputers an, auf dem die Datenbank ausgeführt wird.
+
+* *-Login*
++
+Gibt die Anmeldedaten für die Datenbank an.
+
+* *-username db_username*
++
+Gibt den Benutzernamen an, der für den Zugriff auf die Datenbank erforderlich ist, die das Profil beschreibt.
+
+* *-Passwort db_password*
++
+Gibt das Kennwort an, das für den Zugriff auf die Datenbank erforderlich ist, die das Profil beschreibt.
+
+* *-Port db_Port*
++
+Gibt die TCP-Portnummer an, die für den Zugriff auf die Datenbank erforderlich ist, die das Profil beschreibt.
+
+* *-rman*
++
+Gibt die Details an, die SnapManager zum Katalogisieren von Backups mit dem Oracle Recovery Manager (RMAN) verwendet.
+
+* *-controlfile*
++
+Gibt die Steuerdateien für die Zieldatenbank an, anstatt einen Katalog als RMAN-Repository zu verwenden.
+
+* *-Login*
++
+Gibt die RMAN-Anmeldedaten an.
+
+* *-Passwort rman_password*
++
+Gibt das Kennwort an, mit dem Sie sich beim RMAN-Katalog anmelden können.
+
+* *-username rman_Benutzername*
++
+Gibt den Benutzernamen an, der zum Anmelden beim RMAN-Katalog verwendet wird.
+
+* *-tnsname tnsname*
++
+Gibt den Verbindungsnamen tnsname an (dieser wird in der Datei tsname.ora definiert).
+
+* *-remove-rman*
++
+Legt fest, dass RMAN im Profil entfernt wird.
+
+* *-behalten [-hourly [-countn] [-duration m] [-taily [-count n] [-duration m]] [-Weekly [-count n][-duration m]] [-monthly [-count n][-duration m]]*
++
+Gibt die Aufbewahrungsklasse (stündlich, täglich, wöchentlich, monatlich) für ein Backup an.
+
++
+Für jede Aufbewahrungsklasse kann ein Aufbewahrungszähler oder eine Aufbewahrungsdauer oder beides angegeben werden. Die Dauer ist in Einheiten der Klasse (z. B. Stunden für Stunden oder Tage für täglich). Wenn der Benutzer beispielsweise nur eine Aufbewahrungsdauer von 7 für tägliche Backups angibt, dann wird SnapManager nicht die Anzahl der täglichen Backups für das Profil begrenzen (da die Aufbewahrungsanzahl 0 ist), aber SnapManager löscht automatisch täglich erstellte Backups, die vor 7 Tagen erstellt wurden.
+
+* *-Kommentar*
++
+Gibt den Kommentar für ein Profil an.
+
+* *-snapname-Muster*
++
+Gibt das Benennungsmuster für Snapshot Kopien an. Außerdem können Sie in allen Namen von Snapshot Kopien benutzerdefinierten Text einfügen, beispielsweise HAOPS für hochverfügbare Vorgänge. Sie können das Benennungsmuster der Snapshot Kopie ändern, wenn Sie ein Profil erstellen oder nachdem das Profil erstellt wurde. Das aktualisierte Muster gilt nur für Snapshot Kopien, die noch nicht aufgetreten sind. Snapshot Kopien, die vorhanden sind, behalten das vorherige SnapName-Muster bei. Sie können mehrere Variablen im Mustertext verwenden.
+
+* *-summary-notification*
++
+Gibt an, dass die E-Mail-Benachrichtigung für das vorhandene Profil aktiviert ist.
+
+* *-Mitteilung [-success-email e-Mail_adress1,E-Mail address2 -subject_pattern]*
++
+Aktiviert die E-Mail-Benachrichtigung für das vorhandene Profil, sodass die Empfänger nach erfolgreicher SnapManager-Operation E-Mails erhalten. Sie müssen eine einzelne E-Mail-Adresse oder mehrere E-Mail-Adressen eingeben, an die E-Mail-Benachrichtigungen gesendet werden, sowie ein Muster für den Betreff der E-Mail für das vorhandene Profil.
+
++
+Sie können den Betreff während der Aktualisierung des Profils ändern oder benutzerdefinierten Text einfügen. Der aktualisierte Betreff gilt nur für die nicht gesendeten E-Mails. Sie können mehrere Variablen für den E-Mail-Betreff verwenden.
+
+* *-Benachrichtigung [-Failure -Email-adress1,E-Mail address2 -subject_pattern]*
++
+Aktiviert die E-Mail-Benachrichtigung für das vorhandene Profil, sodass die Empfänger bei Ausfall des SnapManager-Vorgangs E-Mails erhalten. Sie müssen eine einzelne E-Mail-Adresse oder mehrere E-Mail-Adressen eingeben, an die E-Mail-Benachrichtigungen gesendet werden, sowie ein Muster für den Betreff der E-Mail für das vorhandene Profil.
+
++
+Sie können den Betreff während der Aktualisierung des Profils ändern oder benutzerdefinierten Text einfügen. Der aktualisierte Betreff gilt nur für die nicht gesendeten E-Mails. Sie können mehrere Variablen für den E-Mail-Betreff verwenden.
+
+* *-separate-archivlog-Backups*
++
+Trennt das Backup des Archivprotokolls von der Datendatei-Sicherung. Dies ist ein optionaler Parameter, den Sie beim Erstellen des Profils angeben können. Nachdem Sie die Backups mit dieser Option getrennt haben, können Sie entweder Datendateien-only-Backup oder Archiv-Log-only-Backup erstellen.
+
+* *-behalten-archivelog-Backups -Stunden- -Tage- Wochen- Monthsmonths*
++
+Gibt an, dass die Archiv-Log-Backups auf Basis der Aufbewahrungsdauer des Archivprotokolls aufbewahrt werden (stündlich, täglich, wöchentlich, monatlich).
+
+* *-enthalten-mit-online-Backups*
++
+Gibt an, dass das Backup des Archivprotokolls zusammen mit dem Online-Datenbank-Backup enthalten ist.
+
++
+Gibt an, dass die Archiv-Log-Backups nicht zusammen mit dem Online-Datenbank-Backup enthalten sind.
+
+* *-dump*
++
+Gibt an, dass die Dump-Dateien nach dem erfolgreichen Erstellen des Profils gesammelt werden.
+
+* *-ruhig*
++
+Zeigt nur Fehlermeldungen in der Konsole an. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Zeigt Fehler-, Warn- und Informationsmeldungen in der Konsole an.
+
+
+
+
+
+== Beispiel
+
+Im folgenden Beispiel werden die Anmeldeinformationen für die im Profil beschriebene Datenbank geändert und die E-Mail-Benachrichtigung ist für dieses Profil konfiguriert:
+
+[listing]
+----
+smo profile update -profile SALES1 -database -dbname SALESDB
+ -sid SALESDB -login -username admin2 -password d4jPe7bw -port 1521
+-host server1 -profile-notification -success -e-mail Preston.Davis@org.com -subject success
+Operation Id [8abc01ec0e78ec33010e78ec3b410001] succeeded.
+----
+*Verwandte Informationen*
+
+xref:task_changing_profile_passwords.adoc[Profilkennwörter werden geändert]
+
+xref:concept_how_snapmanager_retains_backups_on_the_local_storage.adoc[Wie SnapManager Backups auf dem lokalen Storage aufbewahrt]

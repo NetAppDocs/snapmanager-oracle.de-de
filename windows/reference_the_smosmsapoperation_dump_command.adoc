@@ -1,0 +1,71 @@
+---
+permalink: windows/reference_the_smosmsapoperation_dump_command.html 
+sidebar: sidebar 
+keywords: run, operation, dump, command, create, jar, file, diagnostic, information, smo 
+summary: Sie können den Befehl Operation Dump ausführen, um eine JAR-Datei zu erstellen, die Diagnoseinformationen zu einem Vorgang enthält. 
+---
+= Der Befehl Smo Operation Dump
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Befehl Operation Dump ausführen, um eine JAR-Datei zu erstellen, die Diagnoseinformationen zu einem Vorgang enthält.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo operation dump
+-profile profile_name
+\[-label label_name \| -id guid\]
+\[-quiet \| -verbose\]
+----
+
+
+== Parameter
+
+* *-profile Profile_Name*
++
+Gibt das Profil an, für das Sie die Speicherauszugsdateien erstellen möchten. Das Profil enthält die Kennung der Datenbank und andere Datenbankinformationen.
+
+* *-Label Label Label_Name*
++
+Erstellt Dump-Dateien für den Vorgang und weist die angegebene Bezeichnung zu.
+
+* *-id-Guid*
++
+Erstellt Dump-Dateien für den Vorgang mit der angegebenen GUID. Die GUID wird von SnapManager generiert, wenn der Vorgang beginnt.
+
+* *-ruhig*
++
+Zeigt nur Fehlermeldungen in der Konsole an. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Zeigt Fehler-, Warn- und Informationsmeldungen in der Konsole an.
+
+
+
+
+
+== Beispiel
+
+Im folgenden Beispiel wird die Dump-Datei für das Backup erstellt:
+
+[listing]
+----
+smo operation dump -profile SALES1
+-id 8abc01ec0e78f3e2010e78f3fdd00001
+----
+[listing]
+----
+Dump file created Path: C:\userhomedirectory\netapp\smo\3.3\smo_dump_8abc01ec0e78f3e2010e78f3fdd00001.jar
+----
+*Verwandte Informationen*
+
+xref:concept_dump_files.adoc[Speicherauszug-Dateien]

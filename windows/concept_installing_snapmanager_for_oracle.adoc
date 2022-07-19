@@ -1,0 +1,16 @@
+---
+permalink: windows/concept_installing_snapmanager_for_oracle.html 
+sidebar: sidebar 
+keywords: download, oracle, install, operation, database, backup, restore, cloning, clone 
+summary: Sie können SnapManager für Oracle in Ihre Umgebung herunterladen und installieren, beispielsweise um Vorgänge wie Datenbank-Backup, -Wiederherstellung, -Recovery und -Klonen auszuführen. 
+---
+= Installation von SnapManager für Oracle
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können SnapManager für Oracle in Ihre Umgebung herunterladen und installieren, beispielsweise um Vorgänge wie Datenbank-Backup, -Wiederherstellung, -Recovery und -Klonen auszuführen.
+
+Das Installationspaket SnapManager für Oracle enthält die Host Server Software und die Client-Software der grafischen Benutzeroberfläche (GUI).

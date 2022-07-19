@@ -1,0 +1,93 @@
+---
+permalink: unix-administration/reference_the_smosmsap_repository_rollingback_command.html 
+sidebar: sidebar 
+keywords: command, enable, rollback, revert, higher, version, snapmanager, original, version, upgrade, smo, repository 
+summary: Mit diesem Befehl können Sie ein Rollback oder ein Zurücksetzen einer höheren Version von SnapManager auf die Originalversion, von der Sie das Upgrade durchgeführt haben, durchführen. 
+---
+= Der smo Repository Rollback-Befehl
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit diesem Befehl können Sie ein Rollback oder ein Zurücksetzen einer höheren Version von SnapManager auf die Originalversion, von der Sie das Upgrade durchgeführt haben, durchführen.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo repository rollback
+-repository
+-dbname repo_service_name
+-host repo_host
+-login -username repo_username
+-port repo_port
+-rollbackhost host_with_target_database
+[-force]
+\[-quiet \| -verbose\]
+----
+
+
+== Parameter
+
+* *-Repository*
++
+Die Optionen, die dem -Repository folgen, geben die Details der Datenbank für das Repository an.
+
+* *-dbname repo_Service_Name*
++
+Gibt den Namen der Datenbank an, in der das Repository gespeichert wird. Verwenden Sie entweder den globalen Namen oder den SID.
+
+* *-Host repo_Host*
++
+Gibt den Namen oder die IP-Adresse des Hostcomputers an, auf dem die Repository-Datenbank ausgeführt wird.
+
+* *-Login*
++
+Startet die Repository-Anmeldedaten.
+
+* *-username repo_username*
++
+Gibt den Benutzernamen an, der für den Zugriff auf die Datenbank erforderlich ist, in der das Repository gespeichert ist.
+
+* *-rollbackhost Host_with_target_Database*
++
+Gibt den Namen des Hosts an, der von einer höheren Version von SnapManager auf die ursprüngliche niedrigere Version zurückgesetzt wird.
+
+* *-Port repo_Port*
++
+Gibt die TCP-Portnummer an, die für den Zugriff auf die Datenbank verwendet wird, in der das Repository gespeichert ist.
+
+* *-Force*
++
+Versucht, die Aktualisierung des Repositorys zu erzwingen. SnapManager fordert Sie auf, vor der Aktualisierung eine Sicherung des aktuellen Repository durchzuführen.
+
+* *-noprompt*
++
+Zeigt die Eingabeaufforderung nicht an, bevor die Repository-Datenbank aktualisiert wird. Mit der Option -noprompt wird sichergestellt, dass die Eingabeaufforderung nicht angezeigt wird. Dies erleichtert die Aktualisierung von Repositorys mithilfe eines Skripts.
+
+* *-ruhig*
++
+Zeigt nur Fehlermeldungen auf der Konsole an. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Zeigt Fehler-, Warn- und Informationsmeldungen an der Konsole an.
+
+
+
+
+
+== Beispielbefehl
+
+Das folgende Beispiel aktualisiert das Repository in der SALESDB-Datenbank.
+
+[listing]
+----
+smo repository rollback -repository -dbname SALESDB
+-host server1 -login -username admin -port 1521 -rollbackhost hostA
+----

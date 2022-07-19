@@ -1,0 +1,66 @@
+---
+permalink: unix-administration/task_updating_target_database_hostname_associated_with_a_profile.html 
+sidebar: sidebar 
+keywords: snapmanager, 3.2, oracle, provide, ability, update, host, name, target, database, snapmanager, profile, smo 
+summary: 'SnapManager \(3.2 oder höher\) für Oracle bietet die Möglichkeit, den Hostnamen der Zieldatenbank im SnapManager-Profil zu aktualisieren.' 
+---
+= Der Host-Name der Zieldatenbank, der einem Profil zugeordnet ist, wird aktualisiert
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager (3.2 oder höher) für Oracle bietet die Möglichkeit, den Hostnamen der Zieldatenbank im SnapManager-Profil zu aktualisieren.
+
+* Das Home-Verzeichnis des lokalen Benutzers muss die Zuordnung zu den Profilen und Repositorys kennen.
+* Die Sitzungen der SnapManager Graphical User Interface (GUI) müssen geschlossen werden.
+* In einer RAC-Umgebung (Real Application Clusters) müssen die auf dem im Profil angegebenen Host verfügbaren Klone oder gemounteten Backups gelöscht und abgehängt werden.
+
+
+Sie können das Profil mit dem neuen Hostnamen aktualisieren, indem Sie nur die CLI verwenden.
+
+*Szenarien werden nicht unterstützt, wenn der Hostname der Zieldatenbank im Profil* geändert werden soll
+
+Die folgenden Szenarien werden beim Ändern des Hostnamen der Zieldatenbank im Profil nicht unterstützt:
+
+* Ändern des Host-Namens der Zieldatenbank mithilfe der SnapManager-GUI
+* Rollback der Repository-Datenbank nach Aktualisierung des Host-Namens der Zieldatenbank des Profils durchführen
+* Aktualisieren mehrerer Profile für einen neuen Hostnamen der Zieldatenbank durch Ausführen eines einzigen Befehls
+* Ändern des Host-Namens der Zieldatenbank, wenn ein SnapManager-Vorgang ausgeführt wird
+* Ändern des Host-Namens der Zieldatenbank, wenn SnapManager auf Solaris installiert ist und wenn die Datenbank-LUNs (Logical Unit Numbers) mithilfe eines Host-gemounteten Dateisystems mit SVM-Stack erstellt werden.
+
+
+
+NOTE: Nachdem Sie den Hostnamen der Zieldatenbank im Profil aktualisiert haben, wird nur der Hostname der Zieldatenbank geändert. Alle anderen Konfigurationsparameter, die im Profil festgelegt sind, werden beibehalten.
+
+Nachdem Sie den Host-Namen der neuen Zieldatenbank in einem geschützten Profil aktualisiert haben, werden für das aktualisierte Profil dieselben Datensatz- und Sicherungsrichtlinien beibehalten.
+
+Nachdem Sie den Hostnamen für den Zielhost geändert haben, müssen Sie sicherstellen, dass Sie den Hostnamen für alle vorhandenen geschützten Profile aktualisieren, bevor Sie die neuen geschützten Profile erstellen. Um den Hostnamen für ein Profil zu aktualisieren, führen Sie den Befehl smo profile Update aus.
+
+Nachdem Sie den Hostnamen der Zieldatenbank aktualisiert haben, können Sie den Klon nicht trennen oder das Backup unmounten, wenn das Clone oder bereitgestellte Backup nicht auf dem neuen Host verfügbar ist. In solchen Szenarien führen die Ausführung der SnapManager Vorgänge vom neuen Host zu Ausfällen sowie zu veralteten Einträgen im früheren Host. Um SnapManager-Vorgänge durchzuführen, müssen Sie zum früheren Hostnamen mithilfe der Profilaktualisierung zurücksetzen.
+
+. Geben Sie den folgenden Befehl ein:
+`smo profile update -profileprofile [-profile-passwordprofile_password][-database-dbnamedb_dbname-hostdb_host [-siddb_sid] [-login-usernamedb_username-passworddb_password-portdb_port]] [{-rman{-controlfile | {-login-usernamerman_username-passwordrman_password-tnsnamerman_tnsname}}} | -remove-rman]-osaccountosaccount-osgrouposgroup [-retain [-hourly [-countn] [-durationm]] [-daily [-countn] [-durationm]] [-weekly [-countn] [-durationm]] [-monthly [-countn] [-durationm]]] [-commentcomment][-snapname-patternpattern][[-protect [-protection-policypolicy_name]]| [[-noprotect]] [-summary-notification] [-notification [-success-emailemail_address1, email_address2-subjectsubject_pattern] [-failure-emailemail_address1, email_address2-subjectsubject_pattern]] [-separate-archivelog-backups-retain-archivelog-backups-hourshours | -daysdays | -weeksweeks| -monthsmonths [-protect [-protection-policypolicy_name] | -noprotect] [-include-with-online-backups | -no-include-with-online-backups]] [-dump]`
++
+Weitere Optionen für diesen Befehl:
+
++
+[-Force] [-noprompt]
+
++
+|===
+
+
+| Ihr Ziel ist | Dann... 
+
+
+ a| 
+*Ändern Sie den Hostnamen der Zieldatenbank*
+ a| 
+Geben Sie -hostNew_db_Host an
+
+|===
+. Geben Sie den folgenden Befehl ein, um den Host-Namen der Zieldatenbank des Profils anzuzeigen:
+`smo profile show`
+

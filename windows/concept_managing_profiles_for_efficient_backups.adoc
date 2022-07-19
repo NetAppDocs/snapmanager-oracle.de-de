@@ -1,0 +1,67 @@
+---
+permalink: windows/concept_managing_profiles_for_efficient_backups.html 
+sidebar: sidebar 
+keywords: profile, database, operation, efficient, backup 
+summary: Sie müssen in SnapManager ein Profil für die Datenbank erstellen, auf der Sie einen Vorgang ausführen möchten. Sie müssen das Profil auswählen und dann den Vorgang auswählen, den Sie durchführen möchten. 
+---
+= Profilverwaltung für effiziente Backups
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie müssen in SnapManager ein Profil für die Datenbank erstellen, auf der Sie einen Vorgang ausführen möchten. Sie müssen das Profil auswählen und dann den Vorgang auswählen, den Sie durchführen möchten.
+
+
+
+== Aufgaben im Zusammenhang mit Profilen
+
+Sie können die folgenden Aufgaben ausführen:
+
+* Erstellung von Profilen zur Aktivierung vollständiger oder partieller Backups und Backups auf primärem oder sekundärem Speicher
++
+Sie können auch Profile erstellen, um die Archiv-Log-Backups von den Backups der Datendatei zu trennen.
+
+* Verifizieren von Profilen:
+* Profile aktualisieren.
+* Profile löschen.
+
+
+
+
+== Info zu Profilen und Authentifizierung
+
+Wenn Sie ein Profil erstellen, können Sie eine Datenbank angeben und eine der folgenden Methoden zur Verbindung mit der Datenbank auswählen:
+
+* Oracle-Authentifizierung mit Benutzername, Passwort und Port
+* Betriebssystemauthentifizierung (OS) ohne Benutzername, Passwort oder Port
++
+Für die OS-Authentifizierung müssen Sie die Informationen für den OS-Kontobenutzer und -Gruppen eingeben.
+
+* Datenbank-Authentifizierung, wenn sqlnet.authentication_services auf „KEINE“ eingestellt ist. SnapManager verwendet dann für alle Verbindungen zur Zieldatenbank den Datenbankbenutzernamen und das Kennwort. SnapManager kann auch die native Windows-Authentifizierung verwenden, wenn sqlnet.authentication_services auf NTS eingestellt ist.
+
+
+Sie können sqlnet.authentication_services auf NONE nur in den folgenden Umgebungen einstellen:
+
+|===
+
+
+| Datenbank-Layout | Oracle Version | Wird die Datenbankauthentifizierung für die Zieldatenbank unterstützt 
+
+
+ a| 
+Alle nicht-ASM- und nicht-RAC-Datenbanken
+ a| 
+Oracle 10g und Oracle 11g (weniger als 11.2.0.3)
+ a| 
+Ja.
+
+|===
+*Hinweis:* Nachdem Sie sqlnet.authentication_services deaktiviert haben und die Authentifizierungsmethode in die Datenbankauthentifizierung ändern, müssen Sie sqlnet.authentication_services auf KEINE einstellen.
+
+Wenn Sie zum ersten Mal auf ein Profil zugreifen, müssen Sie Ihr Profilkennwort eingeben. Nachdem Sie Ihre Anmeldedaten eingegeben haben, können Sie die Datenbank-Backups im Profil anzeigen.
+
+*Verwandte Informationen*
+
+xref:concept_what_profiles_are.adoc[Welche Profile sind]

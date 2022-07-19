@@ -1,0 +1,21 @@
+---
+permalink: windows/task_retaining_backups_forever.html 
+sidebar: sidebar 
+keywords: specify, backup, ineligible, deletion, retention, policy, indefinitely, retaining, forever 
+summary: Sie können angeben, dass ein Backup durch die Aufbewahrungsrichtlinie nicht zur Löschung berechtigt sein sollte, um das Backup auf unbestimmte Zeit zu halten. 
+---
+= Dauerhaft Aufbewahrung von Backups
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können angeben, dass ein Backup durch die Aufbewahrungsrichtlinie nicht zur Löschung berechtigt sein sollte, um das Backup auf unbestimmte Zeit zu halten.
+
+. Um anzugeben, dass ein Backup unbegrenzt aufbewahrt werden soll, geben Sie folgenden Befehl ein:smo Backup Update -profilprofile_Name {-labellabel [Data / -archivelogs] / -idid} -restate -unlimited
+
+
+*Verwandte Informationen*
+
+xref:reference_the_smosmsapbackup_update_command.adoc[Der SMO-Befehl zum Aktualisieren der Datensicherung]

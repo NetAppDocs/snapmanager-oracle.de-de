@@ -1,0 +1,20 @@
+---
+permalink: windows/task_starting_snapmanager_for_oraclefor_sap.html 
+sidebar: sidebar 
+keywords: snapmanager, startup, section, list, task, oracle, learn 
+summary: Im Abschnitt „SnapManager-Start“ werden die Aufgaben aufgeführt, die Sie beim Start von SnapManager ausführen. Verwenden Sie diesen Abschnitt auch, wenn Sie nur über SnapManager lernen. 
+---
+= Starten von SnapManagerfür Oracle
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Im Abschnitt „SnapManager-Start“ werden die Aufgaben aufgeführt, die Sie beim Start von SnapManager ausführen. Verwenden Sie diesen Abschnitt auch, wenn Sie nur über SnapManager lernen.
+
+Vor der Verwendung von SnapManager sollten Sie die folgenden Aktionen durchgeführt haben:
+
+* Die SnapManager Software wurde heruntergeladen und installiert.
+* Sie haben festgelegt, ob die grafische Benutzeroberfläche oder die Befehlszeilenschnittstelle verwendet werden sollen.
+

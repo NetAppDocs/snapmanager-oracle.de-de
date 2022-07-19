@@ -1,0 +1,49 @@
+---
+permalink: unix-administration/reference_the_smosmsap_server_stop_command.html 
+sidebar: sidebar 
+keywords: command, stop, snapmanager, host, server, enter, root, smo_server 
+summary: Dieser Befehl stoppt den SnapManager-Hostserver und wird im Root eingegeben. 
+---
+= Der Befehl smo_Server stop
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dieser Befehl stoppt den SnapManager-Hostserver und wird im Root eingegeben.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo_server stop
+\[-quiet \| -verbose\]
+----
+
+
+== Parameter
+
+* *-ruhig*
++
+Gibt an, dass nur Fehlermeldungen auf der Konsole angezeigt werden. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Gibt an, dass Fehler-, Warn- und Informationsmeldungen auf der Konsole angezeigt werden.
+
+
+
+
+
+== Beispielbefehl
+
+Im folgenden Beispiel wird der Befehl smo_Server stop verwendet.
+
+[listing]
+----
+smo_server stop
+----

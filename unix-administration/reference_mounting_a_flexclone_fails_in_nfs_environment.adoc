@@ -1,0 +1,31 @@
+---
+permalink: unix-administration/reference_mounting_a_flexclone_fails_in_nfs_environment.html 
+sidebar: sidebar 
+keywords: snapmanager, flexclone, volume, nfs, environment, clone, backup, flexvol, ha, pair, configuration, export 
+summary: Wenn SnapManager einen FlexClone eines Volumes in einer NFS-Umgebung erstellt, wird in der Datei /etc/exports ein Eintrag hinzugefügt. Der Klon oder das Backup kann nicht auf einem SnapManager Host mit einer Fehlermeldung gemountet werden. 
+---
+= Montage eines FlexClone Volume schlägt in der NFS-Umgebung fehl
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn SnapManager einen FlexClone eines Volumes in einer NFS-Umgebung erstellt, wird in der Datei /etc/exports ein Eintrag hinzugefügt. Der Klon oder das Backup kann nicht auf einem SnapManager Host mit einer Fehlermeldung gemountet werden.
+
+Die Fehlermeldung ist: 0001-034 Befehlsfehler: Mount fehlgeschlagen: Mount: Filer1:/vol/SnapManager_20090914112850837_vol14 auf /opt/NTAPsmo/mnt/-ora_data02-20090914112850735_1 - WARNUNG unbekannte Option „Zone=vol14“ nfs Mount: Filer1:/vol/SnapManager_20090914112850837_vol14: Berechtigung verweigert.
+
+Gleichzeitig wird an der Storage System Console folgende Meldung erzeugt: Mon Sep 14 23:58:37 PDT [filer1: export.auto.update.disabled: Warnung]: /Etc/exports wurde für vol14 nicht aktualisiert, wenn der Befehl vol Clone create ausgeführt wurde. Aktualisieren Sie /etc/exports manuell oder kopieren Sie /etc/exports.New.
+
+Diese Meldung wird möglicherweise nicht in den AutoSupport-Meldungen erfasst.
+
+
+NOTE: Sie können ähnliche Probleme beim Klonen von FlexVol Volumes auf NFS auftreten. Sie können die gleichen Schritte ausführen, um die Option nfs.export.auto-update zu aktivieren.
+
+*Was zu tun*
+
+. Stellen Sie die Option nfs.export.auto-update ein, damit die Datei /etc/exports automatisch aktualisiert wird. Optionen nfs.export.auto-updateon
+
+
+
+NOTE: Stellen Sie in der Konfiguration des HA-Paars sicher, dass Sie die NFS-Exportoption für beide Storage-Systeme auf ON setzen.

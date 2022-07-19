@@ -1,0 +1,28 @@
+---
+permalink: windows/concept_what_snapmanager_for_oraclefor_sap_is.html 
+sidebar: sidebar 
+keywords: tools, require, perform, policy-driven, data, management, schedule, create, regular, database, backup, oracle, post-process 
+summary: SnapManager bietet die Tools, die für richtlinienbasiertes Datenmanagement, die Planung und Erstellung von regelmäßigen Datenbank-Backups, die Wiederherstellung von Daten aus diesen Backups im Falle von Datenverlust oder Notfällen und die Erstellung von Datenbankklonen erforderlich sind. Sie können Backups auf dem Primärspeicher erstellen und geschützte Backups auf dem Sekundärspeicher mithilfe von Post-Processing-Skripten erstellen. 
+---
+= Was ist SnapManagerfür Oracle
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager bietet die Tools, die für richtlinienbasiertes Datenmanagement, die Planung und Erstellung von regelmäßigen Datenbank-Backups, die Wiederherstellung von Daten aus diesen Backups im Falle von Datenverlust oder Notfällen und die Erstellung von Datenbankklonen erforderlich sind. Sie können Backups auf dem Primärspeicher erstellen und geschützte Backups auf dem Sekundärspeicher mithilfe von Post-Processing-Skripten erstellen.
+
+SnapManager nutzt NetApp Technologien bei der Integration in die neuesten Datenbankversionen. SnapManager ist in folgende NetApp Applikationen und Technologien integriert:
+
+* SnapDrive automatisiert Storage-Provisionierungsaufgaben und vereinfacht die Erstellung fehlerfreier und Host-konsistenter Snapshot-Kopien des Storage.
+* Snapshot (eine Funktion von Data ONTAP) erstellt zeitpunktgenaue Kopien der Datenbank.
+* SnapVault (eine lizenzierte Funktion von Data ONTAP) nutzt festplattenbasierte Backups für zuverlässiges Backup und Recovery von Datenbanken mit geringem Overhead.
+* SnapMirror (eine lizenzierte Funktion von Data ONTAP) repliziert Datenbankdaten über ein globales Netzwerk mit hoher Geschwindigkeit auf einfache, zuverlässige und kostengünstige Weise.
+* SnapRestore (eine lizenzierte Funktion von Data ONTAP) stellt eine vollständige Datenbank innerhalb weniger Sekunden wieder her – unabhängig von der Kapazität oder der Anzahl der Dateien.
+* FlexClone (eine lizenzierte Funktion von Data ONTAP) hilft bei der Erstellung schneller, platzsparender Datenbankklone aus den Snapshot Backups.
+
+
+SnapManager arbeitet mit SAN-Protokollen (FC und iSCSI) zusammen.
+
+SnapManager lässt sich auch mit nativen Oracle Technologien integrieren, beispielsweise mit Oracle Recovery Manager (RMAN).

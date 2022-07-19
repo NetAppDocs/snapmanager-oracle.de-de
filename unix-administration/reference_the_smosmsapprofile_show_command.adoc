@@ -1,0 +1,86 @@
+---
+permalink: unix-administration/reference_the_smosmsapprofile_show_command.html 
+sidebar: sidebar 
+keywords: run, profile, show, command, display, information, smo 
+summary: Sie können den Befehl „Profile show“ ausführen, um die Informationen zu einem Profil anzuzeigen. 
+---
+= Der Befehl smo profile show
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Befehl „Profile show“ ausführen, um die Informationen zu einem Profil anzuzeigen.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo profile show
+-profile profile_name
+\[-quiet \| -verbose\]
+----
+
+
+== Parameter
+
+* *-profile Profile_Name*
++
+Gibt den Namen des Profils an. Dieser Name kann bis zu 30 Zeichen lang sein und muss innerhalb des Hosts eindeutig sein.
+
+* *-ruhig*
++
+Zeigt nur Fehlermeldungen in der Konsole an. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Zeigt Fehler-, Warn- und Informationsmeldungen in der Konsole an.
+
+
+
+
+
+== Beispiel
+
+Im folgenden Beispiel werden die Details des Profils angezeigt:
+
+[listing]
+----
+smo profile show -profile TEST_RBAC_DP_PROTECT -verbose
+Profile name: TEST_RBAC_DP_PROTECT
+Comment:
+Target database:
+  Database name: racb
+  SID: racb1
+  Host: saal
+  Port: 1521
+  Username: sys
+  Password: ********
+Repository:
+  Database name: smorep
+  SID: smorep
+  Host: elbe.rtp.org.com
+  Port: 1521
+  Username: smosaal
+  Password: ********
+RMAN:
+  Use RMAN via control file
+Oracle user account: oracle
+Oracle user group: dba
+Snapshot Naming:
+  Pattern: smo_{profile}_{db-sid}_{scope}_{mode}_{smid}
+  Example: smo_test_rbac_dp_protect_racb1_f_h_1_8abc01e915a55ac50115a55acc8d0001_0
+Protection:
+  Dataset: smo_saal_racb
+  Protection policy: Back up
+  Conformance status: CONFORMANT
+Local backups to retain:
+  Hourly: 4 copies
+  Daily: 7 day(s)
+  Weekly: 4 week(s)
+  Monthly: 12 month(s)
+----

@@ -1,0 +1,21 @@
+---
+permalink: unix-administration/task_authorizing_user_access_to_profiles.html 
+sidebar: sidebar 
+keywords: addition, role-based, access, control, rbac, snapmanager, enable, password, profile, prevent, unauthorized, access 
+summary: 'Zusätzlich zur rollenbasierten Zugriffssteuerung \(RBAC\) können Sie mit SnapManager ein Kennwort für ein Profil festlegen, um unbefugten Zugriff zu verhindern.' 
+---
+= Zugriff auf Profile wird autorisiert
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Zusätzlich zur rollenbasierten Zugriffssteuerung (Role Based Access Control, RBAC) können Sie mithilfe von SnapManager ein Passwort für ein Profil festlegen, um unbefugten Zugriff zu verhindern.
+
+. Geben Sie den folgenden Befehl ein: 'smo Credential Set -profile -Name profile_Name [-password password]'
+
+
+*Verwandte Informationen*
+
+xref:reference_the_smosmsapcredential_set_command.adoc[Der Befehl Smo Credential Set]

@@ -1,0 +1,21 @@
+---
+permalink: windows/task_checking_the_snapmanager_software_version.html 
+sidebar: sidebar 
+keywords: determine, version, product, running, local, host, comand, snapmanager 
+summary: Sie können ermitteln, welche Version des Produkts Sie auf Ihrem lokalen Host ausführen, indem Sie den Versionsbefehl ausführen. 
+---
+= Überprüfen der SnapManager-Softwareversion
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ermitteln, welche Version des Produkts Sie auf Ihrem lokalen Host ausführen, indem Sie den Versionsbefehl ausführen.
+
+. Geben Sie zum Überprüfen der SnapManager-Version den folgenden Befehl ein: smo Version
+
+
+*Verwandte Informationen*
+
+xref:reference_the_smosmsapversion_command.adoc[Der Befehl smo Version]

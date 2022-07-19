@@ -1,0 +1,30 @@
+---
+permalink: unix-administration/concept_restore_files_from_an_alternate_location.html 
+sidebar: sidebar 
+keywords: snapmanager, restore, data, file, control, location, snapshot, original, rman 
+summary: SnapManager ermöglicht Ihnen, Datendateien von einem anderen Speicherort als die von Snapshot Kopien im ursprünglichen Volume wiederherzustellen und zu kontrollieren. 
+---
+= Wiederherstellung von Dateien aus einem anderen Speicherort
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager ermöglicht Ihnen, Datendateien von einem anderen Speicherort als die von Snapshot Kopien im ursprünglichen Volume wiederherzustellen und zu kontrollieren.
+
+Der ursprüngliche Speicherort ist der Speicherort der Datei auf dem aktiven Dateisystem zum Zeitpunkt des Backups. Der alternative Speicherort ist der Speicherort, von dem eine Datei wiederhergestellt wird.
+
+Sie können folgende Daten von einem alternativen Speicherort wiederherstellen:
+
+* Die Datendateien von einem Zwischendateisystem zu einem aktiven Dateisystem
+* Die Datenblöcke von einem Zwischenrohgerät zu einem aktiven Rohgerät
+
+
+Die Recovery wird durch SnapManager automatisiert. Bei der Wiederherstellung von Dateien von externen Speicherorten verwendet SnapManager den Befehl „Wiederherstellung automatisch von Standort aus“.
+
+SnapManager setzt für die Wiederherstellung von Dateien auch den Oracle Recovery Manager (RMAN) ein. Die wiederherzustellenden Dateien sollten von Oracle erkennbar sein. Die Dateinamen sollten im Standardformat vorliegen. Bei der Wiederherstellung aus einem Flash-Recovery-Bereich liefert SnapManager den übersetzten Weg zu Oracle. Oracle ist jedoch nicht aus dem Flash-Recovery-Bereich wiederhergestellt, da es nicht den richtigen Dateinamen generieren kann. Idealerweise sollte der Flash-Recovery-Bereich als Ziel mit RMAN genutzt werden.
+
+*Verwandte Informationen*
+
+xref:task_creating_restore_specifications.adoc[Erstellen von Wiederherstellungsspezifikationen]

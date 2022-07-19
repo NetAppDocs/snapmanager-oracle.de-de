@@ -1,0 +1,21 @@
+---
+permalink: windows/task_deleting_profiles.html 
+sidebar: sidebar 
+keywords: delete, profile, anytime, successful, incomplete, backup, delete 
+summary: Sie können ein Profil jederzeit löschen, solange es keine erfolgreichen oder unvollständigen Backups enthält. Sie können Profile löschen, die freigegebene oder gelöschte Backups enthalten. 
+---
+= Profile werden gelöscht
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ein Profil jederzeit löschen, solange es keine erfolgreichen oder unvollständigen Backups enthält. Sie können Profile löschen, die freigegebene oder gelöschte Backups enthalten.
+
+. Um ein Profil zu löschen, geben Sie den folgenden Befehl ein:smo profile delete -profile profile profile_Name
+
+
+*Verwandte Informationen*
+
+xref:reference_the_smosmsapprofile_delete_command.adoc[Der Befehl smoprofile delete]

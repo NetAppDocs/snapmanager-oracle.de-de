@@ -1,0 +1,72 @@
+---
+permalink: unix-administration/reference_the_smosmsapprotection_policy_command.html 
+sidebar: sidebar 
+keywords: run, protection-policy, command, list, protection, policies, applied, smo 
+summary: Mit dem Befehl „Protection-Policy“ können Sie die Sicherheitsrichtlinien auflisten, die auf ein Profil angewendet werden können. Die Schutzrichtlinie kann angewendet werden, wenn ein neues Profil erstellt oder ein vorhandenes Profil aktualisiert wird. Sie können auch die Sicherungsrichtlinie für das Profil über die Protection Manager Konsole festlegen. 
+---
+= Der Befehl smo Protection-Policy
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit dem Befehl „Protection-Policy“ können Sie die Sicherheitsrichtlinien auflisten, die auf ein Profil angewendet werden können. Die Schutzrichtlinie kann angewendet werden, wenn ein neues Profil erstellt oder ein vorhandenes Profil aktualisiert wird. Sie können auch die Sicherungsrichtlinie für das Profil über die Protection Manager Konsole festlegen.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo protection-policy list
+----
+
+NOTE: Protection Manager und SnapDrive müssen auf dem Server installiert sein, damit Sie diesen Befehl verwenden können.
+
+
+
+== Parameter
+
+* *Liste*
++
+Zeigt die Liste der Schutzrichtlinien an, die in einem Profil festgelegt werden können.
+
+
+
+
+
+== Beispiel
+
+Im folgenden Beispiel werden die Sicherungsrichtlinien aufgeführt, die auf ein Profil festgelegt werden können:
+
+[listing]
+----
+ smo protection-policy list
+----
+[listing]
+----
+
+Back up
+Back up, then mirror
+Chain of two mirrors
+DR Back up
+DR Back up, then mirror
+DR Mirror
+DR Mirror and back up
+DR Mirror and mirror
+DR Mirror, then back up
+DR Mirror, then mirror
+Local backups only
+Mirror
+Mirror and back up
+Mirror to two destinations
+Mirror, then back up
+No protection
+Partial-volume Mirror
+Remote backups only
+----
+*Verwandte Informationen*
+
+xref:concept_managing_profiles_for_efficient_backups.adoc[Profilverwaltung für effiziente Backups]

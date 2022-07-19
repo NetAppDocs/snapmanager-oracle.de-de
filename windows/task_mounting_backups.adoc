@@ -1,0 +1,28 @@
+---
+permalink: windows/task_mounting_backups.html 
+sidebar: sidebar 
+keywords: snapmanager, automatic, handle, mount, backup, available, host, scenario, oracle, recovery, manager, rman 
+summary: 'SnapManager übernimmt automatisch das Mounten eines Backups, um es dem Host zur Verfügung zu stellen. Sie können Backups auch in Szenarien einbinden, in denen Sie ein externes Tool wie Oracle Recovery Manager (RMAN) für den Zugriff auf die Dateien im Backup verwenden.' 
+---
+= Montage von Backups
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager übernimmt automatisch das Mounten eines Backups, um es dem Host zur Verfügung zu stellen. Sie können Backups auch in Szenarien einbinden, in denen Sie ein externes Tool wie Oracle Recovery Manager (RMAN) für den Zugriff auf die Dateien im Backup verwenden.
+
+Wenn Sie RMAN verwenden, müssen Sie den Mount-Vorgang verwenden, um den Status eines Backups zu ändern (wodurch der Zugriff möglich ist) und den Unmount-Vorgang, um den Status eines Backups zu ändern (wodurch der Zugriff entfernt wird).
+
+Der Befehl smo Backup Mount zeigt eine Liste von Pfaden an, wo die Snapshot Kopien, die aus dem Backup bestehen, gemountet wurden.
+
+
+NOTE: Optional können Sie die Dump-Dateien nach einem erfolgreichen oder fehlgeschlagenen Backup-Mount-Vorgang sammeln.
+
+. Geben Sie zum Mounten eines Backups den folgenden Befehl ein: smo Backup Mount -profile profile_Name {labellabel [Data} -archivelogs] [-dump] [-quiet / -verbose]
+
+
+*Verwandte Informationen*
+
+xref:reference_the_smosmsapbackup_mount_command.adoc[Der Befehl smo Backup Mount]

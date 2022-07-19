@@ -1,0 +1,104 @@
+---
+permalink: unix-administration/task_freeing_backups.html 
+sidebar: sidebar 
+keywords: free, backup, delete, snapshot, copies, deleting, metadata, function 
+summary: Sie können Backups freigeben, die die Snapshot Kopien löschen, ohne die Backup-Metadaten zu löschen. Diese Funktion gibt den Speicherplatz frei, der durch das Backup belegt wird. Sie können den Smo-Backup-freien Befehl verwenden, um die Backups zu befreien. 
+---
+= So werden Backups entlastet
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können Backups freigeben, die die Snapshot Kopien löschen, ohne die Backup-Metadaten zu löschen. Diese Funktion gibt den Speicherplatz frei, der durch das Backup belegt wird. Sie können den Smo-Backup-freien Befehl verwenden, um die Backups zu befreien.
+
+Damit ein Backup zur Freigabe berechtigt ist, müssen Sie Folgendes sicherstellen:
+
+* Das Backup war erfolgreich
+* Backup soll nicht angehängt werden
+* Backup verfügt nicht über Klone
+* Der Backup darf nicht durch eine Richtlinie zur unbegrenzten Aufbewahrung beibehalten werden
+* Das Backup wird nicht bereits freigegeben
+
+
+Wenn die Sicherung im Profil aktiviert wird und die Sicherungsrichtlinie Verbindungen vom primären Node enthält, die eine Spiegelbeziehung verwenden, werden Snapshot-Kopien auf dem primären Node gelöscht, wenn ein Backup freigegeben wird. Diese Snapshot-Kopien werden auch bei der nächsten Übertragung zum sekundären Storage von den Spiegelknoten gelöscht.
+
+Wenn Sie ein geschütztes Backup freigeben, fordert SnapManager an, dass Protection Manager die lokalen Snapshot-Kopien für das Backup entfernt. Wenn der freie Backup-Vorgang für die geschützten Backups erfolgreich ist, werden die Snapshot Kopien asynchron durch den Protection Manager gelöscht.
+
+|===
+| Sicherungsstatus | Lokaler Status | Aktion für den Primär-Storage | Aktion auf dem sekundären Storage | Erklärung 
+
+
+ a| 
+Nicht angefordert (zu schützen)
+ a| 
+Vorhanden
+ a| 
+Nimmt das Backup frei
+ a| 
+Keine Aktion erforderlich
+ a| 
+SnapManager befreit das lokale Backup.
+
+
+
+ a| 
+Freigegeben
+ a| 
+Keine Aktion erforderlich
+ a| 
+Keine Aktion erforderlich
+ a| 
+Das lokale Backup wird bereits freigegeben.
+ a| 
+Nicht geschützt
+
+
+
+ a| 
+Vorhanden
+ a| 
+Nimmt das Backup frei
+ a| 
+Keine Aktion erforderlich
+ a| 
+SnapManager befreit das lokale Backup, auch wenn im sekundären Storage keine Kopien vorhanden sind.
+ a| 
+Freigegeben
+
+
+
+ a| 
+Keine Aktion erforderlich
+ a| 
+Keine Aktion erforderlich
+ a| 
+Das lokale Backup wird bereits freigegeben.
+ a| 
+Geschützt
+ a| 
+Vorhanden
+
+
+
+ a| 
+Nimmt das Backup frei
+ a| 
+Keine Aktion erforderlich; das Backup auf dem Sekundärsystem bleibt erhalten
+ a| 
+SnapManager befreit das lokale Backup. Kopien verbleiben auf dem sekundären Storage.
+ a| 
+Freigegeben
+ a| 
+Keine Aktion erforderlich
+
+|===
+Sie können die Option -dump als optionalen Parameter angeben, um die Dump-Dateien nach dem erfolgreichen oder fehlgeschlagenen freien Backup-Vorgang zu sammeln.
+
+. Geben Sie folgenden Befehl ein: smo Backup free -profilprofile_Name {-labellabel [Data} -archivelogs] [-quiet] [-Force]
+
+
+*Verwandte Informationen*
+
+xref:reference_the_smosmsapbackup_free_command.adoc[Der smo Backup kostenlose Befehl]

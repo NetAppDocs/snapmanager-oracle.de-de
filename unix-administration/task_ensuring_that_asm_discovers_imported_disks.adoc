@@ -1,0 +1,74 @@
+---
+permalink: unix-administration/task_ensuring_that_asm_discovers_imported_disks.html 
+sidebar: sidebar 
+keywords: automatic, storage, management, asm, nfs, environment, install, snapmanager, discover, import, disk, snapmanager 
+summary: 'Wenn Sie Automatic Storage Management \(ASM\) in einer NFS-Umgebung verwenden, müssen Sie nach der Installation von SnapManager sicherstellen, dass ASM die von SnapManager importierten Laufwerke erkennen kann. Dazu fügen Sie den Pfad des ASM-Verzeichnisses zum Parameter ASM_DISKSTRING hinzu.' 
+---
+= Sicherstellen, dass ASM importierte Festplatten erkennt
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn Sie in einer NFS-Umgebung Automatic Storage Management (ASM) verwenden, müssen Sie nach der Installation von SnapManager sicherstellen, dass ASM die von SnapManager importierten Laufwerke erkennen kann. Dazu fügen Sie den Pfad des ASM-Verzeichnisses zum Parameter ASM_DISKSTRING hinzu.
+
+Sie können Oracle Tools verwenden, um den Parameter ASM_DISKSTRING zu bearbeiten. Informationen zum Bearbeiten von ASM_DISKSTRING finden Sie in der Oracle-Dokumentation.
+
+Der ASM-Festplattenpfad /opt/NetApp/smo/mnt/*/*/Disk*' muss dem vorhandenen Pfad hinzugefügt werden, der im Parameter ASM_DISKSTRING definiert ist. Wenn der Pfad in ASM_DISKSTRING beispielsweise /mnt/my-asm-Disks/dir1/Disk* definiert war, wird der aktualisierte Pfad nach dem Hinzufügen des ASM-Festplattenpfads '/mnt/my-asm-Disks/dir1/Disk*,/opt/NetApp/smo/mnt/*/*/Disk*' sein.
+
+
+NOTE: Der Parameter ASM_DISKSTRING muss nur mit den ASM-Festplattendateien und nicht mit anderen Dateien übereinstimmen.
+
+* Das erste Sternchen (*) gibt den von SnapManager für den Root-Mount-Punkt generierten Namen an.
+* Das zweite * zeigt das Verzeichnis innerhalb des Mount-Punkts an.
+* Der dritte * gibt den Namen der NFS-Datei an.
+
+
+Sie müssen sicherstellen, dass das * mit der Topologie Ihres NFS-Dateisystems übereinstimmt, wenn die Festplatte in die Verzeichnisse unter /opt/NetApp/smo/mnt/<smo-generated-Name>/ eingebunden ist.
+
+. Wenn Sie ASM-Disks mit NFS in der Network Attached Storage (NAS)-Umgebung verwenden, bearbeiten Sie den Parameter ASM_DISKSTRING, sodass er auf den aktuellen ASM-Verzeichnispfad zeigt.
++
+Wenn der Mount-Punkt für die ASM-Disks /mnt/my-asm-Disks/*/Disk* ist, nach dem Bearbeiten von ASM_DISKSTRING der aktualisierte Pfad /opt/NetApp/smo/mnt/my-asm-Disks-20081012/disk1.nfs. Der Parameter ASM_DISKSTRING befindet sich in der Form /opt/NetApp/smo/mnt/*/Disk*.
+
++
+** Das erste * entspricht my-asm-Disks-20081012.
+** Die Festplatte* stimmt mit disk1.nfs überein. Nach der Bearbeitung des Parameters ASM_DISKSTRING sind die Ergebnisse von ASM Erkennung der von SnapManager importierten Platten wie folgt:
+** Klon von ASM auf NFS-Festplatten1 ist /opt/NetApp/smo/mnt/-mnt-my-asm-Disks-20081012/dir1/disk1.nfs.
+** Klon von ASM auf NFS-Festplatten2 ist /opt/NetApp/smo/mnt/-mnt-my-asm-Disks-20081012/dir1/disk2.nfs. Der Parameter ASM_DISKSTRING lautet in dem Formular /opt/NetApp/smo/mnt/*/*/Disk*.
+** Die erste * stimmt -mnt-my-asm-Disks-20081012 überein.
+** Das zweite * entspricht dir1.
+** Das dritte * stimmt disk1.nfs und disk2.nfs überein.
+
+
+. Wenn Sie ASM-Laufwerke in der SAN-Umgebung (Storage Area Network) verwenden, führen Sie je nach Umgebung einen der folgenden Schritte aus:
++
+|===
+| Wenn Sie ASM-Disks mit verwenden... | Dann... 
+
+
+ a| 
+ASMLib über FCP und iSCSI unter Linux
+ a| 
+Ändern Sie die Berechtigung des Oracle-Softwareigners und der primären Gruppe des Benutzers, indem Sie nur das Zeichengerät verwenden. Der Pfad ASM_DISKSTRING muss ASM DISKSTRING = ORCL:* sein.
+
+
+
+ a| 
+FCP und iSCSI auf AIX
+ a| 
+Fügen Sie den Pfadnamen für den Parameter ASM_DISKSTRING bis zum Pfad des ASM-Verzeichnisses hinzu. Der Pfad ASM_DISKSTRING muss ASM DISKSTRING = /dev/hdsk/* sein, wobei * den ASM-Festplattennamen angibt.
+
+
+
+ a| 
+FCP und iSCSI auf Solaris
+ a| 
+Fügen Sie den Pfadnamen für den Parameter ASM_DISKSTRING bis zum Pfad des ASM-Verzeichnisses hinzu. Der Pfad ASM_DISKSTRING muss ASM DISKSTRING = /dev/rdsk/* sein, wobei * den ASM-Festplattennamen angibt.
+
++
+
+|===
+
+
+http://www.oracle.com/technetwork/indexes/documentation/index.html["Oracle Dokumentation: www.oracle.com/technetwork/indexes/documentation/index.html"]

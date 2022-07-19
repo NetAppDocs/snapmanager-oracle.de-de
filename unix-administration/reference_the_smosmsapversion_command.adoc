@@ -1,0 +1,50 @@
+---
+permalink: unix-administration/reference_the_smosmsapversion_command.html 
+sidebar: sidebar 
+keywords: run, version, command, determine, snapmanager, local, host, smo 
+summary: Sie können den Versionsbefehl ausführen, um festzulegen, welche Version von SnapManager Sie auf Ihrem lokalen Host ausführen. 
+---
+= Der Befehl smo Version
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Versionsbefehl ausführen, um festzulegen, welche Version von SnapManager Sie auf Ihrem lokalen Host ausführen.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo version
+\[-quiet \| -verbose\]
+----
+
+
+== Parameter
+
+* *-ruhig*
++
+Zeigt nur Fehlermeldungen in der Konsole an. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Zeigt das Erstellungsdatum und den Inhalt der einzelnen Profile an. Zeigt auch Fehler-, Warn- und Informationsmeldungen in der Konsole an.
+
+
+
+
+
+== Beispiel des Versionsbefehls
+
+Im folgenden Beispiel wird die Version des SnapManager angezeigt:
+
+[listing]
+----
+smo version
+SnapManager for Oracle Version: 3.3.1
+----

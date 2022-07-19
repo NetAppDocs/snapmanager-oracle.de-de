@@ -1,0 +1,35 @@
+---
+permalink: unix-administration/reference_the_smosmsap_schedule_list_command.html 
+sidebar: sidebar 
+keywords: command, list, schedule, operation, associate, profile 
+summary: Mit diesem Befehl werden die geplanten Vorgänge aufgelistet, die einem Profil zugeordnet sind. 
+---
+= Der Befehl smo schedule list
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit diesem Befehl werden die geplanten Vorgänge aufgelistet, die einem Profil zugeordnet sind.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo schedule list
+-profile profile_name
+\[-quiet \| -verbose\]
+----
+
+
+== Parameter
+
+* *-profile Profile_Name*
++
+Gibt den Namen des Profils für die Datenbank an, mit dem Sie eine Liste geplanter Vorgänge anzeigen können. Das Profil enthält die Kennung der Datenbank und andere Datenbankinformationen.
+
+

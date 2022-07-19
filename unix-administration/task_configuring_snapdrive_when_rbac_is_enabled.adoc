@@ -1,0 +1,39 @@
+---
+permalink: unix-administration/task_configuring_snapdrive_when_rbac_is_enabled.html 
+sidebar: sidebar 
+keywords: role-based, access, control, rbac, enable, configure, datafabric, manager, capabilities, manager, server, snapdrive 
+summary: 'Wenn die rollenbasierte Zugriffssteuerung \(RBAC\) aktiviert ist, müssen Sie den DataFabric Manager Server so konfigurieren, dass die RBAC-Funktionen enthalten sind. Sie müssen auch den im DataFabric Manager Server erstellten SnapDrive-Benutzer und den Root-Benutzer des Storage-Systems in SnapDrive registrieren.' 
+---
+= Konfiguration des DataFabric Manager-Servers und des SnapDrive, wenn die RBAC aktiviert ist
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn die rollenbasierte Zugriffssteuerung aktiviert ist, müssen Sie den DataFabric Manager Server so konfigurieren, dass die RBAC-Funktionen enthalten sind. Sie müssen auch den im DataFabric Manager Server erstellten SnapDrive-Benutzer und den Root-Benutzer des Storage-Systems in SnapDrive registrieren.
+
+. Konfigurieren Sie den DataFabric Manager Server.
++
+.. Um den DataFabric Manager-Server zu aktualisieren, um die Änderungen, die direkt auf dem Storage-System durch die Ziel-Datenbank vorgenommen wurden, zu aktualisieren, geben Sie den folgenden Befehl ein:dfm Host discover Storage_System
+.. Erstellen Sie einen neuen Benutzer im DataFabric Manager-Server, und legen Sie das Passwort fest.
+.. Geben Sie zum Hinzufügen des Betriebssystembenutzers zur DataFabric Manager Server-Administratorliste den folgenden Befehl ein:dfm user add sd-admin
+.. Geben Sie zum Erstellen einer neuen Rolle im DataFabric Manager-Server den folgenden Befehl ein: dfm Role create sd-admin-role
+.. Um die Funktion DFM.Core.AccessCheck Global zur Rolle hinzuzufügen, geben Sie den folgenden Befehl ein:dfm-Rolle hinzufügen sd-admin-role DFM.Core.AccessCheck Global
+.. Geben Sie den folgenden Befehl ein, um dem Benutzer des Betriebssystems eine sd-Admin-Rolle hinzuzufügen:dfm-Benutzerrolle Set sd-adminsd-admin-role
+.. Geben Sie den folgenden Befehl ein, um eine weitere Rolle im DataFabric Manager Server für den SnapDrive-Root-Benutzer zu erstellen: dfm Role create sd-protect
+.. Um der Rolle, die für den SnapDrive-Root-Benutzer oder den Administrator erstellt wurde, RBAC-Funktionen hinzuzufügen, geben Sie die folgenden Befehle ein:dfm-Rolle hinzufügen sd-Protect SD.Config.Globaldfm lesen Rolle hinzufügen sd-protect SD.Config hinzufügen Globaldfm Rolle hinzufügen sd-Protect SD.Config.Globaldfm-Rolle löschen SD-Schutz hinzufügen SD.Database.Write Globaldfm-Rolle hinzufügen
+.. Um den oracle-Benutzer der Zieldatenbank zur Liste der Administratoren im DataFabric Manager Server hinzuzufügen und die sd-Protect-Rolle zu zuweisen, geben Sie den folgenden Befehl ein:dfm user add -r sd-protecttardb_host1\oracle
+.. Geben Sie zum Hinzufügen des von der Zieldatenbank verwendeten Speichersystems im DataFabric Manager-Server den folgenden Befehl ein:dfm Host set Storage_System hostLogin=oracle hostPassword=password
+.. Geben Sie zum Erstellen einer neuen Rolle in dem Storage-System, das von der Zieldatenbank im DataFabric Manager-Server verwendet wird, den folgenden Befehl ein:dfm Host Role create -h Storage_System-c „API-*,Login-*“ Storage-rbac-Role
+.. Geben Sie zum Erstellen einer neuen Gruppe im Speichersystem und Zuweisen der neuen Rolle, die im DataFabric Manager Server erstellt wurde, den folgenden Befehl ein:dfm Host usergroup create -h Storage_System-r Storage-rbac-rolestorage-rbac-Group
+.. Um einen neuen Benutzer im Storage-System zu erstellen und die neue Rolle und die im DataFabric Manager Server erstellte Gruppe zuzuweisen, geben Sie den folgenden Befehl ein:dfm Host user create -h Storage_System-r Storage-rbac-Role -p password -g Storage-rbac-grouptardb_host1
+
+
+. Konfigurieren Sie SnapDrive.
++
+.. Geben Sie den folgenden Befehl ein, um die Anmeldedaten des sd-Admin-Benutzers mit SnapDrive zu registrieren: snapdrive config set -dfm sd-admindfm_Host
+.. Um den Root-Benutzer oder den Administrator des Speichersystems mit SnapDrive zu registrieren, geben Sie den folgenden Befehl ein:snapdrive config set tardb_Host 1stenorage_System
+
+
+

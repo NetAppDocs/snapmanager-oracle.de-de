@@ -1,0 +1,23 @@
+---
+permalink: unix-administration/task_using_snapmanager_for_oracle_to_confirm_backup_protection.html 
+sidebar: sidebar 
+keywords: snapmanager, oracle, backup, associate, profile, determine, protection 
+summary: 'Mit SnapManager für Oracle können Sie eine Liste der mit einem Profil verknüpften Backups anzeigen, bestimmen, ob die Backups für den Schutz aktiviert wurden, und die Aufbewahrungsklasse \ (täglich oder wöchentlich, in diesem Beispiel\) anzeigen.' 
+---
+= Bestätigen Sie den Backup-Schutz mit SnapManager für Oracle
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit SnapManager für Oracle können Sie eine Liste der mit einem Profil verknüpften Backups anzeigen, bestimmen, ob die Backups für den Schutz aktiviert wurden, und die Aufbewahrungsklasse (in diesem Beispiel täglich oder wöchentlich) anzeigen.
+
+Zunächst wird das neue Backup in diesem Beispiel als geplant für den Schutz angezeigt, aber noch nicht geschützt (in der grafischen Benutzeroberfläche des SnapManager und in der Ausgabe des Backup show-Befehls). Nachdem der Storage-Administrator sicherstellt, dass das Backup in den sekundären Storage kopiert wurde, ändert SnapManager den Backup-Sicherungsstatus sowohl in der grafischen Benutzeroberfläche als auch mit dem Befehl der Backup-Liste von „nicht geschützt“ in „geschützt“.
+
+. Wechseln Sie zum SnapManager für Oracle Client.
+. Erweitern Sie in der Struktur des SnapManager-Repository das Profil, um seine Backups anzuzeigen.
+. Klicken Sie auf die Registerkarte *Backups/Klone*.
+. Wählen Sie im Fensterbereich Berichte die Option *Backup Details* aus.
+. Überprüfen Sie in der Spalte Schutz, und stellen Sie sicher, dass der Status „geschützt“ lautet.
+

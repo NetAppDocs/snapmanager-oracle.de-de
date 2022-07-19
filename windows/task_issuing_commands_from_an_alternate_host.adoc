@@ -1,0 +1,19 @@
+---
+permalink: windows/task_issuing_commands_from_an_alternate_host.html 
+sidebar: sidebar 
+keywords: issue, cli, command, host, database, snapmanager, route, appropriate, issuing, alternate 
+summary: Sie können CLI-Befehle von einem anderen Host als dem Datenbank-Host ausführen, und SnapManager führt die Befehle durch, die Sie an den entsprechenden Host eingeben. 
+---
+= Befehle von einem alternativen Host ausgeben
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können CLI-Befehle von einem anderen Host als dem Datenbank-Host ausführen, und SnapManager führt die Befehle durch, die Sie an den entsprechenden Host eingeben.
+
+Damit das System einen Vorgang an den richtigen Host sendet, muss es zunächst wissen, wo das Profil für den Vorgang gefunden werden soll. In diesem Verfahren speichert das System das Profil in Repository-Zuordnungsinformationen für eine Datei im Home-Verzeichnis des Benutzers auf dem lokalen Host.
+
+. Um das Home-Verzeichnis des lokalen Benutzers auf die Profil-zu-Repository-Zuordnungen aufmerksam zu machen, damit die Operation Request umleiten kann, geben Sie den folgenden Befehl ein: smo-Profil Sync -Repository-dbname repo_dbname-Host repo_Host-Port repo_Port-Login-username repo_username [-quiet_inverbose]
+

@@ -1,0 +1,20 @@
+---
+permalink: unix-installation-7mode/task_preparing_for_deployment.html 
+sidebar: sidebar 
+keywords: before, deploy, snapmanager, storage, system, unix, host, minimum, resource, requirements, preparing, deployment 
+summary: Bevor Sie SnapManager bereitstellen, müssen Sie sicherstellen, dass Ihr Speichersystem und UNIX-Hosts die Mindestanforderungen für die Ressourcen erfüllen. 
+---
+= Bereitstellung wird vorbereitet
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie SnapManager bereitstellen, müssen Sie sicherstellen, dass Ihr Speichersystem und UNIX-Hosts die Mindestanforderungen für die Ressourcen erfüllen.
+
+. Stellen Sie sicher, dass Sie über die erforderlichen Lizenzen verfügen.
+. Überprüfen Sie die unterstützten Konfigurationen.
+. Überprüfen Sie die unterstützten Speichertypen.
+. Vergewissern Sie sich, dass Ihre UNIX Hosts die SnapManager-Anforderungen erfüllen.
+

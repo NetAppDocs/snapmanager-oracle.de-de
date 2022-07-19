@@ -1,0 +1,14 @@
+---
+permalink: unix-installation-7mode/index.html 
+sidebar: sidebar 
+keywords: installation, setup, guide, unix 
+summary: SnapManager für Oracle 3.4.2 nstallation and Setup Guide for UNIX® 
+---
+= Installations- und Setup-Handbuch für UNIX®
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dieser Leitfaden enthält die ersten Aufgaben, die Sie zur Bereitstellung von SnapManager 3.4.2 für Oracle mit Data ONTAP im 7-Mode in einer UNIX-Umgebung durchführen müssen. Die Themen umfassen die Installation und Konfiguration des Produkts sowie die Sicherung der Datenbanken.

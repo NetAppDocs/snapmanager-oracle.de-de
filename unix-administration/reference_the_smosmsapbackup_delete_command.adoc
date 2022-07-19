@@ -1,0 +1,93 @@
+---
+permalink: unix-administration/reference_the_smosmsapbackup_delete_command.html 
+sidebar: sidebar 
+keywords: run, backup, delete, command, remove, automatic, clone, unlimited, basis, retention, class 
+summary: Sie können den Befehl zum Löschen von Backups ausführen, um Backups zu entfernen, die nicht automatisch entfernt werden, z. B. Backups, die zum Erstellen eines Klons oder einer fehlgeschlagenen Backups verwendet wurden. Sie können Backups, die unbegrenzt aufbewahrt werden, ohne die Aufbewahrungsklasse zu ändern. 
+---
+= Der Befehl smo Backup delete
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Befehl zum Löschen von Backups ausführen, um Backups zu entfernen, die nicht automatisch entfernt werden, z. B. Backups, die zum Erstellen eines Klons oder einer fehlgeschlagenen Backups verwendet wurden. Sie können Backups, die unbegrenzt aufbewahrt werden, ohne die Aufbewahrungsklasse zu ändern.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo backup delete
+-profile profile_name
+[-label label \[-data \| -archivelogs\] \| \[-id guid \| -all\]
+-force
+\[-dump\]
+\[-quiet \| -verbose\]
+----
+
+
+== Parameter
+
+* *-profile Profile_Name*
++
+Gibt die Datenbank an, die mit dem Backup verknüpft ist, das Sie entfernen möchten. Das Profil enthält die Kennung der Datenbank und andere Datenbankinformationen.
+
+* *-id-Guid*
++
+Gibt das Backup mit der angegebenen GUID an. Die GUID wird von SnapManager beim Erstellen eines Backups generiert. Sie können den Befehl smo Backup list verwenden, um die GUID für jedes Backup anzuzeigen.
+
+* * Label*
++
+Gibt das Backup mit der angegebenen Bezeichnung an. Geben Sie optional den Umfang des Backups als Datendatei oder Archivprotokoll an.
+
+* *-Daten*
++
+Gibt die Datendateien an.
+
+* *-Archivprotokolle*
++
+Gibt die Archivprotokolldateien an.
+
+* *-alle*
++
+Gibt alle Backups an. Verwenden Sie zum Löschen nur der angegebenen Backups die Option -id oder -Label.
+
+* *-dump*
++
+Sammelt die Speicherauszugsdateien nach einem erfolgreichen oder fehlgeschlagenen Backup-Löschvorgang.
+
+* *-Force*
++
+Erzwingt das Entfernen der Sicherung. SnapManager entfernt das Backup, selbst wenn es Probleme gibt, die mit dem Backup verbundenen Ressourcen freisetzen. Wenn das Backup beispielsweise mit dem Oracle Recovery Manager (RMAN) katalogisiert wurde, aber die RMAN-Datenbank nicht mehr existiert, einschließlich -Force löscht das Backup, obwohl es keine Verbindung mit RMAN herstellen kann.
+
+* *-ruhig*
++
+Zeigt nur Fehlermeldungen in der Konsole an. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Zeigt Fehler-, Warn- und Informationsmeldungen in der Konsole an.
+
+
+
+
+
+== Beispiel
+
+Im folgenden Beispiel wird das Backup gelöscht:
+
+[listing]
+----
+smo backup delete -profile SALES1 -label full_backup_sales_May
+Operation Id [8abc01ec0e79004b010e79006da60001] succeeded.
+----
+*Verwandte Informationen*
+
+xref:task_deleting_backups.adoc[Backups werden gelöscht]
+
+xref:reference_the_smosmsapprofile_create_command.adoc[Der Befehl smo profile create]
+
+xref:reference_the_smosmsapprofile_update_command.adoc[Der Befehl smoprofile Update]

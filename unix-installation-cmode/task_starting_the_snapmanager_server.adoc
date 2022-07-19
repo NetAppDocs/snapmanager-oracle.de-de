@@ -1,0 +1,29 @@
+---
+permalink: unix-installation-cmode/task_starting_the_snapmanager_server.html 
+sidebar: sidebar 
+keywords: start, snapmanager, server, target, database, host, smo 
+summary: Sie müssen den SnapManager-Server vom Ziel-Datenbank-Host starten. 
+---
+= Starten des SnapManager-Servers
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie müssen den SnapManager-Server vom Ziel-Datenbank-Host starten.
+
+. Melden Sie sich beim Ziel-Datenbank-Host an und starten Sie den SnapManager-Server:
+`smo_server start`
++
+Die folgende Meldung wird angezeigt: SnapManager-Server wurde auf sicherem Port_number mit PID PID_number gestartet.
+
++
+
+NOTE: Der Standardport ist 27214.
+
+
+
+Sie können überprüfen, ob SnapManager ordnungsgemäß ausgeführt wird: smo System Verify
+
+Die folgende Meldung wird angezeigt: Operation ID Operation_ID_number erfolgreich.

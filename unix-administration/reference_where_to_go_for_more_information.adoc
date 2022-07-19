@@ -1,0 +1,78 @@
+---
+permalink: unix-administration/reference_where_to_go_for_more_information.html 
+sidebar: sidebar 
+keywords: information, basic, task, involve, install, snapmanager 
+summary: Hier finden Sie Informationen zu den grundlegenden Aufgaben, die bei der Installation und Verwendung von SnapManager anfallen. 
+---
+= Weitere Informationen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Hier finden Sie Informationen zu den grundlegenden Aufgaben, die bei der Installation und Verwendung von SnapManager anfallen.
+
+|===
+| Dokument An | Beschreibung 
+
+
+ a| 
+Beschreibungsseite „SnapManager“
+ a| 
+Auf dieser Seite finden Sie Informationen über SnapManager, Verweise auf Online-Dokumentationen und einen Link zur SnapManager Download-Seite, von der aus Sie die Software herunterladen können.
+
+
+
+ a| 
+_Data ONTAP-SAN-Konfigurationsleitfaden für 7-Mode_
+ a| 
+Dieses Dokument ist unter verfügbar http://mysupport.netapp.com/["mysupport.netapp.com"].
+
+Es handelt sich um ein dynamisches Online-Dokument mit aktuellsten Informationen zu den Anforderungen für das Einrichten eines Systems in einer SAN-Umgebung. Er liefert die aktuellen Details zu Storage-Systemen und Host-Plattformen, Verkabelungsproblemen, Switch-Problemen und Konfigurationen.
+
+
+
+ a| 
+Kompatibilitätsmatrix für SnapManager und SnapDrive
+ a| 
+Dieses Dokument ist im Abschnitt Interoperabilität verfügbar unter http://mysupport.netapp.com/matrix["mysupport.netapp.com/matrix"].
+
+Es handelt sich um ein dynamisches Online-Dokument, das die aktuellsten Informationen enthält, die für SnapManager und seine Plattformanforderungen spezifisch sind.
+
+
+
+ a| 
+Versionshinweise zu SnapManager
+ a| 
+Dieses Dokument ist mit SnapManager erhältlich. Sie können auch eine Kopie von herunterladen http://mysupport.netapp.com/["mysupport.netapp.com"]. Es enthält alle Last-Minute-Informationen, damit die Konfiguration reibungslos ausgeführt werden kann.
+
+
+
+ a| 
+Dokumentation von NetApp Host-Anschluss und Support-Kits
+ a| 
+http://mysupport.netapp.com/["mysupport.netapp.com"].
+
+
+
+ a| 
+_Systemkonfigurationshandbuch_
+ a| 
+http://mysupport.netapp.com/["mysupport.netapp.com"].
+
+
+
+ a| 
+Data ONTAP Block Access Management-Leitfaden
+ a| 
+http://mysupport.netapp.com/["mysupport.netapp.com"]
+
+
+
+ a| 
+Informationen zu Host-Betriebssystem und Datenbank
+ a| 
+Diese Dokumente enthalten Informationen zu Ihrem Host-Betriebssystem und Ihrer Datenbanksoftware.
+
+|===

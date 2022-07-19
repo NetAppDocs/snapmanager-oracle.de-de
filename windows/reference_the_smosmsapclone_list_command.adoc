@@ -1,0 +1,68 @@
+---
+permalink: windows/reference_the_smosmsapclone_list_command.html 
+sidebar: sidebar 
+keywords: command, list, clone, database 
+summary: Dieser Befehl listet die Klone der Datenbank für ein bestimmtes Profil auf. 
+---
+= Der Befehl smo Clone list
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dieser Befehl listet die Klone der Datenbank für ein bestimmtes Profil auf.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo clone list
+-profile profile_name
+-delimiter character
+\[-quiet \| -verbose\]
+----
+
+
+== Parameter
+
+* *-profile Profile_Name*
++
+Gibt die Liste der mit dem Profil verknüpften Klone an. Das Profil enthält die Kennung der Datenbank und andere Datenbankinformationen.
+
+* *-Trennzeichen*
++
+Wenn dieser Parameter angegeben wird, führt der Befehl die Attribute in jeder Zeile durch das angegebene Zeichen getrennt auf.
+
+* *-ruhig*
++
+Zeigt nur Fehlermeldungen auf der Konsole an. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Zeigt Fehler-, Warn- und Informationsmeldungen an der Konsole an.
+
+
+
+
+
+== Beispielbefehl
+
+Im folgenden Beispiel werden die Datenbankklone im SALES1-Profil aufgeführt.
+
+[listing]
+----
+smo clone list -profile SALES1 -verbose
+----
+[listing]
+----
+ID Status SID Host Label Comment
+-------- ------- ----- ------- ---------- -------
+8ab...01 SUCCESS hsdbc server1 back1clone test comment
+----
+*Verwandte Informationen*
+
+xref:task_viewing_a_list_of_clones.adoc[Anzeigen einer Liste von Klonen]

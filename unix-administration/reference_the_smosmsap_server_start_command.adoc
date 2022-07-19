@@ -1,0 +1,50 @@
+---
+permalink: unix-administration/reference_the_smosmsap_server_start_command.html 
+sidebar: sidebar 
+keywords: command, start, host, server, run, snapmanager, oracle, software, smo 
+summary: Mit diesem Befehl wird der Host-Server gestartet, auf dem die SnapManager für Oracle-Software ausgeführt wird. 
+---
+= Der Befehl smo_Server Start
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit diesem Befehl wird der Host-Server gestartet, auf dem die SnapManager für Oracle-Software ausgeführt wird.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo_server start
+\[-quiet \| -verbose\]
+----
+
+
+== Parameter
+
+* *-ruhig*
++
+Gibt an, dass nur Fehlermeldungen auf der Konsole angezeigt werden. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Gibt an, dass Fehler-, Warn- und Informationsmeldungen auf der Konsole angezeigt werden.
+
+
+
+
+
+== Beispielbefehl
+
+Das folgende Beispiel startet den Host-Server.
+
+[listing]
+----
+smo_server start
+SMO-17100: SnapManager Server started on secure port 25204 with PID 11250
+----

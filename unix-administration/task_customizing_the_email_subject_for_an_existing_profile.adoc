@@ -1,0 +1,26 @@
+---
+permalink: unix-administration/task_customizing_the_email_subject_for_an_existing_profile.html 
+sidebar: sidebar 
+keywords: snapmanager, enable, customize, email, subject, pattern, exist, profile, smo 
+summary: SnapManager ermöglicht Ihnen, das Muster des E-Mail-Betreff für ein bestehendes Profil anzupassen, indem Sie dieses Profil aktualisieren. Dieses benutzerdefinierte Muster für Studienteilnehmer gilt nur für das aktualisierte Profil. 
+---
+= Anpassen des E-Mail-Betreff für ein vorhandenes Profil
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager ermöglicht Ihnen, das Muster des E-Mail-Betreff für ein bestehendes Profil anzupassen, indem Sie dieses Profil aktualisieren. Dieses benutzerdefinierte Muster für Studienteilnehmer gilt nur für das aktualisierte Profil.
+
+. Geben Sie den folgenden Befehl ein: smo-Profil-Update -profilprofil [-profile-passwordprofile_password][-Database-dbnamedb_dbname-Host db_Host [-siddb_sid] [-Login -usernamedb_username-adressyword-contail [-{] [-commentail] [-{ commentail-dnosrims2] [-{ commentail}}}] [-] [-] [-] [-]]]] [-assogame-commentail-bosrimpromnection[-] [-] [-] [-] [-] [-] [-] [-] [-]]]]] [-]]] [-assofundintosrimnoimnectumnectumprotos2] [-commented-commented-[-commproperation[-] [-commgmn.jur-] [-] [-] [-] [-] [-] [
+
+
+Das folgende Beispiel zeigt ein Muster für E-Mail-Betreff:
+
+[listing]
+----
+
+smo profile update -profile sales1 -profile-password sales1 -repository -dbname repo2 -host 10.72.197.133 -port 1521 -login -username admin2 -database -dbname DB1 -host 10.72.197.142 -sid DB1
+-osaccount oracle -osgroup dba -profile-notification -success -email admin@org.com -subject {profile}_{operation-name}_{db-sid}_{db-host}_{start-date}_{end-date}_{status}
+----

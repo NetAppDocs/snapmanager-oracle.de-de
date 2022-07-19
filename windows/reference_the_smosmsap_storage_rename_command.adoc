@@ -1,0 +1,64 @@
+---
+permalink: windows/reference_the_smosmsap_storage_rename_command.html 
+sidebar: sidebar 
+keywords: command, update, name, ip, address, storage, system, rename, smo 
+summary: Dieser Befehl aktualisiert den Namen oder die IP-Adresse des Speichersystems. 
+---
+= Der Befehl smo Storage umbenennen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dieser Befehl aktualisiert den Namen oder die IP-Adresse des Speichersystems.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo storage rename
+-profile profile
+-oldname old_storage_name
+-newname new_storage_name
+\[-quiet \| -verbose\]
+----
+
+
+== Parameter
+
+* *-Profil*
++
+Gibt den Namen des Profils an. Dieser Name kann bis zu 30 Zeichen lang sein und muss innerhalb des Hosts eindeutig sein.
+
+* *-oldname old_Storage_Name*
++
+Gibt die IP-Adresse oder den Namen des Storage-Systems an, bevor das Storage-System umbenannt wird. Sie müssen die IP-Adresse oder den Namen des Speichersystems eingeben, die angezeigt wird, wenn Sie den Befehl smoStorage list ausführen.
+
+* *-newname New_Storage_Name*
++
+Gibt die IP-Adresse oder den Namen des Storage-Systems nach der Umbenennung des Storage-Systems an.
+
+* *-ruhig*
++
+Zeigt nur Fehlermeldungen in der Konsole an. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Zeigt Fehler-, Warn- und Informationsmeldungen in der Konsole an.
+
+
+
+
+
+== Beispiel
+
+Im folgenden Beispiel wird der Befehl smo Storage umbenennen, um das Speichersystem umzubenennen:
+
+[listing]
+----
+smo storage rename -profile mjullian -oldname lech -newname hudson -verbose
+----

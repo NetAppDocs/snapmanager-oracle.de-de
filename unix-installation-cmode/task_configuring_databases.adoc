@@ -1,0 +1,14 @@
+---
+permalink: unix-installation-cmode/task_configuring_databases.html 
+sidebar: sidebar 
+keywords: configure, oracle, database, target, snapmanager, repository 
+summary: Sie müssen mindestens zwei Oracle Datenbanken, eine Zieldatenbank, die Sie mit SnapManager sichern möchten, und eine Repository-Datenbank zum Speichern der Zieldatenbank-Metadaten konfigurieren. Die Zieldatenbank und die SnapManager Repository-Datenbank müssen konfiguriert und online sein, bevor SnapManager Vorgänge durchgeführt werden können. 
+---
+= Datenbanken werden konfiguriert
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie müssen mindestens zwei Oracle Datenbanken konfigurieren: Eine Zieldatenbank, die Sie mit SnapManager sichern möchten, und eine Repository-Datenbank zum Speichern der Metadaten der Zieldatenbank. Die Zieldatenbank und die SnapManager Repository-Datenbank müssen konfiguriert und online sein, bevor SnapManager Vorgänge durchgeführt werden können.

@@ -1,0 +1,32 @@
+---
+permalink: unix-administration/concept_support_for_asm_databases_without_asmlib.html 
+sidebar: sidebar 
+keywords: snapmanager, asm, asmlib, requirement, asm, disk, group, primary, storage, vbsr, secondary 
+summary: SnapManager unterstützt standardmäßig ASM ohne ASMLib. Die grundlegende Voraussetzung ist, dass die Geräte, die für ASM-Laufwerksgruppen verwendet werden, partitioniert werden müssen. 
+---
+= Unterstützung für ASM-Datenbanken ohne ASMLib
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager unterstützt standardmäßig ASM ohne ASMLib. Die grundlegende Voraussetzung ist, dass die Geräte, die für ASM-Laufwerksgruppen verwendet werden, partitioniert werden müssen.
+
+Wenn ASMLib nicht installiert ist, werden die Geräteberechtigungen für ASM-Laufwerksgruppen in root:Disk geändert, wenn Sie die folgenden Vorgänge ausführen:
+
+* Starten Sie den Host neu
+* Wiederherstellen einer Datenbank aus dem primären Storage mithilfe von Volume-basierten SnapRestore (VBSR)
+* Wiederherstellung einer Datenbank aus dem sekundären Storage
+
+
+Sie können die entsprechenden Geräteberechtigungen festlegen, indem Sie der Konfigurationsoption oracleasm.Support.without.asmlib in smo.conf True zuweisen. Die mit den ASM-Laufwerksgruppen verbundenen Geräte werden beim Hinzufügen oder Entfernen neuer Geräte vom Host hinzugefügt oder aus der Datei initasmdisk entfernt. Die Datei initasmdics befindet sich unter /etc/initasmDisks.
+
+Wenn Sie beispielsweise oracleasm.Support.without.asmlib=true festlegen und anschließend eine Sicherungshalterung durchführen, werden neue Geräte zu initasmDisks hinzugefügt. Beim Neustart des Hosts werden die Geräteberechtigungen und die Eigentumsrechte von den Startskripten beibehalten.
+
+
+NOTE: Der Standardwert für oracleasm.Support.without.asmlib ist false.
+
+*Verwandte Informationen*
+
+xref:reference_supported_partition_devices.adoc[Unterstützte Partitionsgeräte]

@@ -1,0 +1,17 @@
+---
+permalink: windows/task_purging_history_of_snapmanager_operation.html 
+sidebar: sidebar 
+keywords: delete, history, snapmanager, operation, detail, deleting 
+summary: Sie können den Verlauf des SnapManager-Vorgangs löschen, wenn Sie keine Verlaufsdetails mehr benötigen. 
+---
+= Löschen des Verlaufs des SnapManager-Vorgangs
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Verlauf des SnapManager-Vorgangs löschen, wenn Sie keine Verlaufsdetails mehr benötigen.
+
+. Um den Verlauf der SnapManager-Operation zu löschen, geben Sie folgenden Befehl ein: smo-History purge -profile {-Name, profile_nameprofile_name1, profile_name2] All-Repository-Login [-passwordrepo_password] -usernamerepo_username-dbnamerepo_dbname_portrepo_Port} -Operation {}-namense1_Operation_Name [Operation_nece1]
+

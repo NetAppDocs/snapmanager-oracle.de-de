@@ -1,0 +1,23 @@
+---
+permalink: windows/task_unmounting_backups.html 
+sidebar: sidebar 
+keywords: snapmanager, automatic, unmount, backup, unavailable, host, server, remove, access 
+summary: 'SnapManager hängt automatisch das Backup ab, damit es nicht auf dem Host-Server verfügbar ist. Mit SnapManager können Sie auch die Einbindung aufheben, wenn Sie ein externes Tool wie beispielsweise den Oracle Recovery Manager (RMAN) verwenden, um auf die Dateien im Backup zuzugreifen und den Zustand des Backups zu ändern, um den Zugriff zu entfernen.' 
+---
+= UnMounten von Backups
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager hängt automatisch das Backup ab, damit es nicht auf dem Host-Server verfügbar ist. Mit SnapManager können Sie auch die Einbindung aufheben, wenn Sie ein externes Tool wie beispielsweise den Oracle Recovery Manager (RMAN) verwenden, um auf die Dateien im Backup zuzugreifen und den Zustand des Backups zu ändern, um den Zugriff zu entfernen.
+
+Optional können Sie die Dump-Dateien nach einem erfolgreichen oder fehlgeschlagenen Unmount-Backup sammeln.
+
+. Geben Sie folgenden Befehl ein: smo Backup unmount -profile Profile_Name {labellabel [Data} -archivelogs] -idid [-quiet / -verbose] -dump-Force-verbose
+
+
+*Verwandte Informationen*
+
+xref:reference_the_smosmsapbackup_unmount_command.adoc[Der Befehl smo Backup unmount]

@@ -1,0 +1,29 @@
+---
+permalink: windows/task_creating_operation_level_dump_files.html 
+sidebar: sidebar 
+keywords: smo, operation, dump, command, name, id, fail, particular, host, environment 
+summary: Sie können den Befehl smo Operation dump mit dem Namen oder der ID des fehlgeschlagenen Vorgangs verwenden, um Protokollinformationen über einen bestimmten Vorgang zu erhalten. Sie können unterschiedliche Protokollebenen festlegen, um Informationen zu einem bestimmten Vorgang, Profil, Host oder einer bestimmten Umgebung zu erfassen. 
+---
+= Erstellen von Dump-Dateien auf Betriebsebene
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Befehl smo Operation dump mit dem Namen oder der ID des fehlgeschlagenen Vorgangs verwenden, um Protokollinformationen über einen bestimmten Vorgang zu erhalten. Sie können unterschiedliche Protokollebenen festlegen, um Informationen zu einem bestimmten Vorgang, Profil, Host oder einer bestimmten Umgebung zu erfassen.
+
+. Geben Sie den folgenden Befehl ein:Smo Operation dump -idguid
++
+
+NOTE: Der smo Operation dump Befehl stellt einen super Satz der Informationen zur Verfügung, die vom smo profile dump Befehl bereitgestellt werden, was wiederum einen super Satz von den Informationen bietet, die vom smo System dump Befehl zur Verfügung gestellt werden.
+
++
+Speicherverzeichnis der Speicherdatei:
+
++
+[listing]
+----
+Path:\<user-home>\Application Data\NetApp\smo\3.3.0\smo_dump_8abc01c814649ebd0114649ec69d0001.jar
+----
+

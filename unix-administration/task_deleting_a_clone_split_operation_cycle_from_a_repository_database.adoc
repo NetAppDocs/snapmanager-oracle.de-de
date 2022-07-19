@@ -1,0 +1,22 @@
+---
+permalink: unix-administration/task_deleting_a_clone_split_operation_cycle_from_a_repository_database.html 
+sidebar: sidebar 
+keywords: delete, clone, split, operation, cycle, entry, repository, database 
+summary: Sie können einen Eintrag für den Klon-Arbeitszyklus aus einer Repository-Datenbank löschen. 
+---
+= Löschen eines Arbeitszyklus für die Teilung von Klonen aus einer Repository-Datenbank
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können einen Eintrag für den Klon-Arbeitszyklus aus einer Repository-Datenbank löschen.
+
+. Um einen Eintrag für den Klon-Splitvorgang aus einer Repository-Datenbank zu löschen, geben Sie den folgenden Befehl ein:Smo Clone Split-delete -profilprofile [-hosthostname] [-labelsplit-Label [-idsplit-id] [-quiet
+
+
+[listing]
+----
+smo clone split-delete -profile p1 -id 8abc01ec0e78f3e2010e78f3fdd00001
+----

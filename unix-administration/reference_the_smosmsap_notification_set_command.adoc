@@ -1,0 +1,101 @@
+---
+permalink: unix-administration/reference_the_smosmsap_notification_set_command.html 
+sidebar: sidebar 
+keywords: notification, set, command, configure, mail, server, smo, email, sender, email 
+summary: Sie können den E-Mail-Server mit dem Befehl Notification Set konfigurieren. 
+---
+= Der Befehl smo notification set
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den E-Mail-Server mit dem Befehl Notification Set konfigurieren.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo notification set
+-sender-email email_address
+-mailhost mailhost
+-mailport mailport
+[-authentication
+-username username
+-password password]
+-repository
+-dbname repo_service_name
+-port repo_port]
+-host repo_host
+-login -username repo_username
+[-quiet | -verbose]
+----
+
+
+== Parameter
+
+* *-Absender-Email_address*
++
+Gibt die E-Mail-Adresse des Absenders an, von der die E-Mail-Benachrichtigungen gesendet werden. Ab SnapManager 3.2 für Oracle können Sie einen Bindestrich (-) einfügen, während Sie den Domain-Namen der E-Mail-Adresse angeben. Sie können beispielsweise die Absender-E-Mail-Adresse als -sender-email07lbfmdatacenter@continental-corporation.com angeben.
+
+* *-mailhost mailhost*
++
+Gibt den Namen oder die IP-Adresse des Hostservers an, der E-Mail-Benachrichtigungen verarbeitet.
+
+* *-mailport mailport*
++
+Gibt die Portnummer des Mail-Servers an.
+
+* *-Authentifizierung -Benutzername -Passwort-Passwort*
++
+Gibt Authentifizierungsdetails für die E-Mail-Adresse an. Sie müssen Benutzernamen und Passwort angeben.
+
+* *-Repository*
++
+Gibt die Details der Repository-Datenbank an.
+
+* *-Port repo_Port*
++
+Gibt die Portnummer des Transmission Control Protocol (TCP) an, die für den Zugriff auf die Repository-Datenbank verwendet wird.
+
+* *-dbname repo_Service_Name*
++
+Gibt den Namen der Repository-Datenbank an. Sie können entweder den globalen Namen oder die Systemkennung verwenden.
+
+* *-Host repo_Host*
++
+Gibt den Namen oder die IP-Adresse des Hosts an, auf dem sich die Repository-Datenbank befindet.
+
+* *-Login*
++
+Gibt die Anmeldedaten für das Repository an. Dies ist optional. Wenn nicht angegeben, verwendet SnapManager standardmäßig den Verbindungsmodus für OS-Authentifizierung.
+
+* *-username repo_username*
++
+Gibt den Benutzernamen an, der für den Zugriff auf die Repository-Datenbank erforderlich ist.
+
+* *-ruhig*
++
+Zeigt nur Fehlermeldungen in der Konsole an. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Zeigt Fehler-, Warn- und Informationsmeldungen in der Konsole an.
+
+
+
+
+
+== Beispiel
+
+Im folgenden Beispiel wird der Mail-Server konfiguriert:
+
+[listing]
+----
+smo notification set -sender-email admin@org.com -mailhost hostname.org.com -mailport 25 authentication -username davis -password davis -repository -port 1521 -dbname SMOREPO -host hotspur
+-login -username grabal21 -verbose
+----

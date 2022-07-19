@@ -1,0 +1,60 @@
+---
+permalink: unix-administration/task_configuring_e_mail_notification_for_a_new_profile.html 
+sidebar: sidebar 
+keywords: creating, new, profile, configure, receive, email, notification, completeion, database, operation, comma-seperated, list, multiple, address 
+summary: Wenn Sie ein neues Profil erstellen, können Sie so konfigurieren, dass Sie eine E-Mail-Benachrichtigung nach Abschluss des Datenbankvorgangs erhalten. 
+---
+= Konfigurieren der E-Mail-Benachrichtigung für ein neues Profil
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn Sie ein neues Profil erstellen, können Sie so konfigurieren, dass Sie eine E-Mail-Benachrichtigung nach Abschluss des Datenbankvorgangs erhalten.
+
+* Sie müssen die E-Mail-Adresse konfigurieren, von der die Meldungen gesendet werden.
+* Sie müssen eine kommagetrennte Liste für mehrere E-Mail-Adressen verwenden.
++
+Sie müssen sicherstellen, dass zwischen Komma und der nächsten E-Mail-Adresse kein Leerzeichen vorhanden ist.
+
++
+.. Geben Sie den folgenden Befehl ein: smo-Profil create -profileprofil [-profile-passwordprofile_password] -Repository-dbnamerepo_Service_Name-hostrepo_Host-portrepo_Port-Login-usernamerepo_username-commentation [-commosmany {] [-assogmgmgmnmail {] [-bussnmaimgmgninto} }] [-bussnmaimgmsmany [-bussninto] [-buttninto] [-buttnmgmgmsmany-adym] [-buttninto] [-assail] [-assail] [-assym] [-buttnmainto] [-bugmgmgmgmgmgmgmgmsmany [-buttnectionmsmany [-condo] [-bugmsmany-contactnmgmgmsmany [-condo] [-bug
++
+Weitere Optionen für diesen Befehl:
+
++
+[-Force]
+
++
+
+NOTE: SnapManager unterstützt bis zu 1000 Zeichen für E-Mail-Adressen.
+
++
+Wenn Sie mithilfe des Profils (zur Erstellung separater Archiv-Log-Backups) eine Sicherung von Datendateien und Archivprotokolldateien erstellen und die Erstellung der Datendatei-Sicherung fehlschlägt, wird die E-Mail-Benachrichtigung mit der Datensicherung als Operationname anstatt Datensicherung und Archivprotokolle als Backup gesendet. Wenn die Datensicherung der Datendatei und der Archivprotokolldatei erfolgreich ist, wird die Ausgabe wie folgt angezeigt:
+
++
+[listing]
+----
+
+Profile Name    : PROF_31
+Operation Name 	: Data Backup and Archive Logs Backup
+Database SID   	: TENDB1
+Database Host 	 : repo1.rtp.org.com
+Start Date 	    : Fri Sep 23 13:37:21 EDT 2011
+End Date 	      : Fri Sep 23 13:45:24 EDT 2011
+Status 	        : SUCCESS
+Error messages 	:
+----
+
+
+
+
+Im folgenden Beispiel wird die E-Mail-Benachrichtigung angezeigt, die beim Erstellen eines neuen Profils konfiguriert wurde:
+
+[listing]
+----
+
+smo profile create -profile sales1 -profile-password sales1 -repository -dbname repo2 -host 10.72.197.133 -port 1521 -login -username oba5 -database -dbname DB1 -host 10.72.197.142 -sid DB1 -osaccount oracle
+-osgroup dba -notification -success -email admin1@org.com -subject {profile}_{operation-name}_{db-sid}_{db-host}_{start-date}_{end-date}_{status}
+----

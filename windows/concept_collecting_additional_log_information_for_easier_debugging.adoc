@@ -1,0 +1,43 @@
+---
+permalink: windows/concept_collecting_additional_log_information_for_easier_debugging.html 
+sidebar: sidebar 
+keywords: collect, additional, log, information, debug, fail, external, environment 
+summary: Wenn Sie zusätzliche Protokolle benötigen, um einen fehlgeschlagenen SnapManager-Vorgang zu debuggen, müssen Sie eine externe Umgebungsvariable Server.log.Level festlegen. Diese Variable überschreibt die Standard-Protokollebene und lädt alle Protokollmeldungen in der Protokolldatei ab. Sie können beispielsweise die Protokollebene in DEBUG ändern, die zusätzliche Meldungen protokolliert und beim Debuggen von Problemen helfen kann. 
+---
+= Sammeln zusätzlicher Protokollinformationen für eine einfachere Fehlersuche
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn Sie zusätzliche Protokolle benötigen, um einen fehlgeschlagenen SnapManager-Vorgang zu debuggen, müssen Sie eine externe Umgebungsvariable Server.log.Level festlegen. Diese Variable überschreibt die Standard-Protokollebene und lädt alle Protokollmeldungen in der Protokolldatei ab. Sie können beispielsweise die Protokollebene in DEBUG ändern, die zusätzliche Meldungen protokolliert und beim Debuggen von Problemen helfen kann.
+
+Die SnapManager-Protokolle sind an folgenden Orten zu finden:
+
+* SnapManager_install_Directory\log
+
+
+Um die Standard-Protokollebene außer Kraft zu setzen, müssen Sie die folgenden Schritte durchführen:
+
+. Erstellen Sie eine Platform.override-Textdatei im SnapManager-Installationsverzeichnis.
+. Fügen Sie den Parameter Server.log.Level in die Textdatei Platform.override ein.
+. Weisen Sie einen Wert zu (TRACE, DEBUG, INFO, WARN, ERROR, FATAL oder PROGRESS) zum Parameter Server.log.Level.
++
+Um z. B. die Protokollebene auf FEHLER zu ändern, setzen Sie den Wert von Server.log.Level auf FEHLER.
+
++
+Server.log.Level=FEHLER
+
+. Starten Sie den SnapManager-Server neu.
+
+
+
+NOTE: Wenn keine zusätzlichen Protokollinformationen erforderlich sind, können Sie den Parameter Server.log.Level aus der Textdatei Platform.override löschen.
+
+SnapManager verwaltet die Menge der Server-Log-Dateien auf der Grundlage der benutzerdefinierten Werte der folgenden Parameter in der Datei smo.config:
+
+* Log.max_log_files
+* Log.max_log_file_size
+* Log.max_Rolling_Operation_Factory_logs
+

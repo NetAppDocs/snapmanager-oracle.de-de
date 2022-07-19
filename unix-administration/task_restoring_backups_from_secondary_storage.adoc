@@ -1,0 +1,70 @@
+---
+permalink: unix-administration/task_restoring_backups_from_secondary_storage.html 
+sidebar: sidebar 
+keywords: restore, protect, backup, secondary, storage, copy, data, primary, storage 
+summary: Sie können geschützte Backups von sekundärem Storage wiederherstellen und wählen, wie die Daten zurück auf den primären Storage kopiert werden sollen. 
+---
+= Wiederherstellung von Backups aus dem sekundären Storage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können geschützte Backups von sekundärem Storage wiederherstellen und wählen, wie die Daten zurück auf den primären Storage kopiert werden sollen.
+
+Sie können den Befehl zur Wiederherstellung der Sicherung mit der Option -from-secondary verwenden, um die Daten aus dem sekundären Storage wiederherzustellen. Wenn Sie die Option -from-secondary nicht angeben, stellt SnapManager die Daten aus den Snapshot Kopien im Primärspeicher wieder her.
+
+Sie können die Option -von-sekundär nicht verwenden, wenn das Backup auf dem Primärspeicher vorhanden ist. Das primäre Backup muss freigegeben werden, bevor ein Backup aus dem Sekundärspeicher wiederhergestellt werden kann. Wenn Sie ein temporäres Volumen verwenden, müssen Sie das Volumen mithilfe der Option -temp-Volume angeben.
+
+Sie müssen die Option -copy-id angeben, wenn Sie die Option -from-secondary angeben. Wenn auf dem sekundären Speichersystem mehrere Backups vorhanden sind, wird mit der Option -copy-id angegeben, welche Backup-Kopie auf dem sekundären Speicher für den Wiederherstellungsvorgang verwendet werden soll.
+
+
+NOTE: Wenn Sie Data ONTAP in 7-Mode verwenden, müssen Sie einen gültigen Wert für die Option -copy-id angeben. Wenn Sie jedoch Clustered Data ONTAP verwenden, ist die Option -copy-id nicht erforderlich.
+
+Beim Wiederherstellen von Daten aus dem Sekundärspeicher versucht SnapManager zunächst, Daten direkt aus dem sekundären Speichersystem auf dem primären Speichersystem (ohne Beteiligung des Hosts) wiederherzustellen. Wenn SnapManager diese Art der Wiederherstellung nicht durchführen kann (z. B. wenn die Dateien nicht Teil des Dateisystems sind), dann wird SnapManager zurück zu einer Host-seitigen Dateikopie zurückkehren. SnapManager verfügt über zwei Methoden zur Wiederherstellung einer Host-seitigen Dateikopie aus dem sekundären Storage. Die von SnapManager gewählte Methode wird in der smo.config-Datei konfiguriert.
+
+* Wenn restore.secondaryAccessPolicy = direkt, klont SnapManager die Daten auf dem sekundären Storage, bindet die geklonten Daten vom sekundären Storage-System an den Host und kopiert sie anschließend Daten aus dem Klon in die aktive Umgebung.
++
+Dies ist die standardmäßige sekundäre Zugriffsrichtlinie.
+
+* Wenn restore.secondaryAccessPolicy = indirekt, kopiert SnapManager die Daten zuerst auf ein temporäres Volume im Primärspeicher, bindet die Daten vom temporären Volume an den Host und kopiert dann Daten aus dem temporären Volume in die aktive Umgebung.
++
+Diese Richtlinie sollte nur verwendet werden, wenn der Host keinen direkten Zugriff auf das sekundäre Speichersystem hat. Wiederherstellungen mit der indirekten Methode dauern doppelt so lange wie die direkte Methode, da zwei Kopien der Daten erstellt werden.
+
++
+.. Führen Sie eine der folgenden Aktionen aus:
++
+|===
+| Ihr Ziel ist | Dann... 
+
+
+ a| 
+Stellen Sie eine vollständige Datenbank wieder her, wenn das ausgewählte Backup auf dem primären Speicher vorhanden ist
+ a| 
+Geben Sie den folgenden Befehl ein: smo Backup Restore -profileprofile_Name-labellabel-complete-Recovery -alllogs[-copy-idid]
+
+
+
+ a| 
+Stellen Sie eine vollständige Datenbank wieder her, wenn das ausgewählte Backup nicht im primären Speicher vorhanden ist
+ a| 
+Geben Sie den folgenden Befehl ein: smo Backup Restore -profileprofile_Name-labellabel-complete-recover -alllogs-from-secondary [-temp-Volume <temp_Volume>] [-copy-idid]
+
+|===
+
+
+
+
+
+
+== Beispiel
+
+Mit dem folgenden Befehl wird ein geschütztes Backup aus dem sekundären Speichersystem wiederhergestellt:
+
+[listing]
+----
+smo backup restore -profile PAYDB -label daily_monday -complete
+-recover alllogs -from-secondary -copy-id 3042 -temp-volume smo_scratch_restore_volume
+Operation Id [8abc011215d385920115d38599470001] succeeded.
+----

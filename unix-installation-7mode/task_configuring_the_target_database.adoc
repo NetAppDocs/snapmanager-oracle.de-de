@@ -1,0 +1,21 @@
+---
+permalink: unix-installation-7mode/task_configuring_the_target_database.html 
+sidebar: sidebar 
+keywords: target, database, oracle, configure, standalone, real, application, cluster, rac, automatic, storage 
+summary: 'Die Zieldatenbank ist eine Oracle-Datenbank, die entweder als Standalone, Real Application Clusters (RAC), Automatic Storage Management (ASM) oder als andere unterstützte Kombinationen konfiguriert werden kann.' 
+---
+= Konfigurieren der Zieldatenbank
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Zieldatenbank ist eine Oracle-Datenbank, die entweder als Standalone, Real Application Clusters (RAC), Automatic Storage Management (ASM) oder als andere unterstützte Kombinationen konfiguriert werden kann.
+
+. Konfigurieren Sie die Zieldatenbank, indem Sie auf _TR-3633_ verweisen.
+
+
+*Verwandte Informationen*
+
+http://www.netapp.com/us/media/tr-3633.pdf["NetApp Technical Report 3633: Best Practices for Oracle Databases on NetApp Storage"]

@@ -1,0 +1,153 @@
+---
+permalink: unix-administration/task_updating_profiles.html 
+sidebar: sidebar 
+keywords: update, profile, modify, password, number, backup, retain, access, database, operating, system, os, smo 
+summary: 'Sie können die Profile aktualisieren, um das Profilkennwort, die Anzahl der zu behaltenden Backups, den Zugriff auf die Datenbank, die Betriebssystemauthentifizierung \(OS\) für die Datenbankauthentifizierung und umgekehrt sowie Informationen zum Host zu ändern. Wenn sich die Kennwortinformationen der Oracle-Datenbank ändern, müssen Sie diese Informationen auch im Profil ändern.' 
+---
+= Profile werden aktualisiert
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die Profile aktualisieren, um das Profilkennwort, die Anzahl der zu behaltenden Backups, den Zugriff auf die Datenbank, die Betriebssystemauthentifizierung (OS) auf die Datenbankauthentifizierung und umgekehrt sowie Informationen zum Host zu ändern. Wenn sich die Kennwortinformationen der Oracle-Datenbank ändern, müssen Sie diese Informationen auch im Profil ändern.
+
+Wenn die Schutzrichtlinie für das Profil aktiviert ist, kann die Richtlinie nicht über SnapManager geändert werden. Der Storage-Administrator muss die Richtlinie über die Konsole von Protection Manager ändern.
+
+Mit SnapManager (3.2 oder höher) können Sie das Profil aktualisieren und die Archiv-Log-Backups von den Datensicherungen der Datendatei trennen, indem Sie die Option -separatem-archivlog-Backups verwenden. Sie können eine separate Aufbewahrungsdauer und eine Sicherungsrichtlinie für das Backup des Archivprotokolls festlegen. Mit SnapManager können Sie das Archivprotokoll-Backup zusammen mit dem Online-Datenbank-Backup einbeziehen. Außerdem können Sie zum Klonen eine Online-Datendatei-Backup- und ein Archivprotokoll-Backup erstellen. Wenn Sie eine Sicherung von Online-Datendateien erstellen, werden die Archivprotokolle sofort zusammen mit den Datendateien erstellt.
+
+. Geben Sie den folgenden Befehl ein:
+`smo profile update -profileprofile [-new-profilenew_profile_name] [-profile-passwordprofile_password][-database-dbnamedb_dbname-host db_host [-siddb_sid] [-login -usernamedb_username-password db_password-port db_port][-asminstance-asmusernameasminstance_username-asmpasswordasminstance_password]] [{-rman{-controlfile | {-login  -usernamerman_username-password  rman_password-tnsname  rman_tnsname}}} | -remove-rman]-osaccountosaccount-osgrouposgroup [-retain [-hourly [-countn] [-durationm]] [-daily [-countn] [-durationm]] [-weekly [-countn] [-durationm]] [-monthly [-countn] [-durationm]]] [-commentcomment][-snapname-patternpattern][[-protect [-protection-policypolicy_name]]| [[-noprotect]] [-summary-notification] [-notification [-success-emailemail_address1, email_address2-subjectsubject_pattern] [-failure-emailemail_address1, email_address2-subjectsubject_pattern]] [-separate-archivelog-backups-retain-archivelog-backups-hourshours | -daysdays | -weeksweeks| -monthsmonths [-protect [-protection-policypolicy_name] | -noprotect] [-include-with-online-backups | -no-include-with-online-backups]] [-dump]`
++
+Weitere Optionen für diesen Befehl:
+
++
+[-Force] [-noprompt]
+
++
+|===
+| Ihr Ziel ist | Dann... 
+
+
+ a| 
+*Ändern Sie das Profil, um die Betriebssystemauthentifizierung zu verwenden*
+ a| 
+Geben Sie Folgendes an, anstatt den Benutzernamen, das Passwort und den Port hinzuzufügen:
+
+** -Oscaleraccount_Name als Name des Betriebssystemkontos
+** -Osgroupgroup als die Gruppe, die mit dem Betriebssystem-Konto verknüpft ist, in der Regel das Konto, mit dem Oracle installiert wird
+
+
+
+
+ a| 
+*Verwenden Sie die Authentifizierung der Automatic Storage Management (ASM)-Instanz, um das Profil zu erstellen*
+ a| 
+Geben Sie die Anmeldeinformationen für die Authentifizierung der ASM-Instanz an.
+
+** -Asmusernamecminstance_username ist der Benutzername, der zur Anmeldung bei der ASM-Instanz verwendet wird.
+** -Asmpasswordasminstance_password ist das Passwort, das zur Anmeldung bei der ASM-Instanz verwendet wird.
+
+
+
+
+ a| 
+*Verwenden Sie einen Katalog als Oracle Recovery Manager (RMAN)-Repository oder Sie möchten RMAN* entfernen
+ a| 
+Geben Sie die folgenden Optionen und Variablen an:
+
+** -Tnsname tnsname als der in der Datei nnsnames.ora definierte tnsname.
+** -Login -Benutzername als Benutzername, der für die Verbindung zum RMAN-Katalog erforderlich ist.
++
+Wenn nicht angegeben, verwendet SnapManager die Authentifizierungsdaten des Betriebssystems. Sie können die Betriebssystemauthentifizierung nicht mit RAC-Datenbanken (Real Application Clusters) verwenden.
+
+** -Passwordpassword als RMAN-Kennwort für die Verbindung mit dem RMAN-Katalog.
+** -Controlfile, wenn Sie die Steuerdatei als RMAN-Repository verwenden.
+** -Remove-rman um RMAN zu entfernen.
+
+
+
+
+ a| 
+*Ändern Sie die Backup Retention Policy für Backups der Datenbank im Profil*
+ a| 
+Geben Sie entweder den Aufbewahrungszeitraum oder die Aufbewahrungsdauer für eine Aufbewahrungsklasse oder beides an, um die Aufbewahrungsrichtlinie zu ändern. Die Dauer ist in Einheiten der Klasse (z. B. Stunden für Stunde, Tage für Tag).
+
+** -Hourly ist die stündliche Aufbewahrungsklasse, für die [-countn] [-durationm]]] die Aufbewahrungszahl und die Aufbewahrungsdauer sind, bzw..
+** -Daily ist die tägliche Aufbewahrungsklasse, für die [-countn] [-durationm]] die Aufbewahrungszahl und die Aufbewahrungsdauer sind, bzw..
+** -Weekly ist die wöchentliche Aufbewahrungsklasse, für die [-countn] [-durationm]] die Aufbewahrungszahl und die Aufbewahrungsdauer sind, bzw..
+** -Monthly ist die monatliche Aufbewahrungsklasse, für die [-countn] [-durationm]]] die Aufbewahrungszahl und die Aufbewahrungsdauer sind, bzw..
+
+
+
+
+ a| 
+*Sicherer Schutz für das Profil deaktivieren*
+ a| 
+Geben Sie -noprotect an, um die mit dem Profil erstellten Datenbank-Backups nicht zu schützen. Bei einem Profil, bei dem -protect aktiviert war, wird eine Warnmeldung angezeigt, die darauf hinweist, dass dieser Vorgang den Datensatz löscht und Sie keine Backups für dieses Profil wiederherstellen oder klonen können.
+
+
+
+ a| 
+*E-Mail-Benachrichtigungen für den Abschlussstatus der Datenbankvorgänge* aktivieren
+ a| 
+Geben Sie die folgenden Optionen und Variablen an:
+
+** -Summary-notification ermöglicht Ihnen die Konfiguration einer E-Mail-Benachrichtigung für mehrere Profile unter einer Repository-Datenbank.
+** -Notification ermöglicht Ihnen, eine E-Mail-Benachrichtigung über den Status des Datenbankvorgangs für ein Profil zu erhalten.
+** -Success-emailemail_address2 ermöglicht es Ihnen, eine E-Mail-Benachrichtigung nach Abschluss eines erfolgreichen Datenbankvorgangs zu erhalten, der mit einem neuen oder einem vorhandenen Profil durchgeführt wird.
+** -Failure-emailemail_address2 ermöglicht es Ihnen, eine E-Mail-Benachrichtigung über einen fehlgeschlagenen Datenbankvorgang zu erhalten, der mit einem neuen oder einem vorhandenen Profil durchgeführt wird.
+** -Subjectsubject_Text gibt den Subjekttext für die E-Mail-Benachrichtigung an, während ein neues Profil oder ein vorhandenes Profil erstellt wird. Wenn die Benachrichtigungseinstellungen nicht für das Repository konfiguriert sind und Sie versuchen, Profile- oder Übersichtsbenachrichtigungen mithilfe der Befehlszeilenschnittstelle (CLI) zu konfigurieren, wird die folgende Meldung im Konsolenprotokoll protokolliert: SMO-14577: Benachrichtigungseinstellungen nicht konfiguriert.
++
+Wenn Sie die Benachrichtigungseinstellungen konfiguriert haben und versuchen, eine zusammenfassende Benachrichtigung mithilfe der CLI zu konfigurieren, ohne dass eine zusammenfassende Benachrichtigung für das Repository aktiviert wird, wird die folgende Meldung im Konsole-Protokoll protokolliert: SMO-14575: Konfiguration der zusammenfassenden Benachrichtigung für dieses Repository nicht verfügbar__________
+
+
+
+
+
+ a| 
+*Aktualisieren Sie das Profil, um eine Sicherung der Archiv-Log-Dateien separat zu erstellen*
+ a| 
+Geben Sie die folgenden Optionen und Variablen an:
+
+** -Separate-archivlog-Backups ermöglicht es Ihnen, eine Sicherung der Archivprotokolldateien getrennt von den Datenbankdateien zu erstellen.
++
+Nachdem Sie diese Option angegeben haben, können Sie entweder ein Datendatei-only Backup oder ein Backup nur mit Archivdateien erstellen. Sie können keine vollständige Sicherung erstellen. Außerdem können Sie die Profileinstellungen nicht durch Trennen der Sicherung zurücksetzen. SnapManager behält die Backups auf Basis der Aufbewahrungsrichtlinie für die Backups bei, die vor der Erstellung eines rein archivorientierten Backups erstellt wurden.
+
+** -Retention-archivlog-Backups legt die Aufbewahrungsdauer für Archiv-Log-Backups fest.
++
+
+NOTE: Wenn Sie das Profil zum ersten Mal aktualisieren, können Sie die Archiv-Log-Backups vom Datendatei-Backup mit der Option -separatem-archivlog-Backups trennen; Sie müssen die Aufbewahrungsdauer für die Archiv-Log-Backups mit der Option -restyle-archivelog-Backups angeben. Die Einstellung der Aufbewahrungsdauer ist optional, wenn Sie das Profil später aktualisieren.
+
+** -Protect erstellt einen Anwendungsdatensatz im Data Fabric Manager (DFM) Server und fügt Mitglieder hinzu, die sich auf die Datenbank, Datendatei, Kontrolldateien und Archivprotokolle beziehen.
++
+Wenn der Datensatz vorhanden ist, wird er bei der Erstellung eines Profils erneut verwendet.
+
+** -Protection-Policy legt die Schutzrichtlinie auf die Archiv-Log-Backups.
+** -Include-with-Online-Backups geben an, dass das Archiv-Log-Backup zusammen mit dem Datenbank-Backup enthalten ist.
+** -No-include-with-Online-Backups gibt an, dass die Sicherung der Archivprotokolldatei nicht zusammen mit der Datenbank-Sicherung enthalten ist.
+
+
+
+
+ a| 
+*Ändern Sie den Hostnamen der Zieldatenbank*
+ a| 
+Geben Sie -hostNew_db_Host an, um den Hostnamen des Profils zu ändern.
+
+
+
+ a| 
+*Sammeln Sie die Dump-Dateien nach dem Profil-Update-Vorgang*
+ a| 
+Geben Sie die Option -dump an.
+
+|===
+. Geben Sie den folgenden Befehl ein, um das aktualisierte Profil anzuzeigen:
+`smo profile show`
+
+
+*Verwandte Informationen*
+
+xref:concept_how_to_collect_dump_files.adoc[So sammeln Sie Speicherauszugsdateien]

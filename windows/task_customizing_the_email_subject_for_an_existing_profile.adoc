@@ -1,0 +1,17 @@
+---
+permalink: windows/task_customizing_the_email_subject_for_an_existing_profile.html 
+sidebar: sidebar 
+keywords: snapmanager, enable, customize, email, subject, pattern, existing, profile, customize, update, customizing 
+summary: SnapManager ermöglicht Ihnen, das Muster des E-Mail-Betreff für ein bestehendes Profil anzupassen, indem Sie dieses Profil aktualisieren. Dieses benutzerdefinierte Muster für Studienteilnehmer gilt nur für das aktualisierte Profil. 
+---
+= Anpassen des E-Mail-Betreff für ein vorhandenes Profil
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager ermöglicht Ihnen, das Muster des E-Mail-Betreff für ein bestehendes Profil anzupassen, indem Sie dieses Profil aktualisieren. Dieses benutzerdefinierte Muster für Studienteilnehmer gilt nur für das aktualisierte Profil.
+
+. Geben Sie den folgenden Befehl ein: smo-Profil-Update -profilprofil [-profile-passwordprofile_password][-Database-dbnamedb_dbname-Host db_Host [-siddb_sid] [-Login -usernamedb_username-adress1 [-{ dmails2] [-{ jur] [-{ commentail}}}-[-] [-] [-]]-assourly [-commentail] [-] [-] [-]] [-commentail-] [-] [-] [-] [-]]] [-] [-]]] [-]] [-]] [-]]]] [-associmundintourly-associmnmailmnesson-[-[-[-[-commn.m] [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] [-]]] [-] [-]
+

@@ -1,0 +1,24 @@
+---
+permalink: unix-administration/task_authorizing_user_access_to_the_repository.html 
+sidebar: sidebar 
+keywords: addition, role-based, access, control, rbac, snapmanager, enable, credential, database, user, repository, authorizing 
+summary: 'Zusätzlich zur rollenbasierten Zugriffssteuerung \(RBAC\) können Sie mit SnapManager Anmeldedaten für Datenbankbenutzer für den Zugriff auf das Repository festlegen. Mithilfe von Zugangsdaten können Sie den Zugriff auf die SnapManager-Hosts, Repositorys, Profile und Datenbanken einschränken oder verhindern.' 
+---
+= Zugriffsberechtigung für das Repository
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Zusätzlich zur rollenbasierten Zugriffssteuerung (Role Based Access Control, RBAC) können Sie mit SnapManager Anmeldedaten für Datenbankbenutzer für den Zugriff auf das Repository festlegen. Mithilfe von Zugangsdaten können Sie den Zugriff auf die SnapManager-Hosts, Repositorys, Profile und Datenbanken einschränken oder verhindern.
+
+Wenn Sie die Anmeldeinformationen mithilfe des Befehls „Anmeldeinformationssatz“ festlegen, werden Sie von SnapManager nicht zur Eingabe eines Passworts aufgefordert.
+
+Sie können Benutzeranmeldeinformationen festlegen, wenn Sie SnapManager oder höher installieren.
+
+. Geben Sie den folgenden Befehl ein:
++
+'smo Anmeldeinformationssatz -Repository -dbname repo_Service_Name -Host repo_Host -Login -Benutzername repo_username [-password repo_password] -Port repo_Port'
+
+

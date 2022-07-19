@@ -1,0 +1,18 @@
+---
+permalink: unix-administration/task_viewing_a_list_of_scheduled_operations.html 
+sidebar: sidebar 
+keywords: view, list, schedule, operation, profile, smo 
+summary: Sie können eine Liste der geplanten Vorgänge für ein Profil anzeigen. 
+---
+= Anzeigen einer Liste geplanter Vorgänge
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können eine Liste der geplanten Vorgänge für ein Profil anzeigen.
+
+. Um Informationen über den geplanten Vorgang anzuzeigen, geben Sie den folgenden Befehl ein:
+`smo schedule list -profile profile_name[-quiet | -verbose]`
+

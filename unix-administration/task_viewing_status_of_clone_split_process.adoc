@@ -1,0 +1,23 @@
+---
+permalink: unix-administration/task_viewing_status_of_clone_split_process.html 
+sidebar: sidebar 
+keywords: view, progress, split, process, start, smo 
+summary: Sie können den Fortschritt des geteilten Prozesses anzeigen, den Sie begonnen haben. 
+---
+= Anzeigen des Status des Klonteilprozesses
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Fortschritt des geteilten Prozesses anzeigen, den Sie begonnen haben.
+
+. Um den Status des Split-Prozesses für Klone anzuzeigen, geben Sie den folgenden Befehl ein:
+`smo clone split-status -profileprofile [-hosthostname] [-labelsplit-label | -idsplit-id] [-quiet | -verbose]`
+
+
+[listing]
+----
+smo clone split-status -profile p1 -id 8abc01ec0e78f3e2010e78f3fdd00001
+----

@@ -1,0 +1,76 @@
+---
+permalink: unix-administration/concept_database_state_needed_for_restore_process.html 
+sidebar: sidebar 
+keywords: state, database, restore, process, file 
+summary: Der Status der Datenbank, die wiederhergestellt werden soll, hängt von der Art des Wiederherstellungsprozesses, die Sie durchführen möchten, und der Art der Dateien ab, die enthalten sein sollen. 
+---
+= Für den Wiederherstellungsprozess benötigter Datenbankstatus
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Der Status der Datenbank, die wiederhergestellt werden soll, hängt von der Art des Wiederherstellungsprozesses, die Sie durchführen möchten, und der Art der Dateien ab, die enthalten sein sollen.
+
+In der folgenden Tabelle ist der Status aufgeführt, in dem die Datenbank von der ausgewählten Wiederherstellungsoption und dem Typ der Dateien abhängig sein soll, die in die Wiederherstellung aufgenommen werden sollen:
+
+|===
+| Art der Wiederherstellung | Enthaltene Dateien | Datenbankstatus für diese Instanz | Datenbank-Status für andere Instanz (nur RAC) 
+
+
+ a| 
+Nur Restore
+ a| 
+Kontrolldateien
+ a| 
+Herunterfahren
+ a| 
+Herunterfahren
+
+
+
+ a| 
+Systemdateien
+ a| 
+Montieren oder herunterfahren
+ a| 
+Montieren oder herunterfahren
+ a| 
+Keine Systemdateien
+
+
+
+ a| 
+Alle Bundesstaaten
+ a| 
+Alle Bundesstaaten
+ a| 
+Restore und Recovery
+ a| 
+Kontrolldateien
+
+
+
+ a| 
+Herunterfahren
+ a| 
+Herunterfahren
+ a| 
+Systemdateien
+ a| 
+Montieren
+
+
+
+ a| 
+Montieren oder herunterfahren
+ a| 
+Keine Systemdateien
+ a| 
+Mount oder Offen
+ a| 
+Alle
+
+|===
+Der von SnapManager für einen Wiederherstellungsvorgang erforderliche Datenbankzustand ist von dem ausgeführten Wiederherstellungstyp abhängig (vollständige, partielle oder Kontrolldateien). SnapManager übergibt die Datenbank nicht in einen niedrigeren Zustand (z. B. von Öffnen auf Mount), es sei denn, die Force-Option ist angegeben.

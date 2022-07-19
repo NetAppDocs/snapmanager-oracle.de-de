@@ -1,0 +1,22 @@
+---
+permalink: windows/concept_snapmanager_host.html 
+sidebar: sidebar 
+keywords: windows, server, netapp, product 
+summary: Der SnapManager Host ist ein Windows Server, der auch andere NetApp Produkte ausführt. 
+---
+= SnapManager Host
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Der SnapManager Host ist ein Windows Server, der auch andere NetApp Produkte ausführt.
+
+Der SnapManager Host wird mit den folgenden Produkten installiert:
+
+* SnapDrive für Windows
+* Host Utilities
+
+
+Der SnapManager-Host wird als Service ausgeführt.

@@ -1,0 +1,48 @@
+---
+permalink: windows/reference_the_smosmsapcmdfile_command.html 
+sidebar: sidebar 
+keywords: cmdfile, command, run, host, limit, smo 
+summary: Sie können den Befehl cmdfile verwenden, um jeden beliebigen Befehl auszuführen, wenn die Shell auf Ihrem Host die Anzahl der Zeichen begrenzt, die in einer Befehlszeile angezeigt werden können. 
+---
+= Der Befehl smo cmdfile
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Befehl cmdfile verwenden, um jeden beliebigen Befehl auszuführen, wenn die Shell auf Ihrem Host die Anzahl der Zeichen begrenzt, die in einer Befehlszeile angezeigt werden können.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo cmdfile
+-file file_name
+\[-quiet \| -verbose\]
+----
+Sie können den Befehl in eine Textdatei einfügen und den Befehl smo cmdfile verwenden, um den Befehl auszuführen. Sie können nur einen Befehl in einer Textdatei hinzufügen. Sie dürfen smo nicht in die Befehlssyntax einschließen.
+
+
+NOTE: Der Befehl smo cmdfile ersetzt den Befehl smo pfile. Die smo cmdfile ist nicht mit dem Befehl smo pfile kompatibel.
+
+
+
+== Parameter
+
+* *-file file_Name*
++
+Gibt den Pfad zur Textdatei an, die den Befehl enthält, den Sie ausführen möchten.
+
+* *-ruhig*
++
+Gibt an, dass nur Fehlermeldungen in der Konsole angezeigt werden. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Gibt an, dass Fehler-, Warn- und Informationsmeldungen in der Konsole angezeigt werden.
+
+

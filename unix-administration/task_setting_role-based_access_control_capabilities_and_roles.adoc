@@ -1,0 +1,272 @@
+---
+permalink: unix-administration/task_setting_role-based_access_control_capabilities_and_roles.html 
+sidebar: sidebar 
+keywords: enable, role-based, access, control, rbac, snapmanager, snapdrive, capabilities, role, smo 
+summary: 'Nachdem Sie die rollenbasierte Zugriffssteuerung \(RBAC\) für SnapManager über SnapDrive aktiviert haben, können Sie Funktionen für die rollenbasierte Zugriffssteuerung und Benutzer zur Ausführung von SnapManager Vorgängen hinzufügen.' 
+---
+= Einrichten von Funktionen und Rollen für die rollenbasierte Zugriffssteuerung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nachdem Sie die rollenbasierte Zugriffssteuerung (RBAC) für SnapManager über SnapDrive aktiviert haben, können Sie Funktionen für rollenbasierte Zugriffssteuerung und Benutzer zu Rollen hinzufügen, um SnapManager Vorgänge durchzuführen.
+
+Sie müssen eine Gruppe im Data Fabric Manager Server erstellen und die Gruppe sowohl dem primären als auch dem sekundären Storage hinzufügen. Führen Sie folgende Befehle aus:
+
+* dfm Group erstellen smo_grp
+* dfm Group hinzufügen smo_grpprimary_Storage_System
+* dfm Group, hinzufügen smo_grpsecondary_Storage_System
+
+
+Damit können RBAC-Funktionen und -Rollen entweder über die Operations Manager Webschnittstelle oder die Befehlszeilenschnittstelle (CLI) des Data Fabric Manager Servers geändert werden.
+
+In der Tabelle sind die RBAC-Funktionen aufgeführt, die für die Durchführung des SnapManager Betriebs erforderlich sind:
+
+|===
+| SnapManager Betrieb | Wenn Datensicherung nicht aktiviert ist, sind RBAC-Funktionen erforderlich | RBAC-Funktionen sind bei aktivierter Datensicherung erforderlich 
+
+
+ a| 
+Profilerstellen oder Profilaktualisierung
+ a| 
+SD.Speicherung.Lesen (smo_grp)
+ a| 
+SD.Storage.Read (SMO_Profile Dataset)
+
+
+
+ a| 
+Profilschutz
+ a| 
+DFM.Database.Write (smo_grp)
+
+SD.Speicherung.Lesen (smo_grp)
+
+SD.Config.Lesen (smo_grp)
+
+SD.Config.Write (smo_grp)
+
+SD.Config.Delete (smo_grp)
+
+GlobalDataProtection
+ a| 
+Keine
+
+
+
+ a| 
+Backup erstellen
+ a| 
+SD.Speicherung.Lesen (smo_grp)
+
+SD.Snapshot.Write (smo_grp)
+
+SD.Snapshot.Lesen (smo_grp)
+
+SD.Snapshot.Delete (smo_grp)
+ a| 
+SD.Storage.Read (SMO_Profile Dataset)
+
+SD.Snapshot.Write (SMO_Profile-Datensatz)
+
+SD.Snapshot.Read (SMO_Profile-Datensatz)
+
+SD.Snapshot.Delete (SMO_Profile-Datensatz)
+
+
+
+ a| 
+Backup-Erstellung (mit DBVerify)
+ a| 
+SD.Speicherung.Lesen (smo_grp)
+
+SD.Snapshot.Write (smo_grp)
+
+SD.Snapshot.Lesen (smo_grp)
+
+SD.Snapshot.Delete (smo_grp)
+
+SD.Snapshot.Clone (smo_grp)
+ a| 
+SD.Storage.Read (SMO_Profile Dataset)
+
+SD.Snapshot.Write (SMO_Profile-Datensatz)
+
+SD.Snapshot.Read (SMO_Profile-Datensatz)
+
+SD.Snapshot.Delete (SMO_Profile-Datensatz)
+
+SD.Snapshot.Clone (SMO_Profile Dataset)
+
+
+
+ a| 
+Backup-Erstellung (mit RMAN)
+ a| 
+SD.Speicherung.Lesen (smo_grp)
+
+SD.Snapshot.Write (smo_grp)
+
+SD.Snapshot.Lesen (smo_grp)
+
+SD.Snapshot.Delete (smo_grp)
+
+SD.Snapshot.Clone (smo_grp)
+ a| 
+SD.Storage.Read (SMO_Profile Dataset)
+
+SD.Snapshot.Write (SMO_Profile-Datensatz)
+
+SD.Snapshot.Read (SMO_Profile-Datensatz)
+
+SD.Snapshot.Delete (SMO_Profile-Datensatz)
+
+SD.Snapshot.Clone (SMO_Profile Dataset)
+
+
+
+ a| 
+Backup Restore
+ a| 
+SD.Speicherung.Lesen (smo_grp)
+
+SD.Snapshot.Write (smo_grp)
+
+SD.Snapshot.Lesen (smo_grp)
+
+SD.Snapshot.Delete (smo_grp)
+
+SD.Snapshot.Clone (smo_grp)
+
+SD.Snapshot.Restore (smo_grp)
+ a| 
+SD.Storage.Read (SMO_Profile Dataset)
+
+SD.Snapshot.Write (SMO_Profile-Datensatz)
+
+SD.Snapshot.Read (SMO_Profile-Datensatz)
+
+SD.Snapshot.Delete (SMO_Profile-Datensatz)
+
+SD.Snapshot.Clone (SMO_Profile Dataset)
+
+SD.Snapshot.Restore (SMO_Profile Dataset)
+
+
+
+ a| 
+Backup löschen
+ a| 
+SD.Snapshot.Delete (smo_grp)
+ a| 
+SD.Snapshot.Delete (SMO_Profile-Datensatz)
+
+
+
+ a| 
+Backup verifizieren
+ a| 
+SD.Speicherung.Lesen (smo_grp)
+
+SD.Snapshot.Lesen (smo_grp)
+
+SD.Snapshot.Clone (smo_grp)
+ a| 
+SD.Storage.Read (SMO_Profile Dataset)
+
+SD.Snapshot.Read (SMO_Profile-Datensatz)
+
+SD.Snapshot.Clone (SMO_Profile Dataset)
+
+
+
+ a| 
+Backup-Montage
+ a| 
+SD.Speicherung.Lesen (smo_grp)
+
+SD.Snapshot.Lesen (smo_grp)
+
+SD.Snapshot.Clone (smo_grp)
+ a| 
+SD.Storage.Read (SMO_Profile Dataset)
+
+SD.Snapshot.Read (SMO_Profile-Datensatz)
+
+SD.Snapshot.Clone (SMO_Profile Dataset)
+
+
+
+ a| 
+Backup nicht verfügbar
+ a| 
+SD.Snapshot.Clone (smo_grp)
+ a| 
+SD.Snapshot.Clone (SMO_Profile Dataset)
+
+
+
+ a| 
+Klon erstellen
+ a| 
+SD.Speicherung.Lesen (smo_grp)
+
+SD.Snapshot.Lesen (smo_grp)
+
+SD.Snapshot.Clone (smo_grp)
+ a| 
+SD.Storage.Read (SMO_Profile Dataset)
+
+SD.Snapshot.Read (SMO_Profile-Datensatz)
+
+SD.Snapshot.Clone (SMO_Profile Dataset)
+
+
+
+ a| 
+Klon löschen
+ a| 
+SD.Snapshot.Clone (smo_grp)
+ a| 
+SD.Snapshot.Clone (SMO_Profile Dataset)
+
+
+
+ a| 
+Aufteilung klonen
+ a| 
+SD.Speicherung.Lesen (smo_grp)
+
+SD.Snapshot.Lesen (smo_grp)
+
+SD.Snapshot.Clone (smo_grp)
+
+SD.Snapshot.Delete (smo_grp)
+
+SD.Storage.Write (smo_grp)
+ a| 
+SD.Storage.Read (SMO_Profile Dataset)
+
+SD.Snapshot.Read (SMO_Profile-Datensatz)
+
+SD.Snapshot.Clone (SMO_Profile Dataset)
+
+SD.Snapshot.Delete (SMO_Profile-Datensatz)
+
+SD.Storage.Write (SMO_Profile Dataset)
+
+|===
+Details zum Definieren der RBAC-Funktionen finden Sie im _OnCommand Unified Manager Operations Manager Administration Guide_.
+
+. Zugriff auf die Operations Manager Konsole.
+. Wählen Sie im Menü Setup die Option *Rollen* aus.
+. Wählen Sie eine vorhandene Rolle aus, oder erstellen Sie eine neue Rolle.
+. Um den Datenbank-Speicherressourcen Vorgänge zuzuweisen, klicken Sie auf *Funktionen hinzufügen*.
+. Klicken Sie auf der Seite Rolleneinstellungen bearbeiten, um Ihre Änderungen an der Rolle zu speichern, auf *Aktualisieren*.
+
+
+*Verwandte Informationen*
+
+http://support.netapp.com/documentation/productsatoz/index.html["_OnCommand Unified Manager Operations Manager Administration Guide_: [mysupport.netapp.com/documentation/productsatoz/index.html\](https://mysupport.netapp.com/documentation/productsatoz/index.html)"]

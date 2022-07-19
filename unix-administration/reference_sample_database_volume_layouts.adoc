@@ -1,0 +1,379 @@
+---
+permalink: unix-administration/reference_sample_database_volume_layouts.html 
+sidebar: sidebar 
+keywords: refer, sample, database, volume, layout, configuring, database 
+summary: Weitere Informationen zur Konfiguration Ihrer Datenbank finden Sie unter Beispiel-Datenbank-Volume-Layouts. 
+---
+= Beispiel für Datenbank-Volume-Layouts
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Weitere Informationen zur Konfiguration Ihrer Datenbank finden Sie unter Beispiel-Datenbank-Volume-Layouts.
+
+
+
+== Single-Instance-Datenbanken
+
+|===
+| Dateitypen | Volume-Namen | Dediziertes Volume für Dateitypen | Automatische Snapshot Kopien 
+
+
+ a| 
+Oracle-Binärdateien
+ a| 
+Orabin_Host-Name
+ a| 
+Ja.
+ a| 
+Ein
+
+
+
+ a| 
+Datendateien
+ a| 
+Oradata_sid
+ a| 
+Ja.
+ a| 
+Aus
+
+
+
+ a| 
+Temporäre Datendateien
+ a| 
+Oratep_sid
+ a| 
+Ja.
+ a| 
+Aus
+
+
+
+ a| 
+Kontrolldateien
+ a| 
+Oracntrl01_sid (Multiplexed)
+
+Oracntrl02_sid (Multiplexed)
+ a| 
+Ja.
+ a| 
+Aus
+
+
+
+ a| 
+Wiederherstellungsprotokolle
+ a| 
+Oralogen01_sid (Multiplexed)
+
+Oralogen02_sid (Multiplexed)
+ a| 
+Ja.
+ a| 
+Aus
+
+
+
+ a| 
+Archivprotokolle
+ a| 
+Oraarch_sid
+ a| 
+Ja.
+ a| 
+Aus
+
+|===
+
+
+== RAC-Datenbanken (Real Application Clusters)
+
+|===
+| Dateitypen | Volume-Namen | Dediziertes Volume für Dateitypen | Automatische Snapshot Kopien 
+
+
+ a| 
+Oracle-Binärdateien
+ a| 
+Orabin_Host-Name
+ a| 
+Ja.
+ a| 
+Ein
+
+
+
+ a| 
+Datendateien
+ a| 
+Oradata_dbname
+ a| 
+Ja.
+ a| 
+Aus
+
+
+
+ a| 
+Temporäre Datendateien
+ a| 
+Oratepp_dbname
+ a| 
+Ja.
+ a| 
+Aus
+
+
+
+ a| 
+Kontrolldateien
+ a| 
+Oracntrl01_dbname (Multiplexed)
+
+Oracntrl02_dbname (Multiplexed)
+ a| 
+Ja.
+ a| 
+Aus
+
+
+
+ a| 
+Wiederherstellungsprotokolle
+ a| 
+Oralogen01_dbname (Multiplexed)
+
+Oralogen02_dbname (Multiplexed)
+ a| 
+Ja.
+ a| 
+Aus
+
+
+
+ a| 
+Archivprotokolle
+ a| 
+Oraarch_dbname
+ a| 
+Ja.
+ a| 
+Aus
+
+
+
+ a| 
+Cluster-Dateien
+ a| 
+Oracrs_clustername
+ a| 
+Ja.
+ a| 
+Ein
+
+|===
+
+
+== Einzelne Instanz einer ASM-Datenbank (Automatic Storage Management
+
+|===
+| Dateitypen | Volume-Namen | LUN-Namen | Dediziertes Volume für Dateitypen | Automatische Snapshot Kopien 
+
+
+ a| 
+Oracle-Binärdateien
+ a| 
+Orabin_Host-Name
+ a| 
+Orabin_Host namelun
+ a| 
+Ja.
+ a| 
+Ein
+
+
+
+ a| 
+Datendateien
+ a| 
+Oradata_sid
+ a| 
+Oradata_sidlun
+ a| 
+Ja.
+ a| 
+Aus
+
+
+
+ a| 
+Temporäre Datendateien
+ a| 
+Oratep_sid
+ a| 
+Oratepp_sidlun
+ a| 
+Ja.
+ a| 
+Aus
+
+
+
+ a| 
+Kontrolldateien
+ a| 
+Oracntrl01_sid (Multiplexed)
+
+Oracntrl02_sid (Multiplexed)
+ a| 
+Oracntrl01_sidlun (Multiplexed)
+
+Oracntrl02_sidlun (Multiplexed)
+ a| 
+Ja.
+ a| 
+Aus
+
+
+
+ a| 
+Wiederherstellungsprotokolle
+ a| 
+Oralogen01_dbname (Multiplexed)
+
+Oralogen02_dbname (Multiplexed)
+ a| 
+Oralog01_dbnamelun (Multiplexed)
+
+Oralogen02_dbnamelun (Multiplexed)
+ a| 
+Ja.
+ a| 
+Aus
+
+
+
+ a| 
+Archivprotokolle
+ a| 
+Oraarch_sid
+ a| 
+Oraarch_sidlun
+ a| 
+Ja.
+ a| 
+Aus
+
+|===
+
+
+== ASM RAC-Datenbanken
+
+|===
+| Dateitypen | Volume-Namen | LUN-Namen | Dediziertes Volume für Dateitypen | Automatische Snapshot Kopien 
+
+
+ a| 
+Oracle-Binärdateien
+ a| 
+Orabin_Host-Name
+ a| 
+Orabin_Host namelun
+ a| 
+Ja.
+ a| 
+Ein
+
+
+
+ a| 
+Datendateien
+ a| 
+Oradata_sid
+ a| 
+Oradata_sidlun
+ a| 
+Ja.
+ a| 
+Aus
+
+
+
+ a| 
+Temporäre Datendateien
+ a| 
+Oratep_sid
+ a| 
+Oratepp_sidlun
+ a| 
+Ja.
+ a| 
+Aus
+
+
+
+ a| 
+Kontrolldateien
+ a| 
+Oracntrl01_sid (Multiplexed)
+
+Oracntrl02_sid (Multiplexed)
+ a| 
+Oracntrl01_sidlun (Multiplexed)
+
+Oracntrl02_sidlun (Multiplexed)
+ a| 
+Ja.
+ a| 
+Aus
+
+
+
+ a| 
+Wiederherstellungsprotokolle
+ a| 
+Oralogen01_dbname (Multiplexed)
+
+Oralogen02_dbname (Multiplexed)
+ a| 
+Oralog01_dbnamelun (Multiplexed)
+
+Oralogen02_dbnamelun (Multiplexed)
+ a| 
+Ja.
+ a| 
+Aus
+
+
+
+ a| 
+Archivprotokolle
+ a| 
+Oraarch_sid
+ a| 
+Oraarch_sidlun
+ a| 
+Ja.
+ a| 
+Aus
+
+
+
+ a| 
+Cluster-Dateien
+ a| 
+Oracrs_clustername
+ a| 
+Oracrs_clusternamelun
+ a| 
+Ja.
+ a| 
+Ein
+
+|===

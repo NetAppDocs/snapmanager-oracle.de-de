@@ -1,0 +1,20 @@
+---
+permalink: unix-administration/concept_restoration_of_the_data_from_raw_devices.html 
+sidebar: sidebar 
+keywords: restore, alternate, location, connect, necessary, raw, device, local, host 
+summary: Bevor Sie ein anderes Verzeichnis wiederherstellen, müssen Sie eine Verbindung zu den auf dem lokalen Host vorhandenen Raw-Geräten herstellen. 
+---
+= Wiederherstellung der Daten von RAW-Geräten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie ein anderes Verzeichnis wiederherstellen, müssen Sie eine Verbindung zu den auf dem lokalen Host vorhandenen Raw-Geräten herstellen.
+
+Sie können die Wiederherstellung von einem alternativen Speicherort aufrufen, um die Datenblöcke von alternativen Rohgeräten auf aktive Raw Devices zu kopieren. Um diesen Vorgang durchzuführen, müssen Sie das alternative RAW-Gerät angeben, von dem aus das ursprüngliche RAW-Gerät wiederhergestellt werden soll, indem Sie eine Wiederherstellungsspezifikation erstellen.
+
+*Verwandte Informationen*
+
+xref:task_creating_restore_specifications.adoc[Erstellen von Wiederherstellungsspezifikationen]

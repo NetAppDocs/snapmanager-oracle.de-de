@@ -1,0 +1,33 @@
+---
+permalink: unix-installation-7mode/task_verifying_database_backups.html 
+sidebar: sidebar 
+keywords: verifym backup, database, backed-up, file, corrupt, unix 
+summary: Sie können die Sicherung Ihrer Datenbank überprüfen, um sicherzustellen, dass die gesicherten Dateien nicht beschädigt sind. 
+---
+= Datenbank-Backups werden überprüft
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die Sicherung Ihrer Datenbank überprüfen, um sicherzustellen, dass die gesicherten Dateien nicht beschädigt sind.
+
+Wenn Sie beim Erstellen eines Backups nicht das Kontrollkästchen *Backup überprüfen mit dem Dienstprogramm Oracle DBVERIFY* aktiviert haben, müssen Sie diese Schritte manuell durchführen, um die Sicherung zu überprüfen. Wenn Sie das Kontrollkästchen aktiviert haben, überprüft SnapManager das Backup automatisch.
+
+. Wählen Sie aus der Struktur *Repositories* das Profil aus.
+. Klicken Sie mit der rechten Maustaste auf das Backup, das Sie überprüfen möchten, und wählen Sie *Überprüfen*.
+. Klicken Sie Auf *Fertig Stellen*.
++
+Wenn der Vorgang fehlschlägt, klicken Sie auf *Betriebsdetails*, um anzuzeigen, was den Vorgang zum Scheitern verurteilt hat.
+
++
+Klicken Sie im Baum *Repository* mit der rechten Maustaste auf das Backup und klicken Sie dann auf *Eigenschaften*, um die Ergebnisse des Verifizierungsvorgangs anzuzeigen.
+
+
+
+Sie können gesicherte Dateien verwenden, um Wiederherstellungsvorgänge durchzuführen. Informationen zur Durchführung von Wiederherstellungsvorgängen über die SnapManager-Benutzeroberfläche (UI) finden Sie in der _Online-Hilfe_. Wenn Sie die Befehlszeilenschnittstelle (CLI) zum Durchführen von Wiederherstellungsvorgängen verwenden möchten, finden Sie im _SnapManager für Oracle – Administratorhandbuch für UNIX_.
+
+*Verwandte Informationen*
+
+https://library.netapp.com/ecm/ecm_download_file/ECMP12471546["SnapManager 3.4 für Oracle – Administratorhandbuch für UNIX"]

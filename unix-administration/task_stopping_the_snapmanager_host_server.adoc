@@ -1,0 +1,22 @@
+---
+permalink: unix-administration/task_stopping_the_snapmanager_host_server.html 
+sidebar: sidebar 
+keywords: snapmanager, stop, server, host, smo 
+summary: Wenn Sie mit SnapManager fertig sind, möchten Sie den Server möglicherweise anhalten. 
+---
+= Beenden des SnapManager-Hostservers
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn Sie mit SnapManager fertig sind, möchten Sie den Server möglicherweise anhalten.
+
+. Geben Sie zum Beenden des Servers den folgenden Befehl als Root-Benutzer ein:
+`smo_server stop`
+
+
+*Verwandte Informationen*
+
+xref:reference_the_smosmsap_server_stop_command.adoc[Der Befehl smo_Server stop]

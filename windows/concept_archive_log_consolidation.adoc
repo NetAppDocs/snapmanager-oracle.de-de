@@ -1,0 +1,14 @@
+---
+permalink: windows/concept_archive_log_consolidation.html 
+sidebar: sidebar 
+keywords: archive, log, consolidation, backup 
+summary: 'Mit SnapManager (3.2 oder höher) für Oracle werden die Archiv-Log-Backups konsolidiert, um eine Mindestanzahl an Backups für Archivierungs-Log-Dateien beizubehalten. SnapManager für Oracle erkennt und befreit die Backups, die Archivprotokolle enthalten, die Teilmengen anderer Backups sind.' 
+---
+= Konsolidierung von Archivierungsprotokolldaten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit SnapManager (3.2 oder höher) für Oracle werden die Archiv-Log-Backups konsolidiert, um eine Mindestanzahl an Backups für Archivierungs-Log-Dateien beizubehalten. SnapManager für Oracle erkennt und befreit die Backups, die Archivprotokolle enthalten, die Teilmengen anderer Backups sind.

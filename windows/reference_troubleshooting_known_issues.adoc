@@ -1,0 +1,191 @@
+---
+permalink: windows/reference_troubleshooting_known_issues.html 
+sidebar: sidebar 
+keywords: known, issues, snapmanager, troubleshooting 
+summary: Sie sollten einige bekannte Probleme kennen, die bei der Verwendung von SnapManager auftreten können, und deren Umgang damit. 
+---
+= Fehlerbehebung bei bekannten Problemen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie sollten einige bekannte Probleme kennen, die bei der Verwendung von SnapManager auftreten können, und deren Umgang damit.
+
+
+
+== SnapManager für Oracle erkennt Cluster-Mode-Profile nicht
+
+Falls der Clustermodus-Profilname nicht in der Datei cmode_profiles.config im Installationsverzeichnis von SnapManager für Oracle vorhanden ist, kann die folgende Fehlermeldung auslösen:
+
+Konfigurieren Sie bitte DFM Server mit SnapDrive config set -dfm user_Name Appliance_Name.
+
+Wenn Sie auch bei der Aktualisierung der SnapManager für Oracle den Ordner /opt/NetApp/smo/* löschen, wird auch die Datei cmode_profil.config mit den Cluster-Mode-Profilnamen gelöscht. Dieses Problem löst auch die gleiche Fehlermeldung aus.
+
+*Workaround*
+
+Aktualisieren Sie das Profil: smo Profile Update-profile <profile_Name>
+
+
+NOTE: Falls SnapManager für Oracle im Pfad /opt/NetApp/smo/ installiert ist, lautet der Dateispeicherort /opt/NetApp/smo/cmode_profile.config.
+
+
+
+== Der Server kann nicht gestartet werden
+
+Beim Starten des Servers wird möglicherweise eine Fehlermeldung wie die folgende angezeigt:
+
+SMO-01104: Fehler beim Aufrufen des Befehls: SMO-17107: Der SnapManager Server konnte aufgrund der folgenden Fehler nicht am Port 8074 gestartet werden: java.net.BindException: die Adresse wird bereits verwendet
+
+Dies kann daran liegen, dass die SnapManager-Listening-Ports (standardmäßig 27214 und 27215) derzeit von einer anderen Anwendung verwendet werden.
+
+Dieser Fehler kann auch auftreten, wenn der smo_Server-Befehl bereits ausgeführt wird, aber SnapManager erkennt den vorhandenen Prozess nicht.
+
+*Workaround*
+
+Sie können SnapManager oder die andere Anwendung neu konfigurieren, um unterschiedliche Ports zu verwenden.
+
+Um SnapManager neu zu konfigurieren, bearbeiten Sie die folgende Datei: C:\Programme\NetApp\SnapManager für Oracle\Properties\smo.config
+
+Sie weisen folgende Werte zu:
+
+* SMO Server.Port = 27214
+* SMO Server.rmiRegistry.Port=27215
+* Remote.Registry.ocijdbc.Port= 27215
++
+Der Remote.Registry.ocijdbc.Port muss der gleiche sein wie der Server.rmiRegistry.Port.
+
+
+
+So starten Sie den SnapManager-Server:
+
+. Klicken Sie Auf *Start* > *Systemsteuerung* > *Verwaltung* > *Services*.
+. Sie können den Server auf drei Arten starten:
++
+** Klicken Sie im linken Bereich auf *Start*.
+** Klicken Sie mit der rechten Maustaste auf NetApp SnapManager 3.3 für Oracle und wählen Sie im Dropdown-Menü die Option *Start* aus.
+** Doppelklicken Sie auf NetApp SnapManager 3.3 für Oracle und klicken Sie im Fenster Eigenschaften auf *Start*.
+
+
+
+
+
+
+== Zielnamen der Archivprotokolldatei können nicht verwaltet werden, wenn die Zielnamen Teil anderer Zielnamen sind
+
+Wenn der Benutzer beim Erstellen einer Archiv-Log-Sicherung ein Ziel ausschließt, das Teil anderer Zielnamen ist, werden auch die anderen Zielnamen ausgeschlossen.
+
+Nehmen wir beispielsweise an, dass drei Ziele ausgeschlossen werden können: E:\\Arch, G:\\Arch und H:\\Arch. Beim Erstellen der Backup der Archivprotokolldatei, wenn Sie E:\\ARCH mit dem Befehl ausschließen
+
+[listing]
+----
+smo backup create -profile almsamp1 -data -online -archivelogs  -exclude-dest E:\\arch
+----
+, SnapManager für Oracle schließt alle Ziele ab, die mit E:\\ARCH beginnen.
+
+*Workaround*
+
+* Fügen Sie einen Pfadtrenner hinzu, nachdem Ziele in V€tarchiv_dest konfiguriert wurden. Ändern Sie z. B. den Bogen E:\\in E:\\Arch\.
+* Bei der Erstellung eines Backups sollten Ziele berücksichtigt werden, anstatt Ziele auszuschließen.
+
+
+
+
+== Die Größe der Repository-Datenbank wächst mit der Zeit, nicht mit der Anzahl der Backups
+
+Die Größe der Repository-Datenbank wächst mit der Zeit, da SnapManager-Operationen Daten innerhalb des Schemas in den Repository-Datenbanktabellen einfügen oder löschen, was zu einer hohen Indexbelegung führt.
+
+*Workaround*
+
+Sie müssen die Indizes gemäß den Oracle-Richtlinien überwachen und neu erstellen, um den vom Repository-Schema belegten Speicherplatz zu steuern.
+
+
+
+== Auf die SnapManager-Benutzeroberfläche kann nicht zugegriffen werden und SnapManager-Vorgänge schlagen fehl, wenn die Repository-Datenbank ausfällt
+
+SnapManager-Vorgänge schlagen fehl und Sie können nicht auf die GUI zugreifen, wenn die Repository-Datenbank ausfällt.
+
+In der folgenden Tabelle sind die verschiedenen Aktionen aufgeführt, die Sie ausführen möchten, sowie deren Ausnahmen:
+
+|===
+
+
+| Betrieb | Ausnahmen 
+
+
+ a| 
+Öffnen eines geschlossenen Repository
+ a| 
+Die folgende Fehlermeldung wird in SM_gui.log: [WARNUNG ]: SMO-01106: Beim Abfragen des Projektarchivs ist ein Fehler aufgetreten: Geschlossene Verbindung java.sql.SQLException: Geschlossene Verbindung.
+
+
+
+ a| 
+Aktualisieren eines geöffneten Projektarchivs durch Drücken von F5
+ a| 
+Eine Projektarchiv-Ausnahme wird in der GUI angezeigt und protokolliert auch eine NullPointerException in der Datei sm_gui.log.
+
+
+
+ a| 
+Aktualisieren des Hostservers
+ a| 
+Eine NullPointerException wird in der Datei sumo_gui.log protokolliert.
+
+
+
+ a| 
+Erstellen eines neuen Profils
+ a| 
+Im Fenster Profilkonfiguration wird eine NullPointerException angezeigt.
+
+
+
+ a| 
+Aktualisieren eines Profils
+ a| 
+Die folgende SQL-Ausnahme wird in SM_gui.log: [WARNUNG ] protokolliert: SMO-01106: Beim Abfragen des Projektarchivs ist ein Fehler aufgetreten: Geschlossene Verbindung.
+
+
+
+ a| 
+Zugriff auf ein Backup
+ a| 
+Die folgende Fehlermeldung wird in SM_gui.log protokolliert: Die Initialisierung einer Sammlung konnte nicht abgeschlossen werden.
+
+
+
+ a| 
+Anzeigen der Kloneigenschaften
+ a| 
+Die folgende Fehlermeldung wird in sm_gui.log protokolliert und sumo_gui.log: Die Initialisierung einer Sammlung konnte nicht abgeschlossen werden.
+
+|===
+*Workaround*
+
+Sie müssen sicherstellen, dass die Repository-Datenbank ausgeführt wird, wenn Sie auf die GUI zugreifen möchten oder SnapManager-Vorgänge ausführen möchten.
+
+
+
+== Es können keine temporären Dateien für die geklonte Datenbank erstellt werden
+
+Wenn temporäre Tablespaces-Dateien der Zieldatenbank in Mount-Punkten platziert werden, die sich vom Mount-Punkt der Datendateien unterscheiden, ist der Klonvorgang erfolgreich, SnapManager kann jedoch keine temporären Dateien für die geklonte Datenbank erstellen.
+
+*Workaround*
+
+Sie müssen einen der folgenden Schritte ausführen:
+
+* Stellen Sie sicher, dass die Zieldatenbank so angelegt ist, dass temporäre Dateien an demselben Bereitstellungspunkt wie die der Datendateien abgelegt werden.
+* Manuelles Erstellen oder Hinzufügen temporärer Dateien in der geklonten Datenbank.
+
+
+
+
+== Das Backup der Data Guard Standby-Datenbank ist fehlgeschlagen
+
+Wenn ein Archivprotokoll mit dem Dienstnamen der primären Datenbank konfiguriert ist, schlägt die Datensicherung der Data Guard Standby-Datenbank fehl.
+
+*Workaround*
+
+In der GUI müssen Sie *External Archive Log Location* angeben, der dem Dienstnamen der primären Datenbank entspricht.

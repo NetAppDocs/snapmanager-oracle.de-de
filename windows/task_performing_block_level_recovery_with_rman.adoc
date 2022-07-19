@@ -1,0 +1,169 @@
+---
+permalink: windows/task_performing_block_level_recovery_with_rman.html 
+sidebar: sidebar 
+keywords: configure, snapmanager, catalog, backup, recovery, manager, rman, oracle, tool, perform, block-level 
+summary: 'Sie können SnapManager für den Katalog seiner Backups im Recovery Manager (RMAN), einem Oracle Tool, konfigurieren, damit Sie mithilfe von RMAN ein Recovery auf Blockebene durchführen können. RMAN kann entweder die Kontrolldateien der Datenbank oder eine separate Recovery-Katalog-Datenbank als Repository verwenden.' 
+---
+= Durchführen von Recovery auf Blockebene mit Oracle Recovery Manager (RMAN)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können SnapManager für den Katalog seiner Backups im Recovery Manager (RMAN), einem Oracle Tool, konfigurieren, damit Sie mithilfe von RMAN ein Recovery auf Blockebene durchführen können. RMAN kann die Kontrolldateien der Datenbank oder eine separate Recovery-Katalog-Datenbank als Repository verwenden.
+
+. Geben Sie den folgenden Befehl ein, um eine vollständige Offline-Sicherung mithilfe von SnapManager durchzuführen:
++
+smo Backup create -offline-full-profilprofile_Name-labelBackup_Label_Name-wortrecih
+
++
+Wo?
+
++
+** Profile_Name ist der Name des Profils, das der Sicherung zugeordnet ist
+** Backup_Label_Name ist der Name des Backup-Labels
+
+
+
+
+[source]
+----
+smo backup create -offline -full -profile profile_monthly
+-label full_backup -verbose
+
++
+SMO-07109 [INFO ]: Cataloguing all files in backup set with RMAN
+TAG=SMC_full_backup_1158773581857, RMAN=ES0/controlfile.
+...
+SMO-13037 [INFO ]: Successfully completed operation: Backup
+SMO-13048 [INFO ]: Operation Status: SUCCESS
+SMO-13049 [INFO ]: Elapsed Time: 0:02:20.506
+Operation Id [ff8080810dcc47e3010dcc47eb7a0001] succeeded.
++
+----
+. Um zu überprüfen, ob das Backup mit RMAN katalogisiert ist, geben Sie vom Datenbank-Host den folgenden Befehl an der RMAN-Eingabeaufforderung ein:
++
+Liste datafilecopy Tag Tag Tag_Name;
+
+. Geben Sie den folgenden Befehl ein, um die Datenbank zu überprüfen und festzustellen, ob Blöcke beschädigt sind:
++
+dbv-DATEI=user01.dbf
+
++
+Die folgende Ausgabe gibt an, dass zwei Seiten beschädigt sind:
+
++
+[listing]
+----
+DBVERIFY: Release 10.2.0.1.0 - Production on Wed Sep 20 13:35:44 2006
+Copyright (c) 1982, 2005, Oracle. All rights reserved.
+DBVERIFY - Verification starting : FILE = user01.dbf
+Page 625 is marked corrupt
+Corrupt block relative dba: 0x01400271 (file 5, block 625)
+Bad header found during dbv:
+Data in bad block:
+type: 240 format: 6 rdba: 0xed323b81
+last change scn: 0x6f07.faa74628 seq: 0x87 flg: 0x02
+spare1: 0x60 spare2: 0x5 spare3: 0xef7d
+consistency value in tail: 0xa210fe71
+check value in block header: 0x13c7
+block checksum disabled...
+Page 627 is marked corrupt
+Corrupt block relative dba: 0x01400273 (file 5, block 627)
+Bad header found during dbv:
+Data in bad block:
+type: 158 format: 7 rdba: 0x2101e16d
+last change scn: 0xe828.42414628 seq: 0xb4 flg: 0xff
+spare1: 0xcc spare2: 0x81 spare3: 0x8665
+consistency value in tail: 0x46d20601
+check value in block header: 0x1a84
+computed block checksum: 0x6c30
+DBVERIFY - Verification complete
+Total Pages Examined : 1280
+Total Pages Processed (Data) : 1123
+Total Pages Failing (Data) : 0
+Total Pages Processed (Index): 0
+Total Pages Failing (Index): 0
+Total Pages Processed (Other): 34
+Total Pages Processed (Seg) : 0
+Total Pages Failing (Seg) : 0
+Total Pages Empty : 120
+Total Pages Marked Corrupt: 2
+Total Pages Influx : 0
+Highest block SCN : 1337349 (0.1337349)
+----
+. Um den Zugriff auf die Dateien vom Backup auf den Host und RMAN zu ermöglichen, mounten Sie das Backup mit dem folgenden Befehl:
++
+smo Backup Mount -profileprofile_Name-labellabel-verbose
+
++
+[listing]
+----
+smo backup mount -profile SALES1 -label full_backup -verbose
+
+SMO-13046 [INFO ]: Operation GUID 8abc013111b9088e0111b908a7560001 starting on Profile SALES1
+SMO-08052 [INFO ]: Beginning to connect mount(s) [E:\logs,F:\data] from logical snapshot SMO_SALES1_hsdb1_F_C_1_8abc013111a450480111a45066210001.
+SMO-08025 [INFO ]: Beginning to connect mount E:\logs from snapshot SMO_SALES1_hsdb1_F_C_1_8abc013111a450480111a45066210001_0 of volume hs_logs.
+SMO-08027 [INFO ]: Finished connecting mount E:\logs from snapshot SMO_SALES1_hsdb1_F_C_1_8abc013111a450480111a45066210001_0 of volume hs_logs.
+SMO-08025 [INFO ]: Beginning to connect mount F:\data from snapshot SMO_SALES1_hsdb1_F_C_1_8abc013111a450480111a45066210001_0 of volume hs_data.
+SMO-08027 [INFO ]: Finished connecting mount F:\data from snapshot SMO_SALES1_hsdb1_F_C_1_8abc013111a450480111a45066210001_0 of volume hs_data.
+SMO-08053 [INFO ]: Finished connecting mount(s) [E:\logs,F:\data] from logical snapshot SMO_SALES1_hsdb1_F_C_1_8abc013111a450480111a45066210001.
+SMO-13037 [INFO ]: Successfully completed operation: Backup Mount
+SMO-13048 [INFO ]: Operation Status: SUCCESS
+SMO-13049 [INFO ]: Elapsed Time: 0:01:00.981
+Operation Id [8abc013111b9088e0111b908a7560001] succeeded.
+----
+. Geben Sie zum Wiederherstellen der Blöcke in RMAN den folgenden Befehl ein:
++
+Blockrecover-Datendatei '`E:\path\file.dbf`' Block Block_id, from Tag Backup_rman_Tag
+
++
+[listing]
+----
+RMAN> blockrecover datafile
+‘E:\sys\file01.dbf’ block 625, 626, 627
+from tag SMO_full_backup_1158773581857;
+
+Starting blockrecover at 20-SEP-08 using target database control file instead of recovery catalog
+allocated channel: ORA_DISK_1
+channel ORA_DISK_1: sid=153 devtype=DISK
+channel ORA_DISK_1: restoring block(s) from datafile copy
+ C:\myfs\user01.dbf
+starting media recovery
+media recovery complete, elapsed time: 00:00:01
+Finished blockrecover at 20-SEP-08
+----
+. Verwenden Sie den folgenden Befehl, um zu überprüfen, ob die Blöcke repariert wurden:
++
+dbv-DATEI=filename.dbf
+
++
+Die folgende Ausgabe zeigt an, dass keine Seiten beschädigt sind:
+
++
+[listing]
+----
+dbv FILE=user01.dbf
+
+DBVERIFY: Release 10.2.0.1.0 - Production on Wed Sep 20 13:40:01 2008
+Copyright (c) 1982, 2008, Oracle. All rights reserved.
+DBVERIFY - Verification starting : FILE = user01.dbf
+DBVERIFY - Verification complete
+Total Pages Examined : 1280
+Total Pages Processed (Data) : 1126
+Total Pages Failing (Data) : 0
+Total Pages Processed (Index): 0
+Total Pages Failing (Index): 0
+Total Pages Processed (Other): 34
+Total Pages Processed (Seg) : 0
+Total Pages Failing (Seg) : 0
+Total Pages Empty : 120
+Total Pages Marked Corrupt : 0
+Total Pages Influx : 0
+Highest block SCN : 1337349 (0.1337349)
+----
++
+Alle beschädigten Blöcke wurden repariert und wiederhergestellt.
+
+

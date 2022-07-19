@@ -1,0 +1,28 @@
+---
+permalink: windows/concept_what_the_snapmanager_architecture_is.html 
+sidebar: sidebar 
+keywords: oracle, architecture, component, host, client, repository, netapp, architecture 
+summary: Die Architektur von SnapManager für Oracle umfasst viele Komponenten, wie beispielsweise das SnapManager für Oracle Host, Client und Repository. Weitere Komponenten sind die primären und sekundären Storage-Systeme und andere NetApp Produkte. 
+---
+= Die Architektur von SnapManager für Oracle ist das
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Architektur von SnapManager für Oracle umfasst viele Komponenten, wie beispielsweise das SnapManager für Oracle Host, Client und Repository. Weitere Komponenten sind die primären und sekundären Storage-Systeme und andere NetApp Produkte.
+
+Die Architektur von SnapManager für Oracle umfasst die folgenden Komponenten:
+
+* SnapManager Host
+* Grafische SnapManager Benutzeroberfläche oder Befehlszeilenschnittstelle
+* SnapManager Repository
+* Primärspeicher
+* Sekundäre Storage-Systeme
+* SnapDrive für Windows
+
+
+Das folgende Bild zeigt die Architektur von SnapManager für Oracle sowie die zugehörigen Komponenten:
+
+image::../media/scrn_en_drw_smo_architecture.gif[Architektur von SnapManager für SAP]

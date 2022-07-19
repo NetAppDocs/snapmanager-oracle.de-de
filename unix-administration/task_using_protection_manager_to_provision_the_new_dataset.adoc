@@ -1,0 +1,44 @@
+---
+permalink: unix-administration/task_using_protection_manager_to_provision_the_new_dataset.html 
+sidebar: sidebar 
+keywords: smo_paydb, dataset, create, storage, administrator, protection, manager, assign, provision, node, netapp 
+summary: Nachdem der smo_paydb-Datensatz erstellt wurde, verwendet der Storage-Administrator Protection Manager, um Storage-System-Ressourcen zuzuweisen, um den Backup-Knoten des Datensatzes bereitzustellen. 
+---
+= Verwenden von Protection Manager, um den neuen Datensatz bereitzustellen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nachdem der smo_paydb-Datensatz erstellt wurde, verwendet der Storage-Administrator Protection Manager, um Storage-System-Ressourcen zuzuweisen, um den Backup-Node des Datensatzes bereitzustellen.
+
+Vor dem Bereitstellen des neu erstellten Datensatzes vergibt der Storage-Administrator den Namen des im Profil angegebenen Datensatzes mit dem DBA-Partner.
+
+In diesem Fall lautet der Datensatzname smo_payroll.tech.com_PAYDB.
+
+. Gehen Sie zur NetApp Management Console des Protection Manager.
+. Klicken Sie in der Menüleiste auf *Daten* > *Datensätze* > *Übersicht*.
++
+Auf der Registerkarte „Datensätze“ des Fensters „Datensätze“ wird eine Liste mit Datensätzen angezeigt, zu denen auch der Datensatz gehört, der gerade über SnapManager erstellt wurde.
+
+. Suchen Sie den *smo_payroll.tech.com_PAYDB*-Datensatz und wählen Sie ihn aus.
++
+Wenn Sie diesen Datensatz auswählen, zeigt der Diagrammbereich den smo_paydb-Datensatz mit seinem Datensicherungs-Knoten nicht bereitgestellt an. Der Konformitätsstatus wird als nicht-konform gekennzeichnet.
+
+. Wenn der smo_paydb-Datensatz noch hervorgehoben ist, klicken Sie auf *Bearbeiten*.
++
+Die NetApp Management Console des Protection Manager zeigt das Datensatz-Fenster Bearbeiten für den *smo_payroll.tech.com_PAYDB* Datensatz an. Im Navigationsbereich des Fensters werden Konfigurationsoptionen für den primären Knoten des Datensatzes, die Sicherungsverbindung und den Backup-Knoten angezeigt.
+
+. Suchen Sie im Navigationsbereich die Optionen für den Backup-Knoten des Datensatzes und wählen Sie *Provisioning/Resource-Pools*.
++
+Im Fenster Datensatz bearbeiten wird eine Einstellung für die Standard-Provisionierungsrichtlinie und eine Liste verfügbarer Ressourcen-Pools angezeigt.
+
+. Wählen Sie für dieses Beispiel den Ressourcen-Pool *paydb_Backup_Resource* aus, und klicken Sie auf *>*.
++
+Der ausgewählte Ressourcen-Pool wird im Feld „Ressourcen-Pools für diesen Node“ aufgelistet.
+
+. Klicken Sie auf *Fertig stellen*, um Ihre Änderungen zu speichern.
+
+
+Der Protection Manager stellt den sekundären Backup-Knoten automatisch mit Ressourcen aus dem Paydb_Backup_Resource-Pool bereit.

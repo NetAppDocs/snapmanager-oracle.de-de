@@ -1,0 +1,28 @@
+---
+permalink: unix-installation-cmode/concept_backing_up_and_verifying_your_databases.html 
+sidebar: sidebar 
+keywords: install, snapmanager, create, basic, backup, database, verify, ensure, contain, corrupt, file 
+summary: Nach der Installation von SnapManager können Sie ein Basis-Backup Ihrer Datenbank erstellen und überprüfen, ob das Backup keine beschädigten Dateien enthält. 
+---
+= Sichern und Überprüfen Ihrer Datenbanken
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nach der Installation von SnapManager können Sie ein Basis-Backup Ihrer Datenbank erstellen und überprüfen, ob das Backup keine beschädigten Dateien enthält.
+
+*Verwandte Informationen*
+
+xref:concept_snapmanager_backup_overview.adoc[SnapManager Backup – Überblick]
+
+xref:concept_defining_a_backup_strategy.adoc[Backup-Strategie definieren]
+
+xref:task_creating_a_profile_for_your_database.adoc[Erstellen eines Profils für Ihre Datenbank]
+
+xref:task_backing_up_your_database.adoc[Sichern Ihrer Datenbank]
+
+xref:task_verifying_database_backups.adoc[Datenbank-Backups werden überprüft]
+
+xref:task_scheduling_recurring_backups.adoc[Planung wiederkehrender Backups]

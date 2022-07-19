@@ -1,0 +1,17 @@
+---
+permalink: windows/task_removing_history_configuration_associated_with_a_single_profile_or_multiple_profiles.html 
+sidebar: sidebar 
+keywords: snapmanager, enable, remove, history, setting, operation, information, removing, single, multiple, profile 
+summary: Mit SnapManager können Sie die Verlaufseinstellungen eines SnapManager-Vorgangs entfernen. Mit diesem Vorgang werden alle Verlaufsdaten gelöscht, die mit einem einzelnen Profil oder mehreren Profilen verknüpft sind. 
+---
+= Entfernen von Verlaufseinstellungen, die einem einzelnen Profil oder mehreren Profilen zugeordnet sind
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit SnapManager können Sie die Verlaufseinstellungen eines SnapManager-Vorgangs entfernen. Mit diesem Vorgang werden alle Verlaufsdaten gelöscht, die mit einem einzelnen Profil oder mehreren Profilen verknüpft sind.
+
+. Um den Verlauf der SnapManager-Vorgänge zu entfernen, die mit einem einzelnen Profil oder mehreren Profilen verknüpft sind, geben Sie den folgenden Befehl ein: smo-history remove -profile {-Name, profile_Name [profile_name1, profile_name2] All-Repository-Login [-passwordrepo_password] -usernamerepo_usernamerepo_dbname-hostrepo_Host-portrepo_Port} -Operation {} -unbose_necen1
+

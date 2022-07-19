@@ -1,0 +1,51 @@
+---
+permalink: unix-administration/task_performing_backup_restore_and_clone_operations_using_prescript_and_post_scripts.html 
+sidebar: sidebar 
+keywords: script, initiating, backup, restore, clone, operation, snapmanager, display, task-enabling, command-line 
+summary: Sie können Ihr eigenes Skript verwenden, während Sie Backup-, Restore- oder Klonvorgang initiieren. SnapManager zeigt eine Seite für die Aktivierung von Aufgaben im Assistenten zum Erstellen von Backups, zum Wiederherstellen oder Wiederherstellen oder zum Erstellen von Klonen an, wo Sie das Skript auswählen und Werte für alle Parameter angeben können, die vom Skript benötigt werden. 
+---
+= Durchführung von Backup-, Restore- und Klonvorgängen mithilfe von Prescript und Post-Scripts
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können Ihr eigenes Skript verwenden, während Sie Backup-, Restore- oder Klonvorgang initiieren. SnapManager zeigt eine Seite für die Aktivierung von Aufgaben im Assistenten zum Erstellen von Backups, zum Wiederherstellen oder Wiederherstellen oder zum Erstellen von Klonen an, wo Sie das Skript auswählen und Werte für alle Parameter angeben können, die vom Skript benötigt werden.
+
+* Installieren Sie die Plug-in-Skripte am richtigen Speicherort für die SnapManager-Installation.
+* Überprüfen Sie, ob die Plug-ins korrekt installiert sind, indem Sie den Befehl smo Plugin Check verwenden.
+* Stellen Sie sicher, dass Sie die BASH-Shell verwenden.
+
+
+Führen Sie in der Befehlszeilenschnittstelle (CLI) den Skriptnamen auf, wählen Sie die Parameter aus und legen Sie die Werte fest.
+
+. Um zu überprüfen, ob Sie die BASH-Shell verwenden, geben Sie den folgenden Befehl an der Eingabeaufforderung:bash ein
++
+Alternativ können Sie an der Eingabeaufforderung den Befehl which-bash eingeben und die Befehlsausgabe als Startparameter des Skripts verwenden.
+
++
+Die BASH-Shell funktioniert einwandfrei, wenn kein Fehler auftritt.
+
+. Geben Sie für den Backup-Vorgang die Option -taskSpec ein und geben Sie den absoluten Pfad der XML-Datei für die Aufgabenspezifikation ein, um eine Vorverarbeitung oder eine Nachbearbeitung durchzuführen, die vor oder nach dem Backup durchgeführt werden soll: bbs Backup create -profile_Name {[-full {-online { -offline} [-contake {-hourly [-Daily { -Weekly} -unlimited}] [-confirm] [-dataces [-monthly-commentaces [-monthly-contaces] [-monthly-commoceptaces [-monthly}] [-monthly-commoceptaces [-monthly] [-monthly-loceptaces] [-] [-monthly-monthly] [-monthly-loceptaces [-] [-monthly-lo [-protect}} -notnow] [-Backup-destpath1 [,[path2]] [-exclude-destpath1 [,path2]]] [-prunelogs {-all - untilSCN -vor {}-dateyyyy-MM-dd HH:mm:ss [-estune-Backups] [-estune-prune-Backups]
++
+Wenn der Backup-Plug-in-Vorgang fehlgeschlagen ist, werden nur der Plug-in-Name und der Rückgabecode angezeigt. Ihr Plug-in-Skript muss Protokollmeldungen enthalten und die Meldungen an die benutzerdefinierten Protokolldateien weiterleiten.
+
+. Für den Backup-Restore-Vorgang: Geben Sie die Option -taskspecs ein und geben Sie den absoluten Pfad der XML-Datei für die Aufgabenspezifikation an, um vor oder nach der Wiederherstellung eine Vorverarbeitung oder eine Nachbearbeitung durchzuführen:Smo Backup Restore -profilprofile_Name {-Label<Label> -id<id>} {-files<<tablespec<tablespaces}> -complete / -controlfiles} [-recover {<-alllogs -nologs] -From-secondary [-temp-Volume <temp_Volume>] [-copy-idid]][-taskspec<tassspec>] [-verify][-Force] Backup restore -fast [requited [-rejed] [-dump [-quiet [-verbose]
++
+Wenn der Vorgang zum Wiederherstellen des Plug-ins fehlgeschlagen ist, werden nur der Plug-in-Name und der Rückgabecode angezeigt. Ihr Plug-in-Skript muss Protokollmeldungen enthalten und die Meldungen an die benutzerdefinierten Protokolldateien weiterleiten.
+
+. Geben Sie für den Vorgang „Clone create“ die Option -taskSpec ein und geben Sie den absoluten Pfad der XML-Datei für die Aufgabenspezifikation ein, um eine Vorverarbeitung oder eine Nachbearbeitung durchzuführen, die vor oder nach dem Klonvorgang stattfinden soll: bbs Clone create -profilprofile_Name {-Backup-labelBackup_Name<-Backup-id} Backup-id> -current<-newsidneft_sid-clonespepfull_path_to_clonespepfile [-Reserve<yes, no, erben>] [-Host<>] [-Label<Label>] [-comment<{<comment> dump [-von-sekundäre [-copy-bose-id]
++
+Wenn der Klon-Plug-in-Vorgang fehlgeschlagen ist, werden nur der Plug-in-Name und der Rückgabecode angezeigt. Ihr Plug-in-Skript muss Protokollmeldungen enthalten und die Meldungen an die benutzerdefinierten Protokolldateien weiterleiten.
+
+
+
+
+
+== Beispiel für die Erstellung eines Backups mithilfe der XML-Datei für die Aufgabenspezifikation
+
+[listing]
+----
+smo backup create -profile SALES1 -full -online -taskspec sales1_taskspec.xml -force -verify
+----

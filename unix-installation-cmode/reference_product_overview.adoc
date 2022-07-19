@@ -1,0 +1,46 @@
+---
+permalink: unix-installation-cmode/reference_product_overview.html 
+sidebar: sidebar 
+keywords: snapmanager, oracle, automate, simplifies, complex, manual, time-consuming, process, associate, backup, recovery, clone, ontap, snapvault, disk, rac 
+summary: SnapManager für Oracle automatisiert und vereinfacht komplexe, manuelle und zeitintensive Prozesse, die im Zusammenhang mit Backup, Recovery und Klonen von Oracle Datenbanken anfallen. Mithilfe von SnapManager mit Data ONTAP SnapMirror Technologie können Sie Backup-Kopien auf einem anderen Volume erstellen. Mit der Data ONTAP SnapVault Technologie werden Backups effizient auf Festplatten archiviert. 
+---
+= Produktübersicht
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager für Oracle automatisiert und vereinfacht komplexe, manuelle und zeitintensive Prozesse, die im Zusammenhang mit Backup, Recovery und Klonen von Oracle Datenbanken anfallen. Mithilfe von SnapManager mit Data ONTAP SnapMirror Technologie können Sie Backup-Kopien auf einem anderen Volume erstellen. Mit der Data ONTAP SnapVault Technologie werden Backups effizient auf Festplatten archiviert.
+
+SnapManager lässt sich mit nativen Oracle Technologien wie Oracle Real Application Clusters (Oracle RAC), Automatic Storage Management (ASM) und Direct NFS über FC-, iSCSI- und NFS-Protokolle integrieren. Optional können mit SnapManager erstellte Backups mit dem Oracle Recovery Manager (RMAN) katalogisiert werden, um die Backup-Informationen zu erhalten. Diese Backups können später in Restore-Vorgängen auf Blockebene oder in zeitpunktgenauen Recovery-Vorgängen verwendet werden.
+
+
+
+== SnapManager Highlights
+
+SnapManager ermöglicht die nahtlose Integration mit Oracle Datenbanken auf dem UNIX Host und über das Backend mit NetApp Snapshot, SnapRestore und FlexClone Technologien Es bietet eine benutzerfreundliche Oberfläche (UI) und eine Befehlszeilenschnittstelle (CLI) für Administrationsfunktionen.
+
+Mit SnapManager können Sie folgende Datenbankvorgänge ausführen und Daten effizient managen:
+
+* Erstellung platzsparender Backups auf primärem oder sekundärem Storage
++
+SnapManager ermöglicht Ihnen ein separates Backup der Datendateien und die Archivierung von Protokolldateien.
+
+* Planen von Backups
+* Wiederherstellung vollständiger oder partieller Datenbanken unter Verwendung eines dateibasierten oder Volume-basierten Restore-Vorgangs
+* Wiederherstellung von Datenbanken durch Erkennung, Mounten und Anwendung von Archivprotokolldateien aus Backups
+* Beschneiden von Archiv-Log-Dateien von Archiv-Protokollzielen bei der Erstellung von Backups nur der Archivprotokolle
+* Automatische Aufbewahrung einer minimalen Anzahl von Archiv-Log-Backups, da nur die Backups gespeichert werden, die eindeutige Archivprotokolldateien enthalten
+* Verfolgung von Betriebsdetails und Erstellung von Berichten
+* Backup wird überprüft, um sicherzustellen, dass sich Backups in einem gültigen Blockformat befinden und dass keine der gesicherten Dateien beschädigt sind
+* Pflegen eines Verlaufs von Vorgängen, die im Datenbankprofil durchgeführt werden
++
+Ein Profil enthält Informationen über die Datenbank, die von SnapManager gemanagt werden soll.
+
+* Sicherung von Backups auf sekundären Storage-Systemen.
+* Erstellung platzsparender Backup-Klone auf primärem oder sekundärem Storage
++
+SnapManager ermöglicht Ihnen die Aufteilung eines Datenbankklonen.
+
+

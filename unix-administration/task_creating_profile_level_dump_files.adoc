@@ -1,0 +1,30 @@
+---
+permalink: unix-administration/task_creating_profile_level_dump_files.html 
+sidebar: sidebar 
+keywords: find, log, information, particular, profile, smo, dump, command, name, profile-level 
+summary: Mithilfe des Befehls smo profile dump mit dem Namen des Profils können Sie Protokollinformationen zu einem bestimmten Profil finden. 
+---
+= Erstellen von Dump-Dateien auf Profilebene
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mithilfe des Befehls smo profile dump mit dem Namen des Profils können Sie Protokollinformationen zu einem bestimmten Profil finden.
+
+. Geben Sie den folgenden Befehl ein: smo profile dump -profile Profile_Name
++
+Speicherverzeichnis der Speicherdatei:
+
++
+[listing]
+----
+Path:/<user-home>
+/.netapp/smo/3.3.0/smo_dump_8abc01c814649ebd0114649ec69d0001.jar
+----
++
+
+NOTE: Wenn beim Erstellen eines Profils ein Fehler auftritt, verwenden Sie den Befehl „Smosystem dump“. Nachdem Sie ein Profil erfolgreich erstellt haben, verwenden Sie die Befehle SmoOperation dump und scoprofile dump.
+
+

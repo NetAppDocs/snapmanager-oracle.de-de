@@ -1,0 +1,73 @@
+---
+permalink: unix-administration/task_using_snapmanager_for_oracle_to_create_the_database_profile_for_a_local_backup.html 
+sidebar: sidebar 
+keywords: database, administrator, snapmanager, create, profile, backup, local, oracle 
+summary: Die Datenbankadministratoren erstellen mithilfe von SnapManager ein Datenbankprofil, mit dem ein Backup im lokalen Storage eines primären Storage-Systems initiiert wird. Die gesamte Profilerstellung und Backup-Erstellung werden in SnapManager vollständig durchgeführt – einschließlich Protection Manager ist also nicht erforderlich. 
+---
+= Verwenden von SnapManager für Oracle, um das Datenbankprofil für ein lokales Backup zu erstellen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Datenbankadministratoren erstellen mithilfe von SnapManager ein Datenbankprofil, mit dem ein Backup im lokalen Storage eines primären Storage-Systems initiiert wird. Die gesamte Profilerstellung und Backup-Erstellung werden in SnapManager vollständig durchgeführt – einschließlich Protection Manager ist also nicht erforderlich.
+
+Ein Profil enthält die Informationen über die zu verwaltende Datenbank, einschließlich der Anmeldeinformationen, Backup-Einstellungen und Sicherungseinstellungen für Backups. Wenn Sie ein Profil erstellen, müssen Sie bei jeder Operation in dieser Datenbank keine Datenbankdetails angeben, sondern nur den Profilnamen angeben. Ein Profil kann nur auf eine Datenbank verweisen. Auf dieselbe Datenbank kann von mehr als einem Profil verwiesen werden.
+
+. Wechseln Sie zum SnapManager für Oracle Client.
+. Klicken Sie in der Struktur SnapManager-Repositories mit der rechten Maustaste auf den Host, der mit diesem Profil verknüpft werden soll, und wählen Sie *Profil erstellen* aus.
+. Geben Sie auf der Seite Profilkonfigurationsinformationen die folgenden Informationen ein und klicken Sie auf *Weiter*.
++
+** Profilname: Gehaltsabrechnung_Prod
+** Profilpasswort: Payrol123
+** Kommentar: Production Payroll Datenbank
+
+
+. Geben Sie auf der Seite Datenbankkonfigurationsinformationen die folgenden Informationen ein und klicken Sie auf *Weiter*.
++
+** Datenbankname: PAYDB
+** Datenbank-SID: Payrolldb
+** Datenbank-Host: Standard akzeptieren
++
+Da Sie ein Profil von einem Host in der Repository-Struktur erstellen, zeigt SnapManager den Hostnamen an.
+
+
+
+. Akzeptieren Sie auf der zweiten Seite Datenbankkonfigurationsinformationen die folgenden Datenbankinformationen und klicken Sie auf *Weiter*:
++
+** Host-Konto, Vertretung des Oracle-Benutzerkontos: oracle
+** Host-Gruppe, die die Oracle-Gruppe repräsentiert: dba
+
+
+. Wählen Sie auf der Seite Datenbankverbindungsinformationen die Option *Datenbankauthentifizierung verwenden* aus, damit Benutzer sich mit Datenbankinformationen authentifizieren können.
++
+Geben Sie für dieses Beispiel die folgenden Informationen ein und klicken Sie auf *Weiter*.
+
++
+** SYSDBA Privileged User Name, der den Systemadministrator der Systemdatenbank repräsentiert, der über Administratorrechte verfügt: Sys
+** Kennwort (SYSDBA-Kennwort): oracle
+** Port zur Verbindung mit Datenbank-Host: 1521
+
+
+. Wählen Sie auf der Seite RMAN-Konfigurationsinformationen die Option *nicht RMAN verwenden* aus, und klicken Sie auf *Weiter*.
++
+Oracle Recovery Manager (RMAN) ist ein Oracle Tool für das Backup und Recovery von Oracle Datenbanken mithilfe der Erkennung auf Blockebene.
+
+. Geben Sie auf der Seite Snapshot Naming Information eine Namenskonvention für die mit diesem Profil verknüpften Snapshots an, indem Sie Variablen auswählen. Die einzige Variable, die benötigt wird, ist die *smid*-Variable, die eine eindeutige Snapshot-Kennung erstellt.
++
+Gehen Sie in diesem Beispiel wie folgt vor:
+
++
+.. Wählen Sie in der Liste Variable Token die Variable *{usertext}* aus und klicken Sie auf *Hinzufügen*.
+.. Geben Sie „payroll.techco.com_" als Host-Name ein und klicken Sie auf *OK*.
+.. Klicken Sie auf *links*, bis der Hostname kurz nach "Smo" im Feld Format angezeigt wird.
+.. Klicken Sie Auf *Weiter*.
+
+
++
+Die Snapshot Namenskonvention von smo_hostname_smoprofile_dbsid_scope_Mode_smid wird „smo_payroll.techco.com_payroll_prod2_payrolldb_f_a_x" (wo der „f“ ein vollständiges Backup anzeigt, das „A“ den automatischen Modus angibt, und das „x“ stellt den einzigartigen SMID dar).
+
+. Überprüfen Sie auf der Seite Vorgang durchführen die Informationen und klicken Sie auf *Erstellen*.
+. Klicken Sie auf *Operation Details*, um Informationen über den Vorgang zum Erstellen von Profilen und zur Volume-basierten Wiederherstellung anzuzeigen.
+

@@ -1,0 +1,35 @@
+---
+permalink: unix-administration/task_viewing_a_list_of_operations.html 
+sidebar: sidebar 
+keywords: view, summary, list, operation, perform, profile, smo 
+summary: Sie können eine Zusammenfassung aller Vorgänge anzeigen, die für ein Profil durchgeführt wurden. 
+---
+= Anzeigen einer Liste von Vorgängen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können eine Zusammenfassung aller Vorgänge anzeigen, die für ein Profil durchgeführt wurden.
+
+Sie können die folgenden Informationen anzeigen, wenn Sie Vorgänge auflisten, die einem bestimmten Profil zugeordnet sind:
+
+* Start- und Enddatum bei Ausführung des Vorgangs
+* Betriebsstatus
+* Vorgangs-ID
+* Art des Vorgangs
+* Host, auf dem er ausgeführt wurde
++
+.. Verwenden Sie den folgenden Befehl, um die Zusammenfassungsinformationen aller Vorgänge aufzulisten:
+`smo operation list profile -profile profile_name-delimiter character [-quiet | -verbose]`
++
+Wenn die Option -Trennzeichen angegeben wird, listet der Befehl jede Zeile in einer separaten Zeile auf und die Attribute in dieser Zeile werden durch das angegebene Zeichen getrennt.
+
+
+
+
+
+*Verwandte Informationen*
+
+xref:reference_the_smosmsapoperation_list_command.adoc[Befehl smo Operation list]

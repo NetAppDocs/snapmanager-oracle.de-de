@@ -1,0 +1,98 @@
+---
+permalink: windows/task_installing_snapmanager_for_oracle.html 
+sidebar: sidebar 
+keywords: install, snapmanager, host, database, manage, install 
+summary: Sie können SnapManager auf dem Host installieren, der über eine oder mehrere Datenbanken zu managen ist. Sie können nur eine SnapManager-Instanz pro Host installieren. 
+---
+= Installation von SnapManager für Oracle
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können SnapManager auf dem Host installieren, der über eine oder mehrere Datenbanken zu managen ist. Sie können nur eine SnapManager-Instanz pro Host installieren.
+
+* Sie müssen die erforderlichen Vorinstallationsaufgaben abgeschlossen haben.
+* Das neueste SnapManager Installationspaket muss heruntergeladen werden.
+* Die entsprechende Version von SnapDrive für Windows muss auf allen Ziel-Hosts installiert und konfiguriert sein.
++
+Informationen zum Installieren und Konfigurieren von SnapDrive für Windows finden Sie unter _SnapDrive for Windows Installation and Administration Guide_.
+
++
+.. Doppelklicken Sie auf die SnapManager-Installationsdatei:
++
+|===
+
+
+| Wenn das Betriebssystem... | Verwenden Sie dann... 
+
+
+ a| 
+Windows x86
+ a| 
+netapp.smo.windows-x86-version.exe
+
+
+
+ a| 
+Windows x64
+ a| 
+netapp.smo.windows-x64-version.exe
+
+|===
++
+Die folgende Meldung wird angezeigt: Der Herausgeber konnte nicht überprüft werden. Möchten Sie diese Software wirklich ausführen?
+
+.. Klicken Sie auf *OK*.
+.. Klicken Sie im Fenster Einführung auf *Weiter*.
+.. Klicken Sie im Fenster Installationsordner auswählen entweder auf *Weiter*, um den Standardinstallationsspeicher zu akzeptieren, oder wählen Sie einen neuen Speicherort aus.
++
+Der Standardspeicherort ist: C:\Programme\NetApp\SnapManager für Oracle.
+
+.. Klicken Sie im Fenster Menüverfügbarkeit auf *Weiter*.
+.. Geben Sie im Fenster Diensteigenschaften angeben die Konto- und Kennwortinformationen für den Windows-Dienst ein.
++
+Das angegebene Konto muss Mitglied der folgenden Gruppen sein:
+
++
+*** Die lokale Administrationsgruppe des Speichersystems
+*** Die lokale Administratorgruppe
+*** Die ORA_DBA-Gruppe, die Sie angeben können, ob der Dienst nach einem Neustart automatisch gestartet werden muss oder manuell gestartet werden soll.
+
+
+.. Klicken Sie im Fenster Übersicht vor der Installation auf *Installieren*.
+.. Klicken Sie im Fenster „Installation abgeschlossen“ auf *Weiter*.
+.. Klicken Sie im Fenster wichtige Informationen auf *Fertig*, um den Installer zu beenden.
+
+
+
+
+Nach Abschluss der Installation können Sie überprüfen, ob die Installation erfolgreich war:
+
+. Starten Sie den SnapManager-Server:
++
+.. Wählen Sie im Fenster Windows-Dienste *NetApp-SnapManager-Version für Oracle* aus.
+.. Klicken Sie im linken Bereich auf *Start*.
+
+
+. Vergewissern Sie sich, dass das SnapManager System ordnungsgemäß ausgeführt wird:
++
+.. Klicken Sie auf *Start* > *Programme* > *NetApp* > *SnapManager für Oracle* > *Start SMO Command Line Interface (CLI)*.
+.. Geben Sie in der Befehlszeilenschnittstelle (CLI) den folgenden Befehl ein: smo System überprüfen Sie, ob die folgende Meldung angezeigt wird: Operation ID number sukzceded.
+
+
++
+Nummer ist die Vorgangs-ID-Nummer.
+
+
+
+*Verwandte Informationen*
+
+xref:concept_preparing_to_install_snapmanager_for_oracle.adoc[Installation von SnapManager für Oracle wird vorbereitet]
+
+xref:concept_preinstallation_tasks.adoc[Aufgaben vor der Installation]
+
+xref:task_downloading_snapmanager_for_oracle_installation_package.adoc[Laden des Installationspakets von SnapManager für Oracle herunter]
+
+http://mysupport.netapp.com/["Dokumentation auf der NetApp Support Site: mysupport.netapp.com"]

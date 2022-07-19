@@ -1,0 +1,57 @@
+---
+permalink: unix-administration/reference_the_smosmsap_clone_splitestimate_command.html 
+sidebar: sidebar 
+keywords: command, enable, clone, split, amount, storage, consume, estimate 
+summary: Mit diesem Befehl können Sie die abgeteilte Menge des für den Klon belegten Speicherplatzes anzeigen. 
+---
+= Der Befehl smo Clone Split-Schätzen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit diesem Befehl können Sie die abgeteilte Menge des für den Klon belegten Speicherplatzes anzeigen.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo clone split-estimate
+-profile profile
+\[-host hostname\]
+\[-label clone-label | -id clone-id\]
+\[-quiet \| -verbose\]
+----
+
+
+== Parameter
+
+* *-Profil*
++
+Gibt den Profilnamen des Klons an.
+
+* *-Host-Hostname*
++
+Gibt den Hostnamen an, in dem der Klon vorhanden ist.
+
+* *-Label Clone-Label*
++
+Gibt den durch den Klonprozess generierten Namen an.
+
+* *-id Clone-id*
++
+Gibt die eindeutige ID an, die durch den Klonprozess generiert wurde.
+
+* *-ruhig*
++
+Zeigt nur Fehlermeldungen auf der Konsole an. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Zeigt Fehler-, Warn- und Informationsmeldungen an der Konsole an.
+
+

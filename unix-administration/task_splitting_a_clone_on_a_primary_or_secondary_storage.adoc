@@ -1,0 +1,41 @@
+---
+permalink: unix-administration/task_splitting_a_clone_on_a_primary_or_secondary_storage.html 
+sidebar: sidebar 
+keywords: clone, split, command, complete, metadata, repository, primary, secondary 
+summary: Sie können den Klon mit dem Befehl „Clone Split“ teilen. Nach Abschluss der Klonabteilung werden die Klonmetadaten aus der Repository-Datenbank entfernt und das mit dem Klon verbundene Backup kann gelöscht oder freigegeben werden. 
+---
+= Durch Aufteilen eines Klons auf primären oder sekundären Storage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Klon mit dem Befehl „Clone Split“ teilen. Nach Abschluss der Klonabteilung werden die Klonmetadaten aus der Repository-Datenbank entfernt und das mit dem Klon verbundene Backup kann gelöscht oder freigegeben werden.
+
+Das neue Profil, das nach dem erfolgreichen Split-Vorgang erstellt wurde, wird zum Verwalten des Split-Klons verwendet. Das neue Profil wird wie jedes andere bestehende Profil in SnapManager sein. Mit diesem Profil können Backup-, Wiederherstellungs- und Klonvorgänge durchgeführt werden.
+
+Außerdem können Sie die E-Mail-Benachrichtigung für das neue Profil konfigurieren. Dadurch kann der Datenbankadministrator über den Status des Datenbankvorgangs benachrichtigt werden, der mit dem Profil durchgeführt wurde.
+
+
+NOTE: SnapManager unterstützt die Abtrennung, wenn sie nur auf einem FlexClone durchgeführt wird.
+
+Wenn der Split-Vorgang fehlschlägt, wird eine entsprechende Fehlermeldung mit dem Grund für einen Fehler angezeigt. Der Status mehrerer Vorgänge wird auch im Betriebsprotokoll angezeigt. Beispiel:
+
+[listing]
+----
+--[ INFO] The following operations were completed:
+Clone Split : Success
+Profile Create : Failed
+Clone Detach : Success
+----
+Optional können Sie die Dump-Dateien nach einem erfolgreichen oder fehlgeschlagenen Klon-Split-Vorgang sammeln.
+
+
+NOTE: Nachdem Sie den Befehl „Clone Split“ eingegeben haben, sollten Sie den SnapManager Server erst beenden, wenn der Vorgang zur Teilung von Klonen gestartet wurde.
+
+
+NOTE: SnapManager generiert das Profil, auch wenn Sie keinen Wert für das Oracle Konto angeben (osccount und osgroup).
+
+. Geben Sie den folgenden Befehl ein: smo Clone Split -profileclone-profile-hostname [-labelclone-label-Label - -idclone-id]-split-labelsplit-Operation-Label-commentNew-profilew-profile-profile [-protosdneclmnum] { [-countname-admgmnecn] { [-promedmedmgmnesm_adym] [-bussnecmnym_adym_adym} }] [-budnmnmgmnmgmgmgmnecn_adym] [-adym_adym_adym_datmnmnmnmnmnmnmnmnmnym] [-datamin_promgmnmnym_adym_adym_adym] [-datacefym_adym_adym_adym_adym_adym_adym_adymn
+

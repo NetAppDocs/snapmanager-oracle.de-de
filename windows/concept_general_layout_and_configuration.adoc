@@ -1,0 +1,35 @@
+---
+permalink: windows/concept_general_layout_and_configuration.html 
+sidebar: sidebar 
+keywords: general, layout, configuration, information, storage, disk, group 
+summary: Informationen zu den empfohlenen allgemeinen Datenbank-Layouts und Storage-Konfigurationen finden Sie, um Festplattengruppen, Dateitypen und Tablespaces zu vermeiden. 
+---
+= Allgemeines Layout und Konfiguration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Informationen zu den empfohlenen allgemeinen Datenbank-Layouts und Storage-Konfigurationen finden Sie, um Festplattengruppen, Dateitypen und Tablespaces zu vermeiden.
+
+* Enthalten Sie keine Dateien aus mehr als einem SAN-Dateisystem in Ihrer Datenbank.
++
+Alle Dateien, die eine Datenbank erstellen, müssen sich auf demselben Dateisystem befinden.
+
+* SnapManager erfordert mehrere 4 KB Blockgröße.
+* Wenn Sie SnapManager-Backups mit dem Oracle Recovery Manager (RMAN) registrieren möchten, müssen Sie RMAN-fähige Profile erstellen.
+
+
+Nachfolgend sind einige Richtlinien für die Volume-Trennung aufgeführt:
+
+* Die Datendateien für nur eine Datenbank müssen sich im Volume befinden.
+* Sie müssen separate Volumes für jede der folgenden Dateiklassifizierungen verwenden: Datenbankbinärdateien, Datendateien, Online-Wiederherstellungsprotokolle, archivierte Wiederherstellungsprotokolle und Kontrolldateien.
+* Sie müssen kein separates Volume für temporäre Datenbankdateien erstellen, da SnapManager keine temporären Datenbankdateien erstellt.
+
+
+Weitere Informationen finden Sie im _SnapManager for Oracle Best Practices_.
+
+*Verwandte Informationen*
+
+http://media.netapp.com/documents/tr-3761.pdf["SnapManager for Oracle Best Practices: media.netapp.com/documents/tr-3761.pdf"]

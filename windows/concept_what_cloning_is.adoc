@@ -1,0 +1,72 @@
+---
+permalink: windows/concept_what_cloning_is.html 
+sidebar: sidebar 
+keywords: database, replica, clone, backup, cloning 
+summary: Sie können eine Datenbank klonen, um ein exaktes Replikat der Originaldatenbank zu erstellen. Sie können den Klon von einem vollständigen Backup oder vom aktuellen Status der Datenbank aus erstellen. 
+---
+= Klonen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können eine Datenbank klonen, um ein exaktes Replikat der Originaldatenbank zu erstellen. Sie können den Klon von einem vollständigen Backup oder vom aktuellen Status der Datenbank aus erstellen.
+
+Zum Erstellen eines Klons mit SnapManager gehören folgende Vorteile:
+
+|===
+
+
+| Vorteile | Details 
+
+
+ a| 
+Schnell
+ a| 
+Der Klonvorgang bei SnapManager nutzt die in Data ONTAP verfügbare FlexClone Funktion. Somit können Sie große Datenvolumen schnell klonen.
+
+
+
+ a| 
+Platzeffizienz
+ a| 
+Wenn Sie einen Klon mit SnapManager erstellen, wird Speicherplatz nur für die Änderungen zwischen dem Backup und dem Klon benötigt. Ein SnapManager-Klon ist eine beschreibbare Snapshot Kopie der Originaldatenbank und kann nach Bedarf erweitert werden. Hingegen erfordert ein physischer Klon der Datenbank, dass Ihnen genügend Speicherplatz zum Kopieren der gesamten Datenbank zur Verfügung steht.
+
+
+
+ a| 
+Virtuelle Kopie
+ a| 
+Sie können die geklonte Datenbank so verwenden, als wäre sie die ursprüngliche Datenbank. Beispielsweise können Sie einen Klon für Tests, Überprüfungen von Plattformen und Updates, Mehrfachsimulationen mit großen Datenmengen und Tests und Probeläufe an Remote Standorten verwenden. Änderungen am Klon haben keine Auswirkung auf die ursprüngliche Datenbank. Nachdem die Datenbank geklont wurde, ist die geklonte Datenbank vollständig betriebsbereit.
+
+
+
+ a| 
+Einfachheit
+ a| 
+Sie können eine Datenbank mithilfe von SnapManager Befehlen auf einem beliebigen Host klonen.
+
+|===
+Sie müssen sicherstellen, dass die folgenden Voraussetzungen erfüllt sind, bevor eine Datenbank geklont werden kann:
+
+* Löschen Sie die Datei sfile<SID>.ora aus €€Oracle_HOME\Datenbank.
+* Löschen Sie die Datei init<SID>.ora aus €€Oracle_HOME\Datenbank.
+* Löschen Sie die Oracle Dump-Ziele, die in der Klon-Spezifikations-Datei angegeben sind.
+* Löschen Sie die Oracle-Steuerdateien, die in der Klon-Spezifikations-Datei angegeben sind.
+* Löschen Sie die Oracle Redo-Protokolldateien, die in der Klon-Spezifikations-Datei angegeben sind.
+
+
+Sie müssen dem Klon eine neue Systemkennung geben. Sie können nicht gleichzeitig zwei Datenbanken mit derselben Systemkennung auf demselben Host ausführen. Sie können einen Klon auf einem anderen Host mit der gleichen Systemkennung erstellen. Sie können den Klon entweder mit einer Bezeichnung versehen oder SnapManager eine Bezeichnung erstellen lassen. Dazu verwenden Sie die Systemkennung, das Datum und die Uhrzeit der Klonerstellung.
+
+Wenn Sie ein Etikett eingeben, dürfen Sie keine Leerzeichen oder Sonderzeichen enthalten.
+
+Im Rahmen des Klonprozesses erstellt SnapManager die nötigen Oracle Dateien und Parameter für die geklonte Datenbank. Ein Beispiel für eine notwendige Oracle-Datei ist init<SID>.ora.
+
+Wenn Sie eine Datenbank klonen, erstellt SnapManager eine neue init<SID>.ora-Datei für die Datenbank im Verzeichnis Oracle_HOME\.
+
+Wenn SnapManager den Storage für eine Datenbank klonen, erstellt es auch einen neuen Filesystem-Bereitstellungspunkt, ändert aber nicht die Verzeichnisstruktur unter dem Bereitstellungspunkt aus der SnapManager CLI. In der SnapManager GUI können Sie jedoch die Verzeichnisstruktur und die Metadaten des Dateisystems ändern.
+
+Sie können ein Datenbank-Backup auf dem Host, auf dem sich die Datenbank befindet, oder auf einem alternativen Host klonen.
+
+Wenn die geklonte Datenbank eine spfile verwendet, erstellt SnapManager eine spfile für den Klon. Diese Datei wird in das Datenbankverzeichnis €Oracle_HOME\gespeichert und erstellt die Verzeichnisstruktur für die Diagnosedateien. Der Dateiname ist sfile <SID>.ora.

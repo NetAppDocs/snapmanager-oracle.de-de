@@ -1,0 +1,119 @@
+---
+permalink: unix-administration/concept_variables_available_in_the_task_scripts_for_clone_operation.html 
+sidebar: sidebar 
+keywords: snapmanager, context, information, environment, variable, clone, operation 
+summary: SnapManager stellt Kontextinformationen in Form von Umgebungsvariablen für den ausgeführten Klonvorgang bereit. Ihr Skript kann beispielsweise den Namen des ursprünglichen Hosts, den Namen der Klondatenbank und den Namen des Backups abrufen. 
+---
+= In den Aufgabenskripten verfügbare Variablen für den Klonvorgang
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager stellt Kontextinformationen in Form von Umgebungsvariablen für den ausgeführten Klonvorgang bereit. Ihr Skript kann beispielsweise den Namen des ursprünglichen Hosts, den Namen der Klondatenbank und den Namen des Backups abrufen.
+
+In der folgenden Tabelle sind die Umgebungsvariablen aufgeführt, die Sie in Ihren Skripten verwenden können:
+
+|===
+| Variablen | Beschreibung | Formatieren 
+
+
+ a| 
+SM_ORIGINAL_SID
+ a| 
+SID der ursprünglichen Datenbank
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_URSPRÜNGLICHER_HOST
+ a| 
+Der ursprünglichen Datenbank zugeordnete Hostname
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_ORIGINAL_OS_USER
+ a| 
+OS-Eigentümer der ursprünglichen Datenbank
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_ORIGINAL_OS_GROUP
+ a| 
+OS-Gruppe der ursprünglichen Datenbank
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_TARGET_SID
+ a| 
+SID der Klondatenbank
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_TARGET_HOST
+ a| 
+Der Klondatenbank zugeordnete Host-Name
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_TARGET_OS_USER
+ a| 
+OS-Eigentümer der Klondatenbank
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_TARGET_OS_GROUP
+ a| 
+OS-Gruppe der Klondatenbank
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_TARGET_DB_PORT
+ a| 
+Port der Zieldatenbank
+ a| 
+Ganzzahl
+
+
+
+ a| 
+SM_TARGET_GLOBAL_DB_NAME
+ a| 
+Globaler Datenbankname der Zieldatenbank
+ a| 
+Zeichenfolge
+
+
+
+ a| 
+SM_BACKUP_LABEL
+ a| 
+Bezeichnung des für den Klon verwendeten Backups
+ a| 
+Zeichenfolge
+
+|===

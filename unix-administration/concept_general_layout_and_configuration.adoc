@@ -1,0 +1,40 @@
+---
+permalink: unix-administration/concept_general_layout_and_configuration.html 
+sidebar: sidebar 
+keywords: recommend, general, database, layout, storage, configuration, avoid, issue, disk, group, file, lun 
+summary: Durch das Wissen der empfohlenen allgemeinen Datenbank-Layouts und Storage-Konfigurationen können Sie Probleme in Bezug auf Festplattengruppen, Dateitypen und Tablespaces vermeiden. 
+---
+= Empfohlene allgemeine Datenbanklayouts und Speicherkonfigurationen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Durch das Wissen der empfohlenen allgemeinen Datenbank-Layouts und Storage-Konfigurationen können Sie Probleme in Bezug auf Festplattengruppen, Dateitypen und Tablespaces vermeiden.
+
+* Fügen Sie keine Dateien aus mehr als einem SAN-Dateisystem oder Volume-Manager in Ihre Datenbank ein.
++
+Alle Dateien, die eine Datenbank erstellen, müssen sich auf demselben Dateisystem befinden.
+
+* SnapManager erfordert mehrere 4 KB Blockgröße.
+* Fügen Sie die Datenbank-System-ID in die oratab-Datei ein.
++
+Fügen Sie für jede zu verwaltende Datenbank einen Eintrag in die Oratab-Datei ein. SnapManager verlässt sich darauf, dass die oratab-Datei das Zuhause von Oracle bestimmt.
+
+* Wenn Sie SnapManager-Backups mit dem Oracle Recovery Manager (RMAN) registrieren möchten, müssen Sie RMAN-fähige Profile erstellen.
+
+
+Wenn Sie die neue Volume-basierte Wiederherstellung oder vollständige Laufwerksgruppenswiederherstellung nutzen möchten, sollten Sie die folgenden Richtlinien in Bezug auf Dateisysteme und Laufwerksgruppen berücksichtigen:
+
+* Mehrere Datenbanken können nicht dieselbe ASM-Laufwerksgruppe (Automatic Storage Management) verwenden.
+* Eine Laufwerksgruppe, die Datendateien enthält, kann keine anderen Dateitypen enthalten.
+* Die LUN (Logical Unit Number) für die Datendatei-Festplattengruppe muss das einzige Objekt im Storage-Volume sein.
+
+
+Nachfolgend sind einige Richtlinien für die Volume-Trennung aufgeführt:
+
+* Die Datendateien für nur eine Datenbank müssen sich im Volume befinden.
+* Sie müssen separate Volumes für jede der folgenden Dateiklassifizierungen verwenden: Datenbankbinärdateien, Datendateien, Online-Wiederherstellungsprotokolle, archivierte Wiederherstellungsprotokolle und Kontrolldateien.
+* Sie müssen kein separates Volume für temporäre Datenbankdateien erstellen, da SnapManager keine temporären Datenbankdateien erstellt.
+

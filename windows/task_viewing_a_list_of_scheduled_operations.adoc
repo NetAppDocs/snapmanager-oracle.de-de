@@ -1,0 +1,17 @@
+---
+permalink: windows/task_viewing_a_list_of_scheduled_operations.html 
+sidebar: sidebar 
+keywords: view, list, schedule, operation, profile 
+summary: Sie können eine Liste der geplanten Vorgänge für ein Profil anzeigen. 
+---
+= Anzeigen einer Liste geplanter Vorgänge
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können eine Liste der geplanten Vorgänge für ein Profil anzeigen.
+
+. Um Informationen über den geplanten Vorgang anzuzeigen, geben Sie diesen Befehl ein: smo Schedule list -profile Profile_Name[-quiet / -verbose]
+

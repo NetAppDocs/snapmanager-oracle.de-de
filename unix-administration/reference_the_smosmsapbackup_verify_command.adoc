@@ -1,0 +1,81 @@
+---
+permalink: unix-administration/reference_the_smosmsapbackup_verify_command.html 
+sidebar: sidebar 
+keywords: run, backup, verify, command, format, oracle, valid, smo 
+summary: Sie können den Befehl Backup Verify ausführen, um festzustellen, ob sich das Backup in einem gültigen Format für Oracle befindet. 
+---
+= Der Befehl smo Backup verify
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Befehl Backup Verify ausführen, um festzustellen, ob sich das Backup in einem gültigen Format für Oracle befindet.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo backup verify
+-profile profile_name
+[-label backup_name \| \[-id guid\]
+\[-retain \{-hourly \| -daily \| -weekly \| -monthly \| -unlimited\}\]
+\[-force\]
+\[-dump\]
+\[-quiet \| -verbose\]
+----
+
+
+== Parameter
+
+* *-profile Profile_Name*
++
+Gibt das Profil an, für das Sie ein Backup überprüfen möchten. Das Profil enthält die Kennung der Datenbank und andere Datenbankinformationen.
+
+* *-id-Guid*
++
+Überprüft die Sicherung mit der angegebenen GUID. Die GUID wird von SnapManager beim Erstellen eines Backups generiert. Sie können den Befehl smo Backup list verwenden, um die GUID für jedes Backup anzuzeigen.
+
+* *-Label Label Label_Name*
++
+Überprüfung der Sicherung mit der angegebenen Bezeichnung.
+
+* *-dump*
++
+Sammelt die Speicherauszugsdateien nach dem erfolgreichen oder fehlgeschlagenen Backup-Überprüfungvorgang.
+
+* *-Force*
++
+Erzwingt die Datenbank in den erforderlichen Zustand, um den Verifizierungsvorgang durchzuführen.
+
+* *-ruhig*
++
+Zeigt nur Fehlermeldungen in der Konsole an. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Zeigt Fehler-, Warn- und Informationsmeldungen in der Konsole an.
+
+
+
+
+
+== Beispiel
+
+Das folgende Beispiel zeigt die Überprüfung des Backups:
+
+[listing]
+----
+smo backup verify -profile SALES1 -label full_backup_sales_May -quiet
+----
+[listing]
+----
+DBVERIFY - Verification starting : FILE = +SMO_1_1161675083835/smo/datafile/data.277.582482539 ...
+----
+*Verwandte Informationen*
+
+xref:task_verifying_database_backups.adoc[Datenbank-Backups werden überprüft]

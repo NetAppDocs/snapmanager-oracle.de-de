@@ -1,0 +1,26 @@
+---
+permalink: unix-administration/task_viewing_snapmanger_history_operation_details.html 
+sidebar: sidebar 
+keywords: view, history, settings, single, profile, smo 
+summary: Sie können die Verlaufseinstellungen für ein einzelnes Profil anzeigen. 
+---
+= Anzeigen der Konfigurationsdetails des SnapManager-Verlaufs
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die Verlaufseinstellungen für ein einzelnes Profil anzeigen.
+
+Im SnapManager-Verlauf werden für jedes Profil die folgenden Informationen angezeigt:
+
+* Name des Vorgangs
+* Aufbewahrungsklasse
+* Anzahl der Aufbewahrung
++
+.. Um Informationen über den Vorgang der SnapManager-Historie für ein bestimmtes Profil anzuzeigen, geben Sie den folgenden Befehl ein:
+`smo history show -profileprofile_name`
+
+
+

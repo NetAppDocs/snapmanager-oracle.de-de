@@ -1,0 +1,20 @@
+---
+permalink: unix-administration/concept_supported_scripts.html 
+sidebar: sidebar 
+keywords: asmmain.sh, asmquerydisk.sh, script, grid, group, user 
+summary: Die Skripte asmmain.sh und asmquerydisk.sh ermöglichen das Ändern des Grid-Benutzers, der Gruppe und des Benutzers, die alle zur Abfrage der ASM-Laufwerke verwendet werden. Die Skripte müssen immer aus dem Root ausgeführt werden. 
+---
+= Unterstützte Skripte
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Skripte asmmain.sh und asmquerydisk.sh ermöglichen das Ändern des Grid-Benutzers, der Gruppe und des Benutzers, die alle zur Abfrage der ASM-Laufwerke verwendet werden. Die Skripte müssen immer aus dem Root ausgeführt werden.
+
+Die asmmain.sh ist die Skript-Hauptdatei, die von jedem Vorgang aufgerufen wird, der Geräte hinzufügt oder löscht. Das Skript asmmain.sh ruft intern ein anderes Skript auf, das vom Root ausgeführt werden muss, das über oracle Grid-Anmeldedaten verfügt. Dieses Skript fragt die Geräte der ASM-Laufwerksgruppe ab und fügt diese Einträge in der initasmdisk-Datei mit der Berechtigung und dem Eigentum der Geräte hinzu. Sie können die Berechtigungen und Eigentumsrechte dieser Datei basierend auf Ihrer Umgebung und dem regex-Muster ändern, das nur zur Übereinstimmung mit /dev/mapper/*p1 verwendet wird.
+
+Das Skript asmquerydisk.sh wird verwendet, um die Festplattenliste abzufragen, die zur Erstellung der ASM-Laufwerksgruppe verwendet wird. Je nach Konfiguration müssen Sie Oracle_BASE, ORACLE_HOME und ORACLE_SID Werte zuweisen.
+
+Die Skripte finden sich unter /opt/NetApp/smo/Plugins/examples/noasmlib. Diese Skripte müssen allerdings in die /opt/NetApp/smo/Plugins/noasmlib verschoben werden, bevor der SnapManager für Oracle Server auf dem Host gestartet wird.

@@ -1,0 +1,26 @@
+---
+permalink: windows/task_editing_the_configuration_parameters.html 
+sidebar: sidebar 
+keywords: environment, default, change, value, configuration, parameter, editing 
+summary: Je nach Umgebung können Sie die Standardwerte ändern, die dem Konfigurationsparameter zugewiesen sind. 
+---
+= Bearbeiten der Konfigurationsparameter
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Je nach Umgebung können Sie die Standardwerte ändern, die dem Konfigurationsparameter zugewiesen sind.
+
+. Öffnen Sie die Konfigurationsdatei vom folgenden Standardspeicherort:
++
+Standardinstallationsverzeichnis\Properties\smo.config
+
+. Ändern Sie die Standardwerte der Konfigurationsparameter.
++
+
+NOTE: Sie können auch unterstützte Konfigurationsparameter hinzufügen, die nicht in der Konfigurationsdatei enthalten sind, und ihnen Werte zuweisen.
+
+. Starten Sie den SnapManager für Oracle Server neu.
+

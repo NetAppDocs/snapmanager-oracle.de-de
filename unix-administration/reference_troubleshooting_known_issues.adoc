@@ -1,0 +1,326 @@
+---
+permalink: unix-administration/reference_troubleshooting_known_issues.html 
+sidebar: sidebar 
+keywords: aware, known, issue, snapmanager, troubleshoot, identify, cluster-mode 
+summary: Sie sollten einige bekannte Probleme kennen, die bei der Verwendung von SnapManager auftreten können, und deren Umgang damit. 
+---
+= Fehlerbehebung bei bekannten Problemen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie sollten einige bekannte Probleme kennen, die bei der Verwendung von SnapManager auftreten können, und deren Umgang damit.
+
+
+
+== SnapManager für Oracle erkennt Cluster-Mode-Profile nicht
+
+Falls der Clustermodus-Profilname nicht in der Datei cmode_profiles.config im Installationsverzeichnis von SnapManager für Oracle vorhanden ist, kann die folgende Fehlermeldung auslösen:
+
+Konfigurieren Sie bitte DFM Server mit SnapDrive config set -dfm user_Name Appliance_Name.
+
+Wenn Sie auch bei der Aktualisierung der SnapManager für Oracle den Ordner /opt/NetApp/smo/* löschen, wird auch die Datei cmode_profil.config mit den Cluster-Mode-Profilnamen gelöscht. Dieses Problem löst auch die gleiche Fehlermeldung aus.
+
+*Workaround*
+
+Aktualisieren Sie das Profil: smo Profile Update-profile <profile_Name>
+
+
+NOTE: Falls SnapManager für Oracle im Pfad /opt/NetApp/smo/ installiert ist, lautet der Dateispeicherort /opt/NetApp/smo/cmode_profile.config.
+
+
+
+== Der Server kann nicht gestartet werden
+
+Beim Starten des Servers wird möglicherweise eine Fehlermeldung wie die folgende angezeigt:
+
+SMO-01104: Fehler beim Aufrufen des Befehls: SMO-17107: Der SnapManager Server konnte aufgrund der folgenden Fehler nicht am Port 8074 gestartet werden: java.net.BindException: die Adresse wird bereits verwendet
+
+Dies kann daran liegen, dass die SnapManager-Listening-Ports (standardmäßig 27214 und 27215) derzeit von einer anderen Anwendung verwendet werden.
+
+Dieser Fehler kann auch auftreten, wenn der smo_Server-Befehl bereits ausgeführt wird, aber SnapManager erkennt den vorhandenen Prozess nicht.
+
+*Workaround*
+
+Sie können SnapManager oder die andere Anwendung neu konfigurieren, um unterschiedliche Ports zu verwenden.
+
+Um SnapManager neu zu konfigurieren, bearbeiten Sie die folgende Datei: /Opt/NTAP/smo/Properties/smo.config
+
+Sie weisen folgende Werte zu:
+
+* SMO Server.Port = 27214
+* SMO Server.rmiRegistry.Port=27215
+* Remote.Registry.ocijdbc.Port= 27215
++
+Der Remote.Registry.ocijdbc.Port muss der gleiche sein wie der Server.rmiRegistry.Port.
+
+
+
+Geben Sie zum Starten des SnapManager-Servers den folgenden Befehl ein: smo_Server starte
+
+
+NOTE: Wenn der Server bereits ausgeführt wird, wird eine Fehlermeldung angezeigt.
+
+Wenn der Server bereits ausgeführt wird, führen Sie die folgenden Schritte aus:
+
+. Beenden Sie den Server, indem Sie den folgenden Befehl eingeben: smo_Server stop
+. Starten Sie den Server neu, indem Sie den folgenden Befehl eingeben: smo_Server Start
+
+
+
+
+== Beenden eines derzeit ausgeführten SnapManager-Vorgangs
+
+Wenn der SnapManager-Server ausfällt und Sie keine Vorgänge erfolgreich ausführen können, können Sie SnapManager und seine Vorgänge beenden.
+
+*Workaround*
+
+SnapManager arbeitet mit SnapManager und Protection Manager zusammen. Sie müssen die folgenden Schritte durchführen, um die verschiedenen laufenden Prozesse aufzuführen und den zuletzt ausgeführten Prozess zu beenden.
+
+. Listen Sie alle laufenden SnapDrive Prozesse auf: ps
++
+Beispiel: ps/grep SnapDrive
+
+. Beenden Sie den SnapDrive-Prozess oder die Prozesse: Kill <PID>
++
+pid ist die Liste der Prozesse, die Sie mit dem Befehl ps gefunden haben.
+
++
+
+NOTE: Stoppen Sie nicht alle SnapDrive Prozesse. Möglicherweise möchten Sie nur den letzten laufenden Prozess beenden.
+
+. Wenn einer der Vorgänge die Wiederherstellung eines geschützten Backups aus dem sekundären Storage beinhaltet, öffnen Sie die Protection Manager Konsole und führen Sie Folgendes aus:
++
+.. Wählen Sie im Menü System die Option *Jobs* aus.
+.. Wählen Sie *Wiederherstellen*.
+.. Überprüfen Sie, ob der Name des Datensatzes mit dem im SnapManager-Profil übereinstimmt.
+.. Klicken Sie mit der rechten Maustaste, und wählen Sie *Abbrechen*.
+
+
+. Auflisten der SnapManager-Prozesse:
++
+.. Melden Sie sich als Root-Benutzer an.
+.. Führen Sie die Prozesse mit dem Befehl ps auf.
++
+Beispiel: ps/grep java
+
+
+
+. Beenden Sie den SnapManager-Prozess: Kill <PID>
+
+
+
+
+== Das letzte geschützte Backup kann nicht gelöscht oder gelöscht werden
+
+Wenn Sie das erste Backup für ein Profil auf dem sekundären Storage erstellen, sendet SnapManager alle Informationen zum Backup an den Protection Manager. Bei nachfolgenden Backups zu diesem Profil sendet SnapManager nur die geänderten Informationen. Wenn Sie das letzte geschützte Backup entfernen, verliert SnapManager die Möglichkeit, die Unterschiede zwischen Backups zu identifizieren und muss eine Möglichkeit finden, diese Beziehungen neu zu erstellen. Daher wird beim Löschen des letzten geschützten Backups eine Fehlermeldung angezeigt.
+
+*Workaround*
+
+Sie können das Profil oder nur das Profil-Backup löschen.
+
+So löschen Sie das Profil:
+
+. Löschen Sie die Backups des Profils.
+. Aktualisieren Sie das Profil, und deaktivieren Sie den Schutz im Profil.
++
+Dadurch wird der Datensatz gelöscht.
+
+. Löschen Sie das letzte geschützte Backup.
+. Löschen Sie das Profil.
+
+
+Führen Sie die folgenden Schritte aus, um nur das Backup zu löschen:
+
+. Erstellen Sie eine weitere Sicherungskopie des Profils.
+. Übertragen der Backup-Kopie auf den sekundären Storage.
+. Löschen Sie die vorherige Backup-Kopie.
+
+
+
+
+== Zielnamen der Archivprotokolldatei können nicht verwaltet werden, wenn die Zielnamen Teil anderer Zielnamen sind
+
+Wenn der Benutzer beim Erstellen einer Archiv-Log-Sicherung ein Ziel ausschließt, das Teil anderer Zielnamen ist, werden auch die anderen Zielnamen ausgeschlossen.
+
+Angenommen, es gibt drei Ziele, die ausgeschlossen werden können: /Dest, /dest1 und /dest2. Beim Erstellen der Backup der Archivprotokolldatei, wenn Sie /dest mit dem Befehl ausschließen
+
+[listing]
+----
+smo backup create -profile almsamp1 -data -online -archivelogs  -exclude-dest /dest
+----
+, SnapManager für Oracle schließt alle Ziele ab, die mit /dest beginnen.
+
+*Workaround*
+
+* Fügen Sie einen Pfadtrenner hinzu, nachdem Ziele in V€tarchiv_dest konfiguriert wurden. Ändern Sie z. B. /dest in /dest/.
+* Bei der Erstellung eines Backups sollten Ziele berücksichtigt werden, anstatt Ziele auszuschließen.
+
+
+
+
+== Die Wiederherstellung von Steuerdateien, die auf Automatic Storage Management (ASM) und nicht-ASM-Speicher multipliziert werden, schlägt fehl
+
+Wenn die Steuerdateien auf ASM- und nicht-ASM-Speicher multipliziert werden, ist der Backup-Vorgang erfolgreich. Wenn Sie jedoch versuchen, Steuerdateien aus diesem erfolgreichen Backup wiederherzustellen, schlägt der Wiederherstellungsvorgang fehl.
+
+
+
+== Der SnapManager Klonvorgang ist fehlgeschlagen
+
+Wenn Sie ein Backup in SnapManager klonen, kann der DataFabric Manager Server Volumes möglicherweise nicht erkennen und die folgende Fehlermeldung anzeigen:
+
+SMO-13032: Vorgang kann nicht ausgeführt werden: Clone Create. Root Cause: SMO-11007: Fehler beim Klonen vom Snapshot: FLOW-11019: Ausfall in ExecuteConnectionSteps: SD-00018: Fehler beim Erkennen von Storage für /mnt/datafile_clone3: SD-10016: Fehler beim Ausführen des SnapDrive Befehls "/usr/sbin/snapdrive Storage show -fs /mnt/datafile_clone3“: 0002-719 Warnung: Konnte nicht überprüft werden.SD Storage.Lesezugriff auf dem Volume: Manager:/vol_\Server:.1_vol_Manager auf dem benutzer.x1_20091122235002515
+
+Grund: Ungültige Ressource angegeben. Seine ID wurde auf dem Operations Manager-Server 10.x.x.x nicht gefunden
+
+Dies geschieht, wenn das Storage-System über eine große Anzahl von Volumes verfügt.
+
+*Workaround*
+
+Sie müssen einen der folgenden Schritte ausführen:
+
+* Führen Sie auf dem Data Fabric Manager-Server dfm Host discover Storage_System aus.
++
+Sie können den Befehl auch in eine Shell-Skript-Datei hinzufügen und einen Job im DataFabric Manager-Server planen, um das Skript in einem regelmäßigen Intervall zu ausführen.
+
+* Erhöhen Sie den Wert von dfm-rbac-Wiederholungen in der SnapDrive.conf Datei.
++
+SnapDrive verwendet den Standardwert für das Aktualisierungsintervall und die Standardanzahl von Wiederholungen. der Standardwert von dfm-rbac-retry-Sleep-Sek. ist 15 Sekunden und dfm-rbac-Wiederholungen ist 12 Iterationen.
+
++
+
+NOTE: Das Operations Manager-Aktualisierungsintervall hängt von der Anzahl der Storage-Systeme, der Anzahl der Storage-Objekte im Storage-System und der Last auf dem DataFabric Manager-Server ab.
+
++
+Führen Sie als Empfehlung Folgendes aus:
+
++
+.. Führen Sie auf dem DataFabric Manager-Server den folgenden Befehl manuell für alle sekundären Speichersysteme aus, die mit dem Datensatz verbunden sind: dfm Host discover Storage_System
+.. Verdoppeln Sie die für die Host-Erkennung benötigte Zeit und weisen sie diesen Wert DFM-rbac-retry-Sleep-Sek. zu.
++
+Wenn der Vorgang beispielsweise 11 Sekunden in Anspruch nahm, können Sie den Wert von dfm-rbac-retry-Sleep-Sek. auf 22 (11*2) setzen.
+
+
+
+
+
+
+
+== Die Größe der Repository-Datenbank wächst mit der Zeit, nicht mit der Anzahl der Backups
+
+Die Größe der Repository-Datenbank wächst mit der Zeit, da SnapManager-Operationen Daten innerhalb des Schemas in den Repository-Datenbanktabellen einfügen oder löschen, was zu einer hohen Indexbelegung führt.
+
+*Workaround*
+
+Sie müssen die Indizes gemäß den Oracle-Richtlinien überwachen und neu erstellen, um den vom Repository-Schema belegten Speicherplatz zu steuern.
+
+
+
+== Auf die SnapManager-Benutzeroberfläche kann nicht zugegriffen werden und SnapManager-Vorgänge schlagen fehl, wenn die Repository-Datenbank ausfällt
+
+SnapManager-Vorgänge schlagen fehl und Sie können nicht auf die GUI zugreifen, wenn die Repository-Datenbank ausfällt.
+
+In der folgenden Tabelle sind die verschiedenen Aktionen aufgeführt, die Sie ausführen möchten, sowie deren Ausnahmen:
+
+|===
+
+
+| Betrieb | Ausnahmen 
+
+
+ a| 
+Öffnen eines geschlossenen Repository
+ a| 
+Die folgende Fehlermeldung wird in SM_gui.log: [WARNUNG ]: SMO-01106: Beim Abfragen des Projektarchivs ist ein Fehler aufgetreten: Geschlossene Verbindung java.sql.SQLException: Geschlossene Verbindung.
+
+
+
+ a| 
+Aktualisieren eines geöffneten Projektarchivs durch Drücken von F5
+ a| 
+Eine Projektarchiv-Ausnahme wird in der GUI angezeigt und protokolliert auch eine NullPointerException in der Datei sm_gui.log.
+
+
+
+ a| 
+Aktualisieren des Hostservers
+ a| 
+Eine NullPointerException wird in der Datei sumo_gui.log protokolliert.
+
+
+
+ a| 
+Erstellen eines neuen Profils
+ a| 
+Im Fenster Profilkonfiguration wird eine NullPointerException angezeigt.
+
+
+
+ a| 
+Aktualisieren eines Profils
+ a| 
+Die folgende SQL-Ausnahme wird in SM_gui.log: [WARNUNG ] protokolliert: SMO-01106: Beim Abfragen des Projektarchivs ist ein Fehler aufgetreten: Geschlossene Verbindung.
+
+
+
+ a| 
+Zugriff auf ein Backup
+ a| 
+Die folgende Fehlermeldung wird in SM_gui.log protokolliert: Die Initialisierung einer Sammlung konnte nicht abgeschlossen werden.
+
+
+
+ a| 
+Anzeigen der Kloneigenschaften
+ a| 
+Die folgende Fehlermeldung wird in sm_gui.log protokolliert und sumo_gui.log: Die Initialisierung einer Sammlung konnte nicht abgeschlossen werden.
+
+|===
+*Workaround*
+
+Sie müssen sicherstellen, dass die Repository-Datenbank ausgeführt wird, wenn Sie auf die GUI zugreifen möchten oder SnapManager-Vorgänge ausführen möchten.
+
+
+
+== Es können keine temporären Dateien für die geklonte Datenbank erstellt werden
+
+Wenn temporäre Tablespaces-Dateien der Zieldatenbank in Mount-Punkten platziert werden, die sich vom Mount-Punkt der Datendateien unterscheiden, ist der Klonvorgang erfolgreich, SnapManager kann jedoch keine temporären Dateien für die geklonte Datenbank erstellen.
+
+*Workaround*
+
+Sie müssen einen der folgenden Schritte ausführen:
+
+* Stellen Sie sicher, dass die Zieldatenbank so angelegt ist, dass temporäre Dateien an demselben Bereitstellungspunkt wie die der Datendateien abgelegt werden.
+* Manuelles Erstellen oder Hinzufügen temporärer Dateien in der geklonten Datenbank.
+
+
+
+
+== Die Migration des Protokolls von NFSv3 zu NFSv4 ist nicht möglich
+
+Sie können das Protokoll von NFSv3 zu NFSv4 migrieren, indem Sie den Parameter enable-migrate-nfs-Version in der Datei snapdrive.conf aktivieren. Während der Migration betrachtet SnapDrive nur die Protokollversion, unabhängig von den Mount-Point-Optionen wie rw, Forellenfiles, Nosuid usw.
+
+Wenn Sie jedoch nach der Migration des Protokolls auf NFSv4 den Backup wiederherstellen, der mit NFSv3 erstellt wurde, tritt Folgendes auf:
+
+* Wenn NFSv3 und NFSv4 auf Storage-Ebene aktiviert sind, ist die Wiederherstellung erfolgreich, wird aber mit den Mount-Point-Optionen bereitgestellt, die während des Backups verfügbar waren.
+* Wenn nur NFSv4 auf Storage-Ebene aktiviert ist, ist der Wiederherstellungsvorgang erfolgreich und nur die Protokollversion (NFSv4) bleibt erhalten.
++
+Die anderen Mount-Punkt-Optionen wie rw, Forellenfiles, Nosuid usw. werden jedoch nicht beibehalten.
+
+
+
+*Workaround*
+
+Sie müssen die Datenbank manuell herunterfahren, die Mount-Punkte der Datenbank aufheben und mit den vor der Wiederherstellung verfügbaren Optionen mounten.
+
+
+
+== Das Backup der Data Guard Standby-Datenbank ist fehlgeschlagen
+
+Wenn ein Archivprotokoll mit dem Dienstnamen der primären Datenbank konfiguriert ist, schlägt die Datensicherung der Data Guard Standby-Datenbank fehl.
+
+*Workaround*
+
+In der GUI müssen Sie *External Archive Log Location* angeben, der dem Dienstnamen der primären Datenbank entspricht.

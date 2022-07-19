@@ -1,0 +1,102 @@
+---
+permalink: windows/reference_the_smosmsapclone_delete_command.html 
+sidebar: sidebar 
+keywords: run, clone, delete, command, operation, smo 
+summary: Sie können den Befehl „Klon löschen“ ausführen, um einen Klon zu löschen. Sie können einen Klon nicht löschen, wenn der Klon für einen Vorgang verwendet wird. 
+---
+= Der Befehl smo Clone delete
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Befehl „Klon löschen“ ausführen, um einen Klon zu löschen. Sie können einen Klon nicht löschen, wenn der Klon für einen Vorgang verwendet wird.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo clone delete
+-profile profile_name
+\[-id guid \| -label clone_name\]
+[-login
+\[-username db_username -password db_password -port db_port\]
+ ]
+\[-syspassword syspassword\]
+-force
+\[-dump\]
+\[-quiet \| -verbose\]
+----
+
+
+== Parameter
+
+* *-profile Profile_Name*
++
+Gibt den Namen des Profils an, das den zu löschenden Klon enthält. Das Profil enthält die Kennung der Datenbank und andere Datenbankinformationen.
+
+* *-Force*
++
+Löscht den Klon, auch wenn dem Klon Ressourcen zugeordnet sind.
+
+* *-id-Guid*
++
+Gibt die GUID für den zu löschenden Klon an. Die GUID wird von SnapManager beim Erstellen eines Klons generiert. Sie können den Befehl smo Clone list verwenden, um die GUID für jeden Klon anzuzeigen.
+
+* * Name des Etiketts*
++
+Gibt die Bezeichnung für den zu löschenden Klon an.
+
+* *-syspassword-syspassword*
++
+Gibt das Kennwort für den Benutzer mit Systemprivilegierten an.
+
++
+
+NOTE: Sie müssen das Passwort für den Benutzer mit Systemberechtigungen angeben, wenn die angegebenen Datenbankanmeldeinformationen nicht für den Benutzer mit Systemprivilegierten identisch sind.
+
+* *-Login*
++
+Ermöglicht die Eingabe der Anmeldedaten für die Datenbank.
+
+* *-username db_username*
++
+Gibt den Benutzernamen an, der für den Zugriff auf die Datenbank erforderlich ist.
+
+* *-Passwort db_password*
++
+Gibt das Kennwort an, das für den Zugriff auf die Datenbank erforderlich ist.
+
+* *-Port db_Port*
++
+Gibt die TCP-Portnummer an, die für den Zugriff auf die Datenbank verwendet wird, die das Profil beschreibt.
+
+* *-dump*
++
+Gibt an, die Speicherauszugsdateien nach dem Löschen des Klons zu sammeln.
+
+* *-ruhig*
++
+Zeigt nur Fehlermeldungen in der Konsole an. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Zeigt Fehler-, Warn- und Informationsmeldungen in der Konsole an.
+
+
+
+
+
+== Beispiel
+
+Im folgenden Beispiel wird der Klon gelöscht:
+
+[listing]
+----
+smo clone delete -profile SALES1 -label SALES_May
+Operation Id [8abc01ec0e79004b010e79006da60001] succeeded.
+----

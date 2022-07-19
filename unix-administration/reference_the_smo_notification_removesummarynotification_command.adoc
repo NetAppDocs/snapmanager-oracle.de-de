@@ -1,0 +1,71 @@
+---
+permalink: unix-administration/reference_the_smo_notification_removesummarynotification_command.html 
+sidebar: sidebar 
+keywords: command, disable, summary, notification, multiple, profile, database, remove 
+summary: Mit diesem Befehl wird die Überblickbenachrichtigung für mehrere Profile in einer Repository-Datenbank deaktiviert. 
+---
+= Der Befehl smo notification remove-summary-notification
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit diesem Befehl wird die Überblickbenachrichtigung für mehrere Profile in einer Repository-Datenbank deaktiviert.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo notification remove-summary-notification
+-repository
+-dbname repo_service_name
+-port repo_port
+-host repo_host
+-login -username repo_username
+\[-quiet \| -verbose\]
+----
+
+
+== Parameter
+
+* *-Repository*
++
+Die Optionen, die dem -Repository folgen, geben die Details der Datenbank für das Repository an.
+
+* *-Port repo_Port*
++
+Gibt die TCP-Portnummer an, die für den Zugriff auf die Datenbank verwendet wird, in der das Repository gespeichert ist.
+
+* *-dbname repo_Service_Name*
++
+Gibt den Namen der Datenbank an, in der das Repository gespeichert wird. Verwenden Sie entweder den globalen Namen oder den SID.
+
+* *-Host repo_Host*
++
+Gibt den Namen oder die IP-Adresse des Hostcomputers an, auf dem die Repository-Datenbank ausgeführt wird.
+
+* *-Login repo_username*
++
+Gibt den Anmeldenamen an, der für den Zugriff auf die Datenbank, in der das Repository gespeichert ist, erforderlich ist.
+
+* *-ruhig*
++
+Zeigt nur Fehlermeldungen auf der Konsole an. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Zeigt Fehler-, Warn- und Informationsmeldungen an der Konsole an.
+
+
+
+Im folgenden Beispiel wird die Überblickbenachrichtigung für mehrere Profile in einer Repository-Datenbank deaktiviert.
+
+[listing]
+----
+
+smo notification remove-summary-notification –repository –port 1521 –dbname repo2 –host 10.72.197.133 –login -username oba5
+----

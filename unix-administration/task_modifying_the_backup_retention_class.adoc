@@ -1,0 +1,57 @@
+---
+permalink: unix-administration/task_modifying_the_backup_retention_class.html 
+sidebar: sidebar 
+keywords: upgrading, snapmanager, default, backup, retention, class, exist, modify 
+summary: Nach dem Upgrade weist SnapManager den vorhandenen Backups die standardmäßige Backup-Aufbewahrungsklasse zu. Sie können die Standardwerte für die Aufbewahrungsklassen entsprechend Ihren Backup-Anforderungen ändern. 
+---
+= Ändern der Backup-Aufbewahrungsklasse
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nach dem Upgrade weist SnapManager den vorhandenen Backups die standardmäßige Backup-Aufbewahrungsklasse zu. Sie können die Standardwerte für die Aufbewahrungsklassen entsprechend Ihren Backup-Anforderungen ändern.
+
+Die standardmäßige Backup-Aufbewahrungsklasse, die den vorhandenen Backups zugewiesen ist, lautet wie folgt:
+
+|===
+| Backup-Typ | Zuweisung von Aufbewahrungsklassen nach Upgrade 
+
+
+ a| 
+Backups werden für immer aufbewahrt
+ a| 
+Unbegrenzt
+
+
+
+ a| 
+Andere Backups
+ a| 
+Täglich
+
+|===
+*Hinweis:* Sie können die Backups löschen, die für immer aufbewahrt werden, ohne die Aufbewahrungsklasse zu ändern.
+
+Wenn Sie ein Upgrade auf SnapManager 3.0 oder höher durchführen, werden den vorhandenen Profilen der größere der folgenden beiden Werte zugewiesen:
+
+* Vorherige Aufbewahrungsanzahl für das Profil
+* Standardwerte für die Aufbewahrungsanzahl und die Dauer der täglichen Backups, wie in der smo.config Datei angegeben
++
+.. Ändern Sie die Werte, die in der Datei smo.config der Datei contac.hourly.count zugewiesen wurden, und behalten Sie.hourly.duration bei.
++
+Sie können die folgenden Werte eingeben:
+
++
+*** Beibehalten.hourly.count = 12
+*** Beibehalten.hourly.duration = 2
+
+
+
+
+
+
+*Verwandte Informationen*
+
+xref:reference_snapmanager_configuration_parameters.adoc[SnapManager-Konfigurationsparameter]

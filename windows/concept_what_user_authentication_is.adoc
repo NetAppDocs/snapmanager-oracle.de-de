@@ -1,0 +1,44 @@
+---
+permalink: windows/concept_what_user_authentication_is.html 
+sidebar: sidebar 
+keywords: authenticate, user, operating, system, os, login, host, server, smo, credential, set, command 
+summary: SnapManager authentifiziert den Benutzer mithilfe einer Betriebssystemanmeldung auf dem Host, auf dem der SnapManager-Server ausgeführt wird. Sie können die Benutzerauthentifizierung entweder durch Passwortaufforderungen zu Vorgängen oder durch Verwendung der Smo-Anmeldeinformationen aktivieren. Sie können die Benutzerauthentifizierung entweder durch Eingabeaufforderungen zum Passwort oder über den Befehl smo-Anmeldeinformationssatz aktivieren. 
+---
+= Was ist die Benutzerauthentifizierung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager authentifiziert den Benutzer mithilfe einer Betriebssystemanmeldung auf dem Host, auf dem der SnapManager-Server ausgeführt wird. Sie können die Benutzerauthentifizierung entweder durch Passwortaufforderungen zu Vorgängen oder durch Verwendung der Smo-Anmeldeinformationen aktivieren. Sie können die Benutzerauthentifizierung entweder durch Eingabeaufforderungen zum Passwort oder über den Befehl smo-Anmeldeinformationssatz aktivieren.
+
+Die Anforderungen an die Benutzerauthentifizierung hängen davon ab, wo der Vorgang ausgeführt wird.
+
+* Wenn sich der SnapManager-Client auf demselben Server wie der SnapManager-Host befindet, werden Sie durch die BS-Anmeldedaten authentifiziert.
++
+Sie werden nicht zur Eingabe eines Passworts aufgefordert, da Sie bereits beim Host angemeldet sind, auf dem der SnapManager-Server ausgeführt wird.
+
+* Wenn der SnapManager-Client und der SnapManager-Server auf verschiedenen Hosts sind, muss SnapManager Sie mit beiden OS-Anmeldedaten authentifizieren.
++
+SnapManager fordert Sie zur Eingabe von Passwörtern für jeden Vorgang auf, wenn Sie Ihre BS-Anmeldeinformationen nicht im SnapManager-Benutzereinweiscache gespeichert haben. Wenn Sie den Befehl smo causendential set -Host eingeben, speichern Sie die OS-Anmeldeinformationen in der SnapManager-Anmeldeinformationscache-Datei und so fordert SnapManager nicht zur Eingabe des Passworts für einen Vorgang auf.
+
+
+
+Wenn Sie mit dem SnapManager-Server authentifiziert sind, gelten Sie als effektiver Benutzer. Der effektive Benutzer für einen Vorgang muss ein gültiges Benutzerkonto auf dem Host sein, auf dem der Vorgang ausgeführt wird. Wenn Sie beispielsweise einen Klonvorgang ausführen, sollten Sie sich beim Ziel-Host für den Klon einloggen können.
+
+
+NOTE: SnapManager für Oracle kann die Autorisierung von Benutzern, die in zentralen Active Directory-Diensten erstellt wurden, z. B. LDAP und ADS, möglicherweise nicht unterstützen. Um sicherzustellen, dass die Authentifizierung nicht fehlschlägt, müssen Sie die konfigurierbare auth.diableServerAuthorization auf true setzen.
+
+Als effektiver Benutzer können Sie die Anmeldeinformationen folgendermaßen verwalten:
+
+* Optional können Sie SnapManager so konfigurieren, dass Benutzeranmeldeinformationen in der SnapManager-Benutzeranmeldedatei gespeichert werden.
++
+Standardmäßig werden in SnapManager keine Host-Anmeldedaten gespeichert. Sie können dies ändern, beispielsweise, wenn Sie benutzerdefinierte Skripte haben, die Zugriff auf einen Remote-Host benötigen. Der Remote-Klonvorgang ist ein Beispiel für eine SnapManager-Operation, die die Anmeldedaten eines Benutzers für einen Remote-Host benötigt. Um die Anmeldedaten des SnapManager-Benutzerhosts im SnapManager-Benutzeranmeldungs-Cache zu speichern, legen Sie in der Datei smo.config die Eigenschaft Host.anmeldungs.persist auf true fest.
+
+* Sie können den Benutzerzugriff auf das Repository autorisieren.
+* Sie können den Benutzerzugriff auf Profile autorisieren.
+* Sie können alle Benutzeranmeldeinformationen anzeigen.
+* Sie können die Anmeldeinformationen eines Benutzers für alle Ressourcen (Hosts, Repositorys und Profile) löschen.
+* Anmeldedaten für einzelne Ressourcen (Hosts, Repositorys und Profile) können gelöscht werden.
+

@@ -1,0 +1,50 @@
+---
+permalink: windows/reference_the_smosmsaphelp_command.html 
+sidebar: sidebar 
+keywords: run, help, command, display, information, snapmanager, smo, valid 
+summary: Sie können den Hilfe-Befehl ausführen, um Informationen zu den SnapManager-Befehlen und ihren Optionen anzuzeigen. Wenn Sie keinen Befehlsnamen angeben, wird eine Liste der gültigen Befehle angezeigt. Wenn Sie einen Befehlsnamen angeben, wird die Syntax für den Befehl angezeigt. 
+---
+= Der Befehl smo help
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Hilfe-Befehl ausführen, um Informationen zu den SnapManager-Befehlen und ihren Optionen anzuzeigen. Wenn Sie keinen Befehlsnamen angeben, wird eine Liste der gültigen Befehle angezeigt. Wenn Sie einen Befehlsnamen angeben, wird die Syntax für den Befehl angezeigt.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo help
+\[\]\[backup\|cmdfile\|clone\|credential\|help\|operation\|profile\|repository\|system\|version\|plugin\|diag\|history\|schedule\|notification\|storage\|get\]
+\[-quiet \| -verbose\]
+----
+
+
+== Parameter
+
+Im Folgenden sind einige Befehlsnamen, die Sie mit diesem Befehl verwenden können:
+
+* Backup
+* Klon
+* Cmdfile
+* Anmeldedaten
+* diag
+* Get
+* Benachrichtigung
+* Hilfe
+* Verlauf
+* Betrieb
+* Plug-in
+* Profil
+* Repository
+* Zeitplan
+* Storage
+* System
+* Version
+

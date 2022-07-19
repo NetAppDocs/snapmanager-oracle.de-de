@@ -1,0 +1,26 @@
+---
+permalink: windows/task_restoring_backups_from_an_alternate_location.html 
+sidebar: sidebar 
+keywords: restore, alternate, location, data, file, intermediate, system, active, restoring, backup 
+summary: Sie können die Datendateien von einem alternativen Speicherort wiederherstellen, um sie von einem Zwischendateisystem in ein aktives Dateisystem wiederherzustellen. 
+---
+= Wiederherstellen von Backups von einem alternativen Speicherort
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die Datendateien von einem alternativen Speicherort wiederherstellen, um sie von einem Zwischendateisystem in ein aktives Dateisystem wiederherzustellen.
+
+* Erstellen Sie eine XML-Datei für die Wiederherstellungsspezifikation, und geben Sie den Typ der Wiederherstellungsmethode an, die Sie verwenden möchten.
+
+
+Sie können den Befehl smo Backup restore verwenden und die XML-Datei für die Wiederherstellungsspezifikation angeben, die Sie erstellt haben, um das Backup von einem anderen Speicherort wiederherzustellen.
+
+. Geben Sie den folgenden Befehl ein: smo Backup restore -profilprofile-labellabel-complete-alllogs-restorespecrestorespec
+
+
+*Verwandte Informationen*
+
+xref:reference_the_smosmsapbackup_restore_command.adoc[Der Smo Backup Restore Befehl]

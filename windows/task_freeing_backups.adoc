@@ -1,0 +1,32 @@
+---
+permalink: windows/task_freeing_backups.html 
+sidebar: sidebar 
+keywords: free, backup, delete, snapshot, copies, copy, deleting, metadata, fuction, space, smo 
+summary: Sie können Backups freigeben, die die Snapshot Kopien löschen, ohne die Backup-Metadaten zu löschen. Diese Funktion gibt den Speicherplatz frei, der durch das Backup belegt wird. Sie können den Smo-Backup-freien Befehl verwenden, um die Backups zu befreien. 
+---
+= So werden Backups entlastet
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können Backups freigeben, die die Snapshot Kopien löschen, ohne die Backup-Metadaten zu löschen. Diese Funktion gibt den Speicherplatz frei, der durch das Backup belegt wird. Sie können den Smo-Backup-freien Befehl verwenden, um die Backups zu befreien.
+
+Damit ein Backup zur Freigabe berechtigt ist, müssen Sie Folgendes sicherstellen:
+
+* Das Backup war erfolgreich
+* Backup soll nicht angehängt werden
+* Backup verfügt nicht über Klone
+* Der Backup darf nicht durch eine Richtlinie zur unbegrenzten Aufbewahrung beibehalten werden
+* Das Backup wird nicht bereits freigegeben
+
+
+Sie können die Option -dump als optionalen Parameter angeben, um die Dump-Dateien nach dem erfolgreichen oder fehlgeschlagenen freien Backup-Vorgang zu sammeln.
+
+. Geben Sie folgenden Befehl ein: smo Backup free -profilprofile_Name {-labellabel [Data} -archivelogs] [-quiet] [-Force]
+
+
+*Verwandte Informationen*
+
+xref:reference_the_smosmsapbackup_free_command.adoc[Der smo Backup kostenlose Befehl]

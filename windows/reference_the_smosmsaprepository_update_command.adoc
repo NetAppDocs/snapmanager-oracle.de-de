@@ -1,0 +1,88 @@
+---
+permalink: windows/reference_the_smosmsaprepository_update_command.html 
+sidebar: sidebar 
+keywords: command, update, repository, database, profile, snapmanager, smo 
+summary: Mit diesem Befehl wird das Repository aktualisiert, in dem Datenbankprofile und die zugehörigen Anmeldedaten gespeichert werden, wenn Sie ein SnapManager-Upgrade durchführen. Wenn Sie eine neue Version von SnapManager installieren, müssen Sie den Befehl Repository Update ausführen, bevor Sie die neue Version verwenden können. Sie können diesen Befehl nur verwenden, wenn im Repository keine unvollständigen Befehle vorhanden sind. 
+---
+= Der Befehl smo Repository Update
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit diesem Befehl wird das Repository aktualisiert, in dem Datenbankprofile und die zugehörigen Anmeldedaten gespeichert werden, wenn Sie ein SnapManager-Upgrade durchführen. Wenn Sie eine neue Version von SnapManager installieren, müssen Sie den Befehl Repository Update ausführen, bevor Sie die neue Version verwenden können. Sie können diesen Befehl nur verwenden, wenn im Repository keine unvollständigen Befehle vorhanden sind.
+
+
+
+== Syntax
+
+[listing]
+----
+
+        smo repository update
+-repository
+-dbname repo_service_name
+-host repo_host
+-login -username repo_username
+-port repo_port
+[-force] [-noprompt]
+\[-quiet \| -verbose\]
+----
+
+
+== Parameter
+
+* *-Repository*
++
+Die Optionen, die dem -Repository folgen, geben die Details der Datenbank für das Repository an.
+
+* *-dbname repo_Service_Name*
++
+Gibt den Namen der Datenbank an, in der das Repository gespeichert wird. Verwenden Sie entweder den globalen Namen oder den SID.
+
+* *-Host repo_Host*
++
+Gibt den Namen oder die IP-Adresse des Hostcomputers an, auf dem die Repository-Datenbank ausgeführt wird.
+
+* *-Login*
++
+Startet die Repository-Anmeldedaten.
+
+* *-username repo_username*
++
+Gibt den Benutzernamen an, der für den Zugriff auf die Datenbank erforderlich ist, in der das Repository gespeichert ist.
+
+* *-Port repo_Port*
++
+Gibt die TCP-Portnummer an, die für den Zugriff auf die Datenbank verwendet wird, in der das Repository gespeichert ist.
+
+* *-Force*
++
+Versucht, die Aktualisierung des Repositorys zu erzwingen. SnapManager fordert Sie auf, vor der Aktualisierung eine Sicherung des aktuellen Repository durchzuführen.
+
+* *-noprompt*
++
+Zeigt die Eingabeaufforderung nicht an, bevor die Repository-Datenbank aktualisiert wird. Mit der Option -noprompt wird sichergestellt, dass die Eingabeaufforderung nicht angezeigt wird. Dies erleichtert die Aktualisierung von Repositorys mithilfe eines Skripts.
+
+* *-ruhig*
++
+Zeigt nur Fehlermeldungen auf der Konsole an. Standardmäßig werden Fehler- und Warnmeldungen angezeigt.
+
+* *-verbose*
++
+Zeigt Fehler-, Warn- und Informationsmeldungen an der Konsole an.
+
+
+
+
+
+== Beispielbefehl
+
+Das folgende Beispiel aktualisiert das Repository in der SALESDB-Datenbank.
+
+[listing]
+----
+smo repository update -repository -dbname SALESDB
+-host server1 -login -username admin -port 1521
+----

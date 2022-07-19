@@ -1,0 +1,17 @@
+---
+permalink: unix-administration/task_assigning_backups_with_a_specific_retention_class.html 
+sidebar: sidebar 
+keywords: dba, assign, specific, retention, class, hourly, daily, weekly, monthly, backup, assign 
+summary: Datenbankadministratoren können Backups mit einer bestimmten Aufbewahrungsklasse stündlich, täglich, wöchentlich oder monatlich durchführen. Durch das Zuweisen einer bestimmten Aufbewahrungsklasse können die unter dieser Änderung durchgeführten Backups gelöscht werden. 
+---
+= Zuweisen von Backups mit einer bestimmten Aufbewahrungsklasse
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Datenbankadministratoren können Backups mit einer bestimmten Aufbewahrungsklasse stündlich, täglich, wöchentlich oder monatlich durchführen. Durch das Zuweisen einer bestimmten Aufbewahrungsklasse können die unter dieser Änderung durchgeführten Backups gelöscht werden.
+
+. Um eine bestimmte Backup-Aufbewahrungs-Klasse zuzuweisen, geben Sie diesen Befehl ein:smo Backup Update -profilprofile_Name {-labellabel [Data} -archivelogs]
+
