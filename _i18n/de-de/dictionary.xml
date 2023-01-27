@@ -1994,7 +1994,6 @@
   <block id="ebf3e630ab67f632b2b371abef2dea6a" category="list-text">Geben Sie folgenden Befehl ein: smo Backup unmount -profile Profile_Name {labellabel [Data} -archivelogs] -idid [-quiet / -verbose] -dump-Force-verbose</block>
   <block id="80e3ec797d23ec0454f26bb0ae54eaa4" category="inline-xref-macro">Der Befehl smo Backup unmount</block>
   <block id="298ec9eed02af69f6cd08854c1575ccd" category="paragraph"><block ref="298ec9eed02af69f6cd08854c1575ccd" category="inline-xref-macro-rx"></block></block>
-  <block id="fdf138e8e32b475cac4e95dfa4a6845c" category="summary">Sie können Java Web Start verwenden, wenn SnapManager nicht auf dem Host installiert ist. Java Web Start lädt SnapManager-Komponenten herunter und startet die grafische Benutzeroberfläche (GUI). Die unterstützten JRE-Versionen sind 1.5, 1.6 und 1.7.</block>
   <block id="a3ce501ae6a1c70515cb2af72f8a5263" category="doc">Herunterladen und Starten der grafischen Benutzeroberfläche mit Java Web Start</block>
   <block id="65ac70b2787abfaf135067ac5ef6b778" category="paragraph">Sie müssen sicherstellen, dass die folgenden Bedingungen erfüllt sind:</block>
   <block id="e1549d03ea953026442a3230a7859b92" category="list-text">Der SnapManager Server wird ausgeführt.</block>
@@ -4569,7 +4568,6 @@
   <block id="919f34a198248929d4f784948b69469d" category="paragraph">SnapManager benötigt SnapDrive, um die Verbindung zum Storage-System herzustellen. Sie müssen SnapDrive for UNIX auf jedem Ziel-Datenbank-Host installieren, bevor Sie SnapManager installieren.</block>
   <block id="7d5643ff2a416305c8e7f1f9edb27b00" category="paragraph">Sie müssen SnapManager für Oracle auf jedem Ziel-Datenbank-Host installieren.</block>
   <block id="39428a8d90e5b121522d6129b78aa8f9" category="paragraph">Sie können entweder die Befehlszeilenschnittstelle (CLI) oder die Benutzeroberfläche vom Datenbank-Host verwenden, auf dem SnapManager für Oracle installiert ist. Sie können die SnapManager-Benutzeroberfläche auch Remote verwenden, indem Sie einen Webbrowser von jedem System verwenden, das auf einem von SnapManager unterstützten Betriebssystem ausgeführt wird.</block>
-  <block id="7ef022a578be28da1215ccf070dd30ff" category="admonition">Die unterstützten JRE-Versionen sind 1.5, 1.6 und 1.7.</block>
   <block id="651517944489d080458feaf4b18b48e1" category="section-title">Zieldatenbank</block>
   <block id="fc07b3bc28ff78b02c42678ae411ac43" category="paragraph">Die Zieldatenbank ist eine Oracle Datenbank, die Sie mit SnapManager managen möchten, indem Sie Backup-, Restore-, Recovery- und Klonvorgänge durchführen.</block>
   <block id="01481686276dcdeb8154575ae3331d69" category="paragraph">Die Zieldatenbank kann eine eigenständige Real Application Clusters (RAC) sein oder auf Oracle Automatic Storage Management (ASM)-Volumes residieren. Weitere Informationen zu den unterstützten Oracle Datenbankversionen, Konfigurationen, Betriebssystemen und Protokollen finden Sie im NetApp Interoperabilitäts-Matrix-Tool.</block>
@@ -6854,4 +6852,7 @@
   <block id="d23d52eb082db2b040f7a1483c79d790" category="sidebar">Administration für UNIX</block>
   <block id="30027cf267532429435367703cf3d996" category="sidebar">Installation und Einrichtung für Windows</block>
   <block id="d648f2a68a54fd1b3329efc3cf24d29c" category="sidebar">Rechtliche Hinweise</block>
+  <block id="48f5a9c122057627462e4b416c5fbdf9" category="admonition">Die unterstützten JRE-Versionen sind 1.5, 1.6, 1.7 und 1.8.</block>
+  <block id="1e19ac469670780a4c754ec0afa92293" category="summary">Sie können Java Web Start verwenden, wenn SnapManager nicht auf dem Host installiert ist. Java Web Start lädt SnapManager-Komponenten herunter und startet die grafische Benutzeroberfläche (GUI). Die unterstützten JRE-Versionen sind 1.5, 1.6, 1.7 und 1.8</block>
+  <block id="3c981c21038a256bded47f47d4658951" category="paragraph">Sie können Java Web Start verwenden, wenn SnapManager nicht auf dem Host installiert ist. Java Web Start lädt SnapManager-Komponenten herunter und startet die grafische Benutzeroberfläche (GUI). Die unterstützten JRE-Versionen sind 1.5, 1.6, 1.7 und 1.8.</block>
 </blocks>
